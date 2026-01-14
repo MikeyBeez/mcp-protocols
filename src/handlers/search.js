@@ -34,7 +34,7 @@ function handleProtocolSearch(args) {
               `**${p.name}** (\`${p.id}\`)\n` +
               `- **Purpose**: ${p.purpose}\n` +
               `- **Key Triggers**: ${p.triggers.slice(0,2).join(', ')}${p.triggers.length > 2 ? '...' : ''}\n` +
-              `- **Read**: \`protocol_read ${p.id}\`\n`
+              `- **Read**: \`mikey_protocol_read ${p.id}\`\n`
             ).join('\n')
     }]
   };

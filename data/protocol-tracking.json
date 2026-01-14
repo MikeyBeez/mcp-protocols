@@ -1,0 +1,263 @@
+{
+  "version": "1.0.0",
+  "created": "2026-01-13T23:15:17.196Z",
+  "accessLog": [
+    {
+      "protocolId": "error-recovery",
+      "accessType": "read",
+      "timestamp": "2026-01-13T23:15:17.197Z",
+      "context": {
+        "source": "unknown",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "task-approach",
+      "accessType": "read",
+      "timestamp": "2026-01-13T23:15:17.197Z",
+      "context": {
+        "source": "unknown",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "error-recovery",
+      "accessType": "read",
+      "timestamp": "2026-01-13T23:15:17.197Z",
+      "context": {
+        "source": "unknown",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "user-communication",
+      "accessType": "triggers",
+      "timestamp": "2026-01-13T23:15:17.198Z",
+      "context": {
+        "source": "unknown",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "protocol-writing",
+      "accessType": "read",
+      "timestamp": "2026-01-13T23:16:45.753Z",
+      "context": {
+        "source": "unknown",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "medium-article",
+      "accessType": "read",
+      "timestamp": "2026-01-13T23:16:45.754Z",
+      "context": {
+        "source": "unknown",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "get-current-time",
+      "accessType": "read",
+      "timestamp": "2026-01-14T04:22:44.881Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-14T16:05:09.929Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-14T16:09:05.485Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "create-project",
+      "accessType": "read",
+      "timestamp": "2026-01-14T16:13:00.099Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "error-recovery",
+      "accessType": "read",
+      "timestamp": "2026-01-14T16:18:30.439Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "create-project",
+      "accessType": "read",
+      "timestamp": "2026-01-14T16:18:30.457Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-14T16:18:38.873Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "medium-article",
+      "accessType": "read",
+      "timestamp": "2026-01-14T16:28:00.388Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "active-inference",
+      "accessType": "read",
+      "timestamp": "2026-01-14T16:30:00.027Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-14T16:45:29.365Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    }
+  ],
+  "heatMap": {
+    "error-recovery": {
+      "totalAccesses": 3,
+      "firstAccess": "2026-01-13T23:15:17.197Z",
+      "lastAccess": "2026-01-14T16:18:30.439Z",
+      "accessTypes": {
+        "read": 3
+      }
+    },
+    "task-approach": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-13T23:15:17.197Z",
+      "lastAccess": "2026-01-13T23:15:17.197Z",
+      "accessTypes": {
+        "read": 1
+      }
+    },
+    "user-communication": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-13T23:15:17.198Z",
+      "lastAccess": "2026-01-13T23:15:17.198Z",
+      "accessTypes": {
+        "triggers": 1
+      }
+    },
+    "protocol-writing": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-13T23:16:45.753Z",
+      "lastAccess": "2026-01-13T23:16:45.753Z",
+      "accessTypes": {
+        "read": 1
+      }
+    },
+    "medium-article": {
+      "totalAccesses": 2,
+      "firstAccess": "2026-01-13T23:16:45.754Z",
+      "lastAccess": "2026-01-14T16:28:00.388Z",
+      "accessTypes": {
+        "read": 2
+      }
+    },
+    "get-current-time": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-14T04:22:44.881Z",
+      "lastAccess": "2026-01-14T04:22:44.881Z",
+      "accessTypes": {
+        "read": 1
+      }
+    },
+    "index": {
+      "totalAccesses": 4,
+      "firstAccess": "2026-01-14T16:05:09.929Z",
+      "lastAccess": "2026-01-14T16:45:29.365Z",
+      "accessTypes": {
+        "list": 4
+      }
+    },
+    "create-project": {
+      "totalAccesses": 2,
+      "firstAccess": "2026-01-14T16:13:00.099Z",
+      "lastAccess": "2026-01-14T16:18:30.457Z",
+      "accessTypes": {
+        "read": 2
+      }
+    },
+    "active-inference": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-14T16:30:00.027Z",
+      "lastAccess": "2026-01-14T16:30:00.027Z",
+      "accessTypes": {
+        "read": 1
+      }
+    }
+  },
+  "dailyStats": {
+    "2026-01-13": {
+      "totalAccesses": 6,
+      "uniqueProtocols": [
+        "error-recovery",
+        "task-approach",
+        "user-communication",
+        "protocol-writing",
+        "medium-article"
+      ],
+      "byProtocol": {
+        "error-recovery": 2,
+        "task-approach": 1,
+        "user-communication": 1,
+        "protocol-writing": 1,
+        "medium-article": 1
+      }
+    },
+    "2026-01-14": {
+      "totalAccesses": 10,
+      "uniqueProtocols": [
+        "get-current-time",
+        "index",
+        "create-project",
+        "error-recovery",
+        "medium-article",
+        "active-inference"
+      ],
+      "byProtocol": {
+        "get-current-time": 1,
+        "index": 4,
+        "create-project": 2,
+        "error-recovery": 1,
+        "medium-article": 1,
+        "active-inference": 1
+      }
+    }
+  },
+  "lastUpdated": "2026-01-14T16:45:29.366Z"
+}

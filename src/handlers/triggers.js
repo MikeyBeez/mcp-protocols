@@ -16,9 +16,9 @@ function handleProtocolTriggers(args) {
               `- **User Communication Protocol**: For effective interaction\n` +
               `- **Error Recovery Protocol**: For any issues that arise\n\n` +
               `**Quick access**:\n` +
-              `- \`protocol_read task-approach\`\n` +
-              `- \`protocol_read user-communication\`\n` +
-              `- \`protocol_read error-recovery\``
+              `- \`mikey_protocol_read task-approach\`\n` +
+              `- \`mikey_protocol_read user-communication\`\n` +
+              `- \`mikey_protocol_read error-recovery\``
       }]
     };
   }
@@ -35,12 +35,12 @@ function handleProtocolTriggers(args) {
                 const trigger = t.toLowerCase();
                 return situationTerm.includes(trigger) || trigger.includes(situationTerm);
               }).join(', ')}\n` +
-              `- **Read**: \`protocol_read ${p.id}\`\n`
+              `- **Read**: \`mikey_protocol_read ${p.id}\`\n`
             ).join('\n') +
             `\n💡 **Quick Actions**:\n` +
-            `- Use \`protocol_read ${relevantProtocols[0].id}\` for detailed guidance\n` +
+            `- Use \`mikey_protocol_read ${relevantProtocols[0].id}\` for detailed guidance\n` +
             `- Multiple protocols may need to work together\n` +
-            `- Use \`protocol_search\` to find additional relevant protocols`
+            `- Use \`mikey_protocol_search\` to find additional relevant protocols`
     }]
   };
 }

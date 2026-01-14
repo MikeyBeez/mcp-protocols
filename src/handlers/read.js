@@ -10,7 +10,7 @@ function handleProtocolRead(args) {
     return {
       content: [{
         type: 'text',
-        text: `❌ Protocol '${protocol_id}' not found.\n\n**Available protocols**:\n${availableIds.map(id => `- ${id}`).join('\n')}\n\nUse \`protocol_list\` to see all protocols with details.`
+        text: `❌ Protocol '${protocol_id}' not found.\n\n**Available protocols**:\n${availableIds.map(id => `- ${id}`).join('\n')}\n\nUse \`mikey_protocol_list\` to see all protocols with details.`
       }]
     };
   }

@@ -7,15 +7,43 @@ const userCommunication = require('./protocols/foundation/user-communication');
 const taskApproach = require('./protocols/foundation/task-approach');
 const informationIntegration = require('./protocols/foundation/information-integration');
 const progressCommunication = require('./protocols/foundation/progress-communication');
+const namingLinter = require('./protocols/foundation/naming-linter');
+const activeInference = require('./protocols/foundation/active-inference');
+const protocolSelection = require('./protocols/foundation/protocol-selection');
+const protocolLifecycle = require('./protocols/foundation/protocol-lifecycle');
+const protocolWriting = require('./protocols/foundation/protocol-writing');
+const mediumArticle = require('./protocols/foundation/medium-article');
+const createProject = require('./protocols/foundation/create-project');
+const architectureUpdate = require('./protocols/foundation/architecture-update');
+const protocolGraduation = require('./protocols/foundation/protocol-graduation');
+const mcpPermissions = require('./protocols/foundation/mcp-permissions');
+const documentWriting = require('./protocols/foundation/document-writing');
+const protocolErrorCorrection = require('./protocols/foundation/protocol-error-correction');
+const promptProcessing = require('./protocols/foundation/prompt-processing');
 
 // Protocol registry with all protocols
 const PROTOCOLS = {
-  // Foundation Protocols (Tier 2) - Complete with triggers
+  // Meta Protocols (Tier 0) - Run before others
+  [protocolSelection.id]: protocolSelection,
+  [promptProcessing.id]: promptProcessing,
+
+  // Foundation Protocols (Tier 1-2) - Complete with triggers
   [errorRecovery.id]: errorRecovery,
   [userCommunication.id]: userCommunication,
   [taskApproach.id]: taskApproach,
   [informationIntegration.id]: informationIntegration,
   [progressCommunication.id]: progressCommunication,
+  [namingLinter.id]: namingLinter,
+  [activeInference.id]: activeInference,
+  [protocolLifecycle.id]: protocolLifecycle,
+  [protocolWriting.id]: protocolWriting,
+  [mediumArticle.id]: mediumArticle,
+  [createProject.id]: createProject,
+  [architectureUpdate.id]: architectureUpdate,
+  [protocolGraduation.id]: protocolGraduation,
+  [mcpPermissions.id]: mcpPermissions,
+  [documentWriting.id]: documentWriting,
+  [protocolErrorCorrection.id]: protocolErrorCorrection,
 };
 
 // Master Protocol Index content
@@ -28,71 +56,122 @@ const MASTER_PROTOCOL_INDEX = `# Master Protocol Index v2.0.0 (MCP SERVER BACKED
 ## 🎯 Quick Protocol Selection
 
 **Need help with something?**
-- 🚨 **Error/Problem**: Error Recovery Protocol (\`protocol_read error-recovery\`)
-- 🤔 **Unclear request**: Task Approach Protocol (\`protocol_read task-approach\`)
-- 👤 **User interaction**: User Communication Protocol (\`protocol_read user-communication\`)
-- 📚 **Multiple sources**: Information Integration Protocol (\`protocol_read information-integration\`)
-- ⏱️ **Long task**: Progress Communication Protocol (\`protocol_read progress-communication\`)
+- 🚨 **Error/Problem**: Error Recovery Protocol (\`mikey_protocol_read error-recovery\`)
+- 🤔 **Unclear request**: Task Approach Protocol (\`mikey_protocol_read task-approach\`)
+- 👤 **User interaction**: User Communication Protocol (\`mikey_protocol_read user-communication\`)
+- 📚 **Multiple sources**: Information Integration Protocol (\`mikey_protocol_read information-integration\`)
+- ⏱️ **Long task**: Progress Communication Protocol (\`mikey_protocol_read progress-communication\`)
+- 🏷️ **MCP tool naming**: Naming Linter Protocol (\`mikey_protocol_read naming-linter\`)
+- 🔄 **After task/failure**: Active Inference Protocol (\`mikey_protocol_read active-inference\`)
+- 🎯 **Starting new task**: Protocol Selection Protocol (\`mikey_protocol_read protocol-selection\`)
+- 📈 **Protocol optimization**: Protocol Lifecycle Protocol (\`mikey_protocol_read protocol-lifecycle\`)
+- ✍️ **Creating protocols**: Protocol Writing Protocol (\`mikey_protocol_read protocol-writing\`)
+- 📝 **Writing for Medium**: Medium Article Protocol (\`mikey_protocol_read medium-article\`)
+- 🆕 **New project**: Create Project Protocol (\`mikey_protocol_read create-project\`)
+- 🏗️ **System changes**: Architecture Update Protocol (\`mikey_protocol_read architecture-update\`)
+- 🎓 **Protocol to tool**: Protocol Graduation Protocol (\`mikey_protocol_read protocol-graduation\`)
+- 🔧 **MCP permissions**: MCP Permissions Protocol (\`mikey_protocol_read mcp-permissions\`)
+- 📄 **Writing documents**: Document Writing Protocol (\`mikey_protocol_read document-writing\`)
+- 🔄 **Protocol failed**: Protocol Error Correction Protocol (\`mikey_protocol_read protocol-error-correction\`)
 
 ## 🏗️ Protocol System Architecture
 
-### **Tier 0: Meta-Protocols**
+### **Tier 0: Meta-Protocols** ✅ **AUTO-TRIGGER ON TASK START**
+- **Protocol Selection Protocol** ✅ v1.0.0 - Auto-select relevant protocols at task start
 - **Common Sense Protocol** - Override for complexity when simple solutions exist
 
-### **Tier 1: Critical System Protocols** 
+### **Tier 1: Critical System Protocols**
 *Session integrity and system operation*
 1. Brain Initialization Protocol
-2. Write-Read Verification Protocol  
+2. Write-Read Verification Protocol
 3. Context Window Management Protocol
 4. Protocol Active Reference System
-5. Architecture Update Protocol
+5. **Architecture Update Protocol** ✅ v1.0.0 (2026-01-14)
+   - **MCP Access**: \`mikey_protocol_read architecture-update\`
+   - **Quick Triggers**: Created project, moved system, changed paths, added MCP tool
 6. Architecture First Protocol
 7. Living Architecture Protocol
+8. **Protocol Writing Protocol** ✅ v1.0.0 (2026-01-13)
+   - **MCP Access**: \`mikey_protocol_read protocol-writing\`
+   - **Quick Triggers**: New protocol needed, pattern codification, workflow standardization
+9. **Protocol Graduation Protocol** ✅ v1.0.0 (2026-01-14)
+   - **MCP Access**: \`mikey_protocol_read protocol-graduation\`
+   - **Quick Triggers**: Frequent protocol, consistent execution, ready for automation
+
+10. **Protocol Error Correction Protocol** ✅ v1.0.0 (2026-01-14)
+    - **MCP Access**: \`mikey_protocol_read protocol-error-correction\`
+    - **Quick Triggers**: Protocol produced wrong result, missing step, user correction
 
 ### **Tier 2: Foundation Operational Protocols** ✅ **COMPLETE WITH TRIGGERS**
 *Daily operations and user interaction - ALL HAVE FORMAL TRIGGER CONDITIONS*
 
 8. **Error Recovery Protocol** ✅ v1.1.0 (2025-08-03)
-   - **MCP Access**: \`protocol_read error-recovery\`
+   - **MCP Access**: \`mikey_protocol_read error-recovery\`
    - **Quick Triggers**: Tool errors, unclear requests, conflicts, knowledge gaps
 
 9. **User Communication Protocol** ✅ v1.1.0 (2025-08-03)
-   - **MCP Access**: \`protocol_read user-communication\`
+   - **MCP Access**: \`mikey_protocol_read user-communication\`
    - **Quick Triggers**: Any user interaction, feedback, explanation needed
 
 10. **Task Approach Protocol** ✅ v1.1.0 (2025-08-03)
-    - **MCP Access**: \`protocol_read task-approach\`
+    - **MCP Access**: \`mikey_protocol_read task-approach\`
     - **Quick Triggers**: Any user request, ambiguous instructions, intent analysis
 
 11. **Information Integration Protocol** ✅ v1.1.0 (2025-08-03)
-    - **MCP Access**: \`protocol_read information-integration\`
+    - **MCP Access**: \`mikey_protocol_read information-integration\`
     - **Quick Triggers**: Multiple sources, conflicts, comprehensive responses
 
 12. **Progress Communication Protocol** ✅ v1.1.0 (2025-08-03)
-    - **MCP Access**: \`protocol_read progress-communication\`
+    - **MCP Access**: \`mikey_protocol_read progress-communication\`
     - **Quick Triggers**: >30 second tasks, >3 tool calls, complex processes
+
+13. **Naming Linter Protocol** ✅ v1.0.0 (2026-01-13)
+    - **MCP Access**: \`mikey_protocol_read naming-linter\`
+    - **Quick Triggers**: Creating MCP servers, adding tools, renaming, before commits
+
+14. **Active Inference Protocol** ✅ v1.0.0 (2026-01-13)
+    - **MCP Access**: \`mikey_protocol_read active-inference\`
+    - **Quick Triggers**: After task completion, failures, errors, reflection requests
+
+15. **Protocol Lifecycle Protocol** ✅ v1.0.0 (2026-01-13)
+    - **MCP Access**: \`mikey_protocol_read protocol-lifecycle\`
+    - **Quick Triggers**: Protocol optimization, graduation decisions, trigger refinement
+
+16. **MCP Permissions Protocol** ✅ v1.0.0 (2026-01-14)
+    - **MCP Access**: \`mikey_protocol_read mcp-permissions\`
+    - **Quick Triggers**: Adding MCP server, configuring permissions, too many approval prompts
+
+17. **Document Writing Protocol** ✅ v1.0.0 (2026-01-14)
+    - **MCP Access**: \`mikey_protocol_read document-writing\`
+    - **Quick Triggers**: Write document, draft paper, create documentation
 
 ### **Tier 3: Workflow & Specialized Protocols**
 
-13. Protocol Compliance Monitoring Protocol
-14. Continuous System Maintenance Protocol
-15. Protocol Trigger Condition Framework
+16. **Create Project Protocol** ✅ v1.0.0 (2026-01-14)
+    - **MCP Access**: \`mikey_protocol_read create-project\`
+    - **Tool**: \`mikey_create_project\`
+    - **Quick Triggers**: "create project", "new project", "set up repo", "scaffold"
+    - **Note**: This protocol points to a tool - example of "graduated" protocol
+
+17. Protocol Compliance Monitoring Protocol
+15. Continuous System Maintenance Protocol
+16. Protocol Trigger Condition Framework
 
 ## 🔧 MCP Server Commands
 
 ### **Essential Commands**
-- \`protocol_list\` - List all protocols with metadata
-- \`protocol_read <id>\` - Read full protocol content
-- \`protocol_search <query>\` - Search protocols by keywords
-- \`protocol_triggers <situation>\` - Get protocols for specific situations
-- \`protocol_index\` - Get this complete index
-- \`protocol_backup\` - Create full backup of all protocols
+- \`mikey_protocol_list\` - List all protocols with metadata
+- \`mikey_protocol_read <id>\` - Read full protocol content
+- \`mikey_protocol_search <query>\` - Search protocols by keywords
+- \`mikey_protocol_triggers <situation>\` - Get protocols for specific situations
+- \`mikey_protocol_index\` - Get this complete index
+- \`mikey_protocol_backup\` - Create full backup of all protocols
 
 ### **Situation-Based Protocol Selection**
-- \`protocol_triggers "error occurred"\` - Find error handling protocols
-- \`protocol_triggers "user confused"\` - Find communication protocols
-- \`protocol_triggers "multiple sources"\` - Find integration protocols
-- \`protocol_triggers "long task"\` - Find progress communication protocols
+- \`mikey_protocol_triggers "error occurred"\` - Find error handling protocols
+- \`mikey_protocol_triggers "user confused"\` - Find communication protocols
+- \`mikey_protocol_triggers "multiple sources"\` - Find integration protocols
+- \`mikey_protocol_triggers "long task"\` - Find progress communication protocols
 
 ## ✅ System Status: RELIABLE & OPERATIONAL
 
@@ -195,3 +274,4 @@ module.exports = {
   PROTOCOLS,
   MASTER_PROTOCOL_INDEX
 };
+
