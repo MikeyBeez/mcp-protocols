@@ -114,6 +114,21 @@ Before responding to any user prompt, verify:
 - ✅ Loaded any triggered protocols
 - ✅ Considered context hints in response
 
+## Response Timestamp
+
+**Every response must begin with a timestamp.**
+
+Format: `**[YYYY-MM-DD HH:MM TZ]**`
+
+Example: `**[2026-01-14 18:16 PST]**`
+
+This provides:
+- Timeline visibility for the user
+- Time context after session compaction
+- Record of when work happened
+
+To get current time, check system or use `date` command if needed.
+
 ---
 
 **Created**: 2026-01-14

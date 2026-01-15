@@ -145,6 +145,96 @@
         "source": "mcp-protocols-server",
         "sessionStart": null
       }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-15T00:19:15.613Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-15T00:36:22.179Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "protocol-writing",
+      "accessType": "read",
+      "timestamp": "2026-01-15T00:40:20.297Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "system-audit",
+      "accessType": "read",
+      "timestamp": "2026-01-15T00:42:58.695Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-15T00:44:04.617Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "system-audit",
+      "accessType": "read",
+      "timestamp": "2026-01-15T00:52:18.675Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "system-audit",
+      "accessType": "search",
+      "timestamp": "2026-01-15T01:22:57.079Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "system-audit",
+      "accessType": "search",
+      "timestamp": "2026-01-15T01:24:30.119Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "system-audit",
+      "accessType": "read",
+      "timestamp": "2026-01-15T01:24:30.140Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-15T01:28:15.283Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
     }
   ],
   "heatMap": {
@@ -173,11 +263,11 @@
       }
     },
     "protocol-writing": {
-      "totalAccesses": 1,
+      "totalAccesses": 2,
       "firstAccess": "2026-01-13T23:16:45.753Z",
-      "lastAccess": "2026-01-13T23:16:45.753Z",
+      "lastAccess": "2026-01-15T00:40:20.297Z",
       "accessTypes": {
-        "read": 1
+        "read": 2
       }
     },
     "medium-article": {
@@ -197,11 +287,11 @@
       }
     },
     "index": {
-      "totalAccesses": 4,
+      "totalAccesses": 8,
       "firstAccess": "2026-01-14T16:05:09.929Z",
-      "lastAccess": "2026-01-14T16:45:29.365Z",
+      "lastAccess": "2026-01-15T01:28:15.283Z",
       "accessTypes": {
-        "list": 4
+        "list": 8
       }
     },
     "create-project": {
@@ -218,6 +308,15 @@
       "lastAccess": "2026-01-14T16:30:00.027Z",
       "accessTypes": {
         "read": 1
+      }
+    },
+    "system-audit": {
+      "totalAccesses": 5,
+      "firstAccess": "2026-01-15T00:42:58.695Z",
+      "lastAccess": "2026-01-15T01:24:30.140Z",
+      "accessTypes": {
+        "read": 3,
+        "search": 2
       }
     }
   },
@@ -257,7 +356,20 @@
         "medium-article": 1,
         "active-inference": 1
       }
+    },
+    "2026-01-15": {
+      "totalAccesses": 10,
+      "uniqueProtocols": [
+        "index",
+        "protocol-writing",
+        "system-audit"
+      ],
+      "byProtocol": {
+        "index": 4,
+        "protocol-writing": 1,
+        "system-audit": 5
+      }
     }
   },
-  "lastUpdated": "2026-01-14T16:45:29.366Z"
+  "lastUpdated": "2026-01-15T01:28:15.283Z"
 }

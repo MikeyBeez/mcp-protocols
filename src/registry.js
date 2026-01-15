@@ -20,6 +20,7 @@ const mcpPermissions = require('./protocols/foundation/mcp-permissions');
 const documentWriting = require('./protocols/foundation/document-writing');
 const protocolErrorCorrection = require('./protocols/foundation/protocol-error-correction');
 const promptProcessing = require('./protocols/foundation/prompt-processing');
+const systemAudit = require('./protocols/foundation/system-audit');
 
 // Protocol registry with all protocols
 const PROTOCOLS = {
@@ -44,6 +45,7 @@ const PROTOCOLS = {
   [mcpPermissions.id]: mcpPermissions,
   [documentWriting.id]: documentWriting,
   [protocolErrorCorrection.id]: protocolErrorCorrection,
+  [systemAudit.id]: systemAudit,
 };
 
 // Master Protocol Index content
