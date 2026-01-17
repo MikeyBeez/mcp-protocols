@@ -61,11 +61,22 @@ const TRIGGER_KEYWORDS = {
 
 // Quick response patterns - prompts that don't need protocol processing
 const QUICK_RESPONSE_PATTERNS = [
-  /^(yes|no|ok|okay|sure|thanks|thank you|got it|perfect|great|stop|done|continue)\.?$/i,
+  /^(yes|no|ok|okay|sure|thanks|thank you|got it|perfect|great|stop|done)\.?$/i,
   /^(open|show|reveal|display)\s+/i,  // File operations
   /^what('s| is) (the )?(time|date)/i,
   /^\d+$/,  // Just a number
-  /^.{0,20}$/,  // Very short prompts (20 chars or less) - skip processing
+];
+
+// Continuation patterns - continue existing work, no decomposition needed
+const CONTINUATION_PATTERNS = [
+  /^(please\s+)?continue(\s+on\s+\w+)?\.?$/i,  // "continue", "continue on pop", "please continue"
+  /^(please\s+)?keep going\.?$/i,
+  /^(please\s+)?go ahead\.?$/i,
+  /^(please\s+)?proceed\.?$/i,
+  /^back to\s+/i,  // "back to pop", "back to the task"
+  /^resume\s+/i,   // "resume work on..."
+  /^let's continue/i,
+  /^where were we/i,
 ];
 
 // Loop prevention - track recently processed prompts
@@ -144,9 +155,30 @@ function handlePromptProcess(args) {
           text: JSON.stringify({
             processed: true,
             skip_processing: true,
+            needs_decomposition: false,
             reason: 'Quick response pattern detected',
             triggered_protocols: [],
             context_hints: []
+          }, null, 2)
+        }]
+      };
+    }
+  }
+
+  // Check for continuation patterns - just continue, don't decompose
+  for (const pattern of CONTINUATION_PATTERNS) {
+    if (pattern.test(promptLower)) {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            processed: true,
+            skip_processing: true,
+            needs_decomposition: false,
+            is_continuation: true,
+            reason: 'Continuation pattern - resume previous work without re-analysis',
+            triggered_protocols: [],
+            context_hints: ['Use existing context from conversation/session-status.md']
           }, null, 2)
         }]
       };
@@ -202,19 +234,31 @@ function handlePromptProcess(args) {
     contextHints.push('Multiple topic areas detected - complex request');
   }
 
+  // Determine if decomposition is needed
+  // Decomposition is for: long prompts, complex multi-step tasks, math problems
+  const needsDecomposition = (
+    prompt.length > 500 ||  // Long prompts
+    matchedKeywords.length > 3 ||  // Many different topics
+    contextHints.includes('Multiple topic areas detected - complex request') ||
+    /math|solve|compute|calculate|prove|derive/.test(promptLower)  // Math problems
+  );
+
   return {
     content: [{
       type: 'text',
       text: JSON.stringify({
         processed: true,
         skip_processing: false,
+        needs_decomposition: needsDecomposition,
         prompt_length: prompt.length,
         matched_keywords: matchedKeywords,
         triggered_protocols: triggeredProtocols,
         context_hints: contextHints,
-        recommendation: triggeredProtocols.length > 0
-          ? `Load ${triggeredProtocols.length} protocol(s) before proceeding`
-          : 'No specific protocols triggered - use general approach'
+        recommendation: needsDecomposition
+          ? 'Complex task - consider decomposition before solving'
+          : triggeredProtocols.length > 0
+            ? `Load ${triggeredProtocols.length} protocol(s) before proceeding`
+            : 'Simple task - proceed directly'
       }, null, 2)
     }]
   };
