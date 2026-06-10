@@ -1,0 +1,62 @@
+[
+  {
+    "situation": "Touch files under /Users/bard or /Volumes (outside the Cowork sandbox)",
+    "tools": ["mcp__filesystem-enhanced__read_text_file", "mcp__filesystem-enhanced__write_file", "mcp__filesystem-enhanced__edit_file", "mcp__filesystem-enhanced__list_directory"],
+    "keywords": ["file", "files", "read", "write", "edit", "folder", "directory", "path", "config", "dotfile", "outside", "sandbox"],
+    "note": "Built-in Read/Write/Edit only reach connected folders. filesystem-enhanced reaches the whole Mac."
+  },
+  {
+    "situation": "Run a command on Mikey's real Mac, his LAN, or pop over ssh",
+    "tools": ["mcp__system__system_exec"],
+    "keywords": ["run", "command", "shell", "execute", "ssh", "pop", "tmux", "gpu", "cuda", "nvidia", "git", "scp", "launchctl", "brew", "ollama", "process", "kill"],
+    "note": "The sandbox bash has no LAN route. system_exec runs as bard on the Mac; ssh bard@192.168.12.174 for pop. Use git CLI through it for all git work."
+  },
+  {
+    "situation": "Session start, remembering, or recalling anything from past sessions",
+    "tools": ["mcp__brain__brain_init", "mcp__brain__brain_recall", "mcp__brain__brain_remember", "mcp__brain__brain_reflect"],
+    "keywords": ["remember", "recall", "memory", "session", "context", "before", "last", "time", "previous", "discussed", "told", "smarts"],
+    "note": "brain_init at session start. Write memories DURING work, not at the end. After tasks: brain_reflect."
+  },
+  {
+    "situation": "Launching or monitoring a training / distillation / fine-tuning run",
+    "tools": ["mcp__system__system_exec"],
+    "keywords": ["train", "training", "distill", "finetune", "checkpoint", "wandb", "diverge", "loss", "steps", "eta", "launch"],
+    "note": "Read protocol training-run-management first. tmux pane for visibility, native W&B, step-stamped checkpoints, verify liftoff after 30s."
+  },
+  {
+    "situation": "Current-world facts, papers, citations, anything post-cutoff",
+    "tools": ["WebSearch", "mcp__workspace__web_fetch", "mcp__tracked-search__tracked_search"],
+    "keywords": ["search", "paper", "arxiv", "current", "latest", "news", "today", "cite", "citation", "published", "release"],
+    "note": "Search before claiming. For HF models/datasets/papers there are also hf paper_search / hub_repo_search tools."
+  },
+  {
+    "situation": "MCP server or tool failures, errors, broken tools",
+    "tools": ["mcp__tools-registry__registry_summary", "mcp__tools-registry__registry_info", "mcp__system__system_exec"],
+    "keywords": ["mcp", "server", "broken", "error", "failed", "tool", "failure", "disconnect", "malfunction"],
+    "note": "registry_summary shows active/broken/unconfigured. Logs at ~/Library/Logs/Claude/. Protocol: tool-auto-repair."
+  },
+  {
+    "situation": "What time is it / elapsed time / any time-of-day assumption",
+    "tools": ["Skill:get-current-time"],
+    "keywords": ["time", "clock", "late", "early", "morning", "tonight", "elapsed", "timer", "hour"],
+    "note": "Never guess the time; response timestamps come from this."
+  },
+  {
+    "situation": "Locating a project or code on the Mac",
+    "tools": ["mcp__project-finder__find_project", "mcp__project-finder__recent_projects", "mcp__system__system_exec"],
+    "keywords": ["project", "where", "locate", "find", "repo", "code", "directory"],
+    "note": "Check the filesystem before claiming something does or does not exist."
+  },
+  {
+    "situation": "Context running long / handoff to a future session",
+    "tools": ["mcp__mcp-continuation-notes__continuation_write", "mcp__brain__brain_remember"],
+    "keywords": ["continue", "continuation", "handoff", "context", "limit", "running", "out", "next", "session"],
+    "note": "Write the continuation note BEFORE context is lost. Protocol: auto-continuation."
+  },
+  {
+    "situation": "Verifying claims, math, or suspicious confident reasoning",
+    "tools": ["mcp__reasoning-tools__systematic_verify", "mcp__bullshit-detector__detect_bullshit", "mcp__system__system_exec"],
+    "keywords": ["verify", "check", "confirm", "math", "calculate", "claim", "actually", "prove", "precise"],
+    "note": "Compute, don't assert. Run numbers through code; skills: pattern-match-check."
+  }
+]
