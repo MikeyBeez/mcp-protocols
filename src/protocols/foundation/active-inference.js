@@ -2,7 +2,7 @@
 module.exports = {
   id: 'active-inference',
   name: 'Active Inference Protocol',
-  version: '1.0.0',
+  version: '1.1.0',
   tier: 1,
   purpose: 'Close the feedback loop: evaluate outcomes, diagnose failures, propose protocol improvements',
   triggers: [
@@ -10,7 +10,9 @@ module.exports = {
     'When a task fails or produces unexpected results',
     'When errors occur during execution',
     'When asked to reflect on what happened',
-    'At the end of a work session'
+    'At the end of a work session',
+    'When context is about to be compacted (summarization)',
+    'After completing multiple related tasks (reflect on the batch)'
   ],
   status: 'active',
   location: '/Users/bard/Code/claude-brain/index.js',
@@ -22,6 +24,8 @@ module.exports = {
 - **WHEN**: Results don't match expectations
 - **WHEN**: User asks "what went wrong?" or "how could this be better?"
 - **WHEN**: End of work session
+- **WHEN**: Context compaction is imminent (summarization happening)
+- **WHEN**: After completing a batch of related tasks
 - **IMMEDIATE**: Yes for failures, optional for successes
 - **PRIORITY**: High
 
@@ -139,5 +143,5 @@ Outcome: Failed - "sudo command not found"
 - Proposals that get approved (useful suggestions)
 
 ---
-**Status**: Active System Protocol - v1.0.0`
+**Status**: Active System Protocol - v1.1.0`
 };

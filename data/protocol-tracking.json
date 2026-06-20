@@ -298,15 +298,168 @@
         "source": "mcp-protocols-server",
         "sessionStart": null
       }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-17T17:23:04.350Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "reflect",
+      "accessType": "search",
+      "timestamp": "2026-01-17T17:23:38.714Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "slash command",
+      "accessType": "search",
+      "timestamp": "2026-01-17T17:40:22.211Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-17T17:40:27.897Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "kaggle notebook submission",
+      "accessType": "search",
+      "timestamp": "2026-01-17T19:01:05.769Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "protocol-writing",
+      "accessType": "read",
+      "timestamp": "2026-01-17T19:01:45.169Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "error-recovery",
+      "accessType": "read",
+      "timestamp": "2026-01-18T03:04:26.642Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "create-project",
+      "accessType": "read",
+      "timestamp": "2026-01-18T03:04:26.664Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "protocol-writing",
+      "accessType": "read",
+      "timestamp": "2026-01-18T03:04:26.681Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "protocol-lifecycle",
+      "accessType": "read",
+      "timestamp": "2026-01-18T03:04:26.723Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "protocol-error-correction",
+      "accessType": "read",
+      "timestamp": "2026-01-18T03:04:26.743Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "document-writing",
+      "accessType": "read",
+      "timestamp": "2026-01-18T19:51:45.806Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "medium-article",
+      "accessType": "read",
+      "timestamp": "2026-01-18T19:53:38.915Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-19T03:08:22.861Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "index",
+      "accessType": "list",
+      "timestamp": "2026-01-19T19:08:29.991Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "kaggle-aimo3-submission",
+      "accessType": "read",
+      "timestamp": "2026-01-19T19:08:34.830Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
+    },
+    {
+      "protocolId": "create-project",
+      "accessType": "read",
+      "timestamp": "2026-01-19T19:47:58.503Z",
+      "context": {
+        "source": "mcp-protocols-server",
+        "sessionStart": null
+      }
     }
   ],
   "heatMap": {
     "error-recovery": {
-      "totalAccesses": 3,
+      "totalAccesses": 4,
       "firstAccess": "2026-01-13T23:15:17.197Z",
-      "lastAccess": "2026-01-14T16:18:30.439Z",
+      "lastAccess": "2026-01-18T03:04:26.642Z",
       "accessTypes": {
-        "read": 3
+        "read": 4
       }
     },
     "task-approach": {
@@ -326,19 +479,19 @@
       }
     },
     "protocol-writing": {
-      "totalAccesses": 4,
+      "totalAccesses": 6,
       "firstAccess": "2026-01-13T23:16:45.753Z",
-      "lastAccess": "2026-01-17T01:34:03.084Z",
+      "lastAccess": "2026-01-18T03:04:26.681Z",
       "accessTypes": {
-        "read": 4
+        "read": 6
       }
     },
     "medium-article": {
-      "totalAccesses": 3,
+      "totalAccesses": 4,
       "firstAccess": "2026-01-13T23:16:45.754Z",
-      "lastAccess": "2026-01-16T21:32:31.910Z",
+      "lastAccess": "2026-01-18T19:53:38.915Z",
       "accessTypes": {
-        "read": 3
+        "read": 4
       }
     },
     "get-current-time": {
@@ -350,19 +503,19 @@
       }
     },
     "index": {
-      "totalAccesses": 9,
+      "totalAccesses": 13,
       "firstAccess": "2026-01-14T16:05:09.929Z",
-      "lastAccess": "2026-01-16T22:19:13.460Z",
+      "lastAccess": "2026-01-19T19:08:29.991Z",
       "accessTypes": {
-        "list": 9
+        "list": 13
       }
     },
     "create-project": {
-      "totalAccesses": 2,
+      "totalAccesses": 4,
       "firstAccess": "2026-01-14T16:13:00.099Z",
-      "lastAccess": "2026-01-14T16:18:30.457Z",
+      "lastAccess": "2026-01-19T19:47:58.503Z",
       "accessTypes": {
-        "read": 2
+        "read": 4
       }
     },
     "active-inference": {
@@ -391,9 +544,57 @@
       }
     },
     "kaggle-aimo3-submission": {
-      "totalAccesses": 1,
+      "totalAccesses": 2,
       "firstAccess": "2026-01-17T01:35:59.819Z",
-      "lastAccess": "2026-01-17T01:35:59.819Z",
+      "lastAccess": "2026-01-19T19:08:34.830Z",
+      "accessTypes": {
+        "read": 2
+      }
+    },
+    "reflect": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-17T17:23:38.714Z",
+      "lastAccess": "2026-01-17T17:23:38.714Z",
+      "accessTypes": {
+        "search": 1
+      }
+    },
+    "slash command": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-17T17:40:22.211Z",
+      "lastAccess": "2026-01-17T17:40:22.211Z",
+      "accessTypes": {
+        "search": 1
+      }
+    },
+    "kaggle notebook submission": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-17T19:01:05.769Z",
+      "lastAccess": "2026-01-17T19:01:05.769Z",
+      "accessTypes": {
+        "search": 1
+      }
+    },
+    "protocol-lifecycle": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-18T03:04:26.723Z",
+      "lastAccess": "2026-01-18T03:04:26.723Z",
+      "accessTypes": {
+        "read": 1
+      }
+    },
+    "protocol-error-correction": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-18T03:04:26.743Z",
+      "lastAccess": "2026-01-18T03:04:26.743Z",
+      "accessTypes": {
+        "read": 1
+      }
+    },
+    "document-writing": {
+      "totalAccesses": 1,
+      "firstAccess": "2026-01-18T19:51:45.806Z",
+      "lastAccess": "2026-01-18T19:51:45.806Z",
       "accessTypes": {
         "read": 1
       }
@@ -465,16 +666,58 @@
       }
     },
     "2026-01-17": {
-      "totalAccesses": 3,
+      "totalAccesses": 9,
       "uniqueProtocols": [
         "protocol-writing",
-        "kaggle-aimo3-submission"
+        "kaggle-aimo3-submission",
+        "index",
+        "reflect",
+        "slash command",
+        "kaggle notebook submission"
       ],
       "byProtocol": {
-        "protocol-writing": 2,
-        "kaggle-aimo3-submission": 1
+        "protocol-writing": 3,
+        "kaggle-aimo3-submission": 1,
+        "index": 2,
+        "reflect": 1,
+        "slash command": 1,
+        "kaggle notebook submission": 1
+      }
+    },
+    "2026-01-18": {
+      "totalAccesses": 7,
+      "uniqueProtocols": [
+        "error-recovery",
+        "create-project",
+        "protocol-writing",
+        "protocol-lifecycle",
+        "protocol-error-correction",
+        "document-writing",
+        "medium-article"
+      ],
+      "byProtocol": {
+        "error-recovery": 1,
+        "create-project": 1,
+        "protocol-writing": 1,
+        "protocol-lifecycle": 1,
+        "protocol-error-correction": 1,
+        "document-writing": 1,
+        "medium-article": 1
+      }
+    },
+    "2026-01-19": {
+      "totalAccesses": 4,
+      "uniqueProtocols": [
+        "index",
+        "kaggle-aimo3-submission",
+        "create-project"
+      ],
+      "byProtocol": {
+        "index": 2,
+        "kaggle-aimo3-submission": 1,
+        "create-project": 1
       }
     }
   },
-  "lastUpdated": "2026-01-17T01:35:59.820Z"
+  "lastUpdated": "2026-01-19T19:47:58.504Z"
 }

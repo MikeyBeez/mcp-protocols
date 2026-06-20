@@ -8,6 +8,9 @@
 - **Purpose**: Autonomous diagnosis and repair of MCP tool failures
 - **Created**: 2025-08-05
 
+## Purpose
+Autonomously diagnose and repair MCP tool/server failures — errors, broken builds, missing dependencies, disconnects.
+
 ## Trigger Conditions (MUST ACTIVATE)
 - **WHEN**: Any tool returns an error during execution
 - **WHEN**: Session initialization detects unconfigured/broken tools
@@ -16,6 +19,7 @@
 - **WHEN**: Periodic health check reveals issues (start of each session)
 - **IMMEDIATE**: Yes for errors during user tasks
 - **PRIORITY**: High
+- **Trigger keywords**: error, errors, broken, failed, failing, malfunction, not working, repair, fix, crash, disconnected, unavailable, mcp, server, rebuild, dependencies, npm, build, log, logs.
 
 ## Core Principles
 1. **"Prevention over repair"** - Fix issues before they impact users

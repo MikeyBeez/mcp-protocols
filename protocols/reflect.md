@@ -18,6 +18,7 @@ Activate this protocol when:
 - **WHEN**: A pattern is discovered through trial and error worth preserving
 - **IMMEDIATE**: No - run at end of task or on request
 - **PRIORITY**: Medium
+- **Trigger keywords**: reflect, learn, learning, correction, correct, mistake, wrong, preference, remember, next time, don't forget, improve, lesson, capture.
 
 ## Core Principle
 

@@ -8,6 +8,9 @@
 - **Purpose**: Use tarot as a decision-making framework when factual data is insufficient
 - **Created**: 2025-08-05
 
+## Purpose
+Use tarot as a structured decision framework when factual data is insufficient or the user is stuck choosing between options.
+
 ## Trigger Conditions (ACTIVATION SIGNALS)
 - **WHEN**: I lack sufficient information to make a confident decision
 - **WHEN**: I'm uncertain about how to approach a user's request
@@ -20,6 +23,7 @@
 - **WHEN**: User explicitly asks for a tarot reading
 - **IMMEDIATE**: No - this is a thoughtful process
 - **PRIORITY**: Medium - supplement to, not replacement for, analysis
+- **Trigger keywords**: decision, decide, stuck, uncertain, unsure, what should i do, choice, choose, torn, dilemma, options, paralysis, tarot, reading, intuition, perspective.
 
 ## Core Principle
 "When logic reaches its limits, structured randomness can unlock new perspectives" - Tarot provides a framework for exploring decisions through archetypal lenses and symbolic thinking. This applies to both Claude's decision-making and helping users with theirs.

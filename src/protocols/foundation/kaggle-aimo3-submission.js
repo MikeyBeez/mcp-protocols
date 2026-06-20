@@ -2,7 +2,7 @@
 module.exports = {
   id: 'kaggle-aimo3-submission',
   name: 'AIMO3 Kaggle Submission Protocol',
-  version: '1.0.0',
+  version: '1.3.0',
   tier: 3,  // Task-specific protocol
   purpose: 'Guide submission to Kaggle AI Mathematical Olympiad Progress Prize 3 competition',
   triggers: [
@@ -90,12 +90,98 @@ if __name__ == '__main__':
 
 ---
 
+## EDITABLE - GPU Access and Hardware
+
+### CRITICAL: H100 Access Requires Competition Linking
+
+**H100 GPUs are ONLY available when notebook is linked to the competition.**
+
+| GPU | VRAM | How to Access |
+|-----|------|---------------|
+| P100 | 16GB | Standard Kaggle (default) |
+| T4 x2 | 32GB | Standard Kaggle option |
+| L4 x4 | 96GB | AIMO2 competition-specific |
+| H100 | 80GB | AIMO3 competition-specific |
+
+**To get H100 access:**
+1. Use \`competition_sources\` (NOT \`competition\`) in kernel-metadata.json
+2. Or create notebook directly from competition page
+3. After upload, change accelerator in web UI Settings
+
+**GOTCHA: Auto-run on Upload**
+- Kaggle auto-runs notebooks on upload with default GPU (P100)
+- Cannot change accelerator while notebook is running
+- Must wait for run to complete/fail, then change settings
+- **Workaround**: Edit existing notebook with correct GPU rather than uploading new
+
+---
+
+## EDITABLE - Recommended Models
+
+### Best Model for P100: OpenMath-Nemotron-14B-Kaggle
+- **NVIDIA's AIMO2 winning model** (1st place, 34/50 problems)
+- Kaggle dataset: \`neos960518/openmath-nemotron-14b-kaggle\`
+- Path: \`/kaggle/input/openmath-nemotron-14b-kaggle\`
+
+### Best Model for H100: OpenMath-Nemotron-32B
+- Larger version with better performance
+- Kaggle dataset: \`artemgoncarov/openmath-nemotron-32b\`
+- Path: \`/kaggle/input/openmath-nemotron-32b\`
+- Requires H100 (~52GB model size)
+
+### Alternative 32B: DeepSeek-R1-Distill-Qwen-32B-AWQ
+- AWQ quantized version (~17GB)
+- Kaggle dataset: \`casperhansen-deepseek-r1-distill-qwen-32b-awq\`
+- May fit on smaller GPUs with quantization
+
+### Model Performance on AIME 2024
+
+| Model | AIME Score | Fits P100? | Kaggle Dataset |
+|-------|------------|------------|----------------|
+| DeepSeek-R1-Distill-Qwen-1.5B | ~20% | Yes | deepseek-ai/deepseek-r1 |
+| DeepSeek-R1-Distill-Qwen-7B | 55.5% | Yes | deepseek-ai/deepseek-r1 |
+| DeepSeek-R1-Distill-Qwen-14B | 69.7% | Tight | deepseek-ai/deepseek-r1 |
+| OpenMath-Nemotron-14B-Kaggle | ~70%+ | Yes (~12GB) | neos960518/openmath-nemotron-14b-kaggle |
+| DeepSeek-R1-Distill-Qwen-32B | 72.6% | No (H100) | casperhansen-deepseek-r1-distill-qwen-32b-awq |
+| OpenMath-Nemotron-32B | ~75%+ | No (H100) | artemgoncarov/openmath-nemotron-32b |
+
+### Auto-Detect GPU and Adapt
+
+\`\`\`python
+GPU_MEM_GB = torch.cuda.get_device_properties(0).total_memory / 1024**3
+IS_H100 = GPU_MEM_GB > 40
+
+if IS_H100:
+    TORCH_DTYPE = torch.bfloat16  # Full precision
+else:
+    TORCH_DTYPE = torch.float16   # Or use 4-bit quantization
+\`\`\`
+
+**Note**: bitsandbytes may not be available on Kaggle - always have float16 fallback.
+
+---
+
+## EDITABLE - Model Capacity Reality Check
+
+| Model Size | VRAM (float16) | Capability Level |
+|------------|----------------|------------------|
+| 1.5B | ~3GB | Basic arithmetic, simple algebra |
+| 7B | ~14GB | Multi-step reasoning, fits P100 |
+| 14B | ~12GB (actual) | Complex olympiad problems, fits P100! |
+| 32B+ | >40GB | Best performance, needs H100 |
+
+**Reality**: 1.5B models will likely score 0 on olympiad-level problems. Use 14B minimum for competitive results.
+
+---
+
 ## EDITABLE - Submission Workflow
 
 ### File Locations
 
+**IMPORTANT**: Always write to permanent storage, NEVER to /tmp.
+
 \`\`\`
-/tmp/kaggle-aimo3/
+/Users/bard/Code/mcp-math/kaggle-submissions/
 ├── kernel-metadata.json     # Kernel configuration
 ├── notebook.py              # Simple test submission
 └── notebook_deepseek.py     # DeepSeek R1 submission
@@ -204,8 +290,12 @@ llm = LLM(
 | Issue | Solution |
 |-------|----------|
 | File Not Found | Use full path: \`/kaggle/input/ai-mathematical-olympiad-progress-prize-3/test.csv\` |
-| Model Not Found | Check model_sources in kernel-metadata.json |
+| Model Not Found | Check dataset_sources in kernel-metadata.json |
 | GPU Not Available | Set \`enable_gpu: true\` in kernel-metadata.json |
+| No H100 Option | Notebook not linked to competition - use \`competition_sources\` |
+| Can't Change GPU | Notebook is running - wait for it to finish/fail |
+| OOM on P100 | Use float16 (14B fits in ~12GB) or wait for H100 access |
+| bitsandbytes Missing | Use float16 fallback, don't rely on 4-bit quantization |
 | Submission Rejected | Use \`-k\` (kernel) flag, not \`-f\` alone; specify \`-v\` version |
 
 ---
@@ -213,24 +303,30 @@ llm = LLM(
 ## Quick Reference Commands
 
 \`\`\`bash
-# Push kernel
-cd /tmp/kaggle-aimo3 && kaggle kernels push
+# List your notebooks
+kaggle kernels list --mine
+
+# Pull notebook source code
+kaggle kernels pull mikebee/<kernel-name> -p ./kaggle-notebooks/
+
+# Push kernel (from folder with kernel-metadata.json)
+cd ./kaggle-notebooks && kaggle kernels push -p .
 
 # Check status
 kaggle kernels status mikebee/<kernel-name>
 
-# Get logs
-kaggle kernels output mikebee/<kernel-name> -p /tmp/kaggle-output
+# Get logs/output
+kaggle kernels output mikebee/<kernel-name> -p ./kaggle-output
 
-# Submit
+# Submit to competition
 kaggle competitions submit -c ai-mathematical-olympiad-progress-prize-3 \\
   -k mikebee/<kernel-name> -f submission.parquet -v <N> -m "<msg>"
 
 # Check submissions
 kaggle competitions submissions ai-mathematical-olympiad-progress-prize-3
 
-# Pull reference notebook
-kaggle kernels pull <user>/<kernel> -p /tmp/ref
+# Pull reference notebook from another user
+kaggle kernels pull <user>/<kernel> -p ./ref
 \`\`\`
 
 ---

@@ -1,6 +1,18 @@
 // Prompt Processing Handler - Pre-process prompts to extract protocol triggers
 const { getProtocolsForSituation, searchProtocols, getAllProtocols } = require('../registry');
 
+// Slash command triggers - direct protocol invocation
+const SLASH_COMMANDS = {
+  '/reflect': ['active-inference'],
+  '/audit': ['system-audit'],
+  '/help': [],  // Generic help, handled elsewhere
+  '/status': [],  // Status check
+  '/continue': [],  // Continuation
+  '/medium': ['medium-article'],
+  '/write': ['document-writing'],
+  '/project': ['create-project'],
+};
+
 // Keywords that indicate certain protocol triggers
 const TRIGGER_KEYWORDS = {
   // Error/Problem indicators
@@ -188,6 +200,14 @@ function handlePromptProcess(args) {
   // Find triggered protocols
   const triggeredProtocolIds = new Set();
   const matchedKeywords = [];
+
+  // Check slash commands first (highest priority)
+  for (const [slashCmd, protocolIds] of Object.entries(SLASH_COMMANDS)) {
+    if (promptLower.startsWith(slashCmd)) {
+      matchedKeywords.push(slashCmd);
+      protocolIds.forEach(id => triggeredProtocolIds.add(id));
+    }
+  }
 
   // Check keyword triggers
   for (const [keyword, protocolIds] of Object.entries(TRIGGER_KEYWORDS)) {

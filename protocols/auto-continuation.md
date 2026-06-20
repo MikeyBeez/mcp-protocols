@@ -9,6 +9,9 @@
 - **Created**: 2025-08-05
 - **Source**: Captain's Log suggestion - "after second continue, auto-generate continuation note"
 
+## Purpose
+Automatically capture a continuation note before context is lost, so long sessions can resume without re-explanation.
+
 ## Trigger Conditions
 - **WHEN**: User types "continue" for the second time in a session
 - **WHEN**: Context window usage exceeds 80%
@@ -16,6 +19,7 @@
 - **WHEN**: Session has significant unfinished work
 - **IMMEDIATE**: Yes - must capture context before loss
 - **PRIORITY**: Critical
+- **Trigger keywords**: continue, continuation, context, limit, window, unfinished, resume, handoff, save state, running out, long session, compact, almost full, pick up where.
 
 ## Core Principle
 "Continuation notes are like summarizing the context window - something that should be automatic, not manual" - Captain's Log 2025-08-05
