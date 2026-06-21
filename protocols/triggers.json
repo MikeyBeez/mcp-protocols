@@ -555,6 +555,26 @@
         "as of",
         "unknown"
       ]
+    },
+    "github-anonymization": {
+      "tier": 1,
+      "always_active": false,
+      "source": "authored",
+      "keywords": [
+        "push",
+        "git push",
+        "github",
+        "commit and push",
+        "publish",
+        "make public",
+        "gh repo create",
+        "backup to github",
+        "back up repo",
+        "remote",
+        "origin",
+        "share the repo",
+        "push to a repo"
+      ]
     }
   }
 }
