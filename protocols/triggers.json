@@ -455,6 +455,51 @@
         "review the design"
       ],
       "source": "authored"
+    },
+    "coding-discipline": {
+      "tier": 2,
+      "always_active": false,
+      "source": "authored",
+      "keywords": [
+        "write code",
+        "implement",
+        "build a",
+        "create a function",
+        "create a script",
+        "code this",
+        "coding",
+        "refactor",
+        "edit the",
+        "change the code",
+        "add a feature",
+        "fix the bug",
+        "function",
+        "module",
+        "class",
+        "script",
+        "new feature"
+      ]
+    },
+    "verification-loop": {
+      "tier": 2,
+      "always_active": false,
+      "source": "authored",
+      "keywords": [
+        "loop",
+        "autonomous",
+        "iterate until",
+        "keep trying",
+        "until it passes",
+        "until green",
+        "make the tests pass",
+        "build and test",
+        "fix until",
+        "run it and check",
+        "verification harness",
+        "autonomous loop",
+        "retry until",
+        "self-correct"
+      ]
     }
   }
 }
