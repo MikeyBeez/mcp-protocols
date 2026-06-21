@@ -500,6 +500,61 @@
         "retry until",
         "self-correct"
       ]
+    },
+    "error-recovery": {
+      "tier": 2,
+      "always_active": false,
+      "source": "authored",
+      "keywords": [
+        "error",
+        "failed",
+        "failure",
+        "broke",
+        "broken",
+        "exception",
+        "traceback",
+        "unexpected",
+        "went wrong",
+        "mistake",
+        "wrong",
+        "doesn't work",
+        "not working",
+        "stuck",
+        "unable",
+        "recover",
+        "undo",
+        "revert",
+        "rollback"
+      ]
+    },
+    "web-search-decision": {
+      "tier": 2,
+      "always_active": false,
+      "source": "authored",
+      "keywords": [
+        "search",
+        "web search",
+        "look up",
+        "current",
+        "latest",
+        "news",
+        "today",
+        "recent",
+        "who is",
+        "price",
+        "cost",
+        "release",
+        "version",
+        "when did",
+        "verify",
+        "fact-check",
+        "citation",
+        "paper",
+        "arxiv",
+        "up to date",
+        "as of",
+        "unknown"
+      ]
     }
   }
 }
