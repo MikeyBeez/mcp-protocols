@@ -215,3 +215,6 @@ Helper scripts installed at `~/.claude/skills/reflect/scripts/`:
 
 **Created**: 2025-01-13
 **Status**: Active - Foundation Protocol
+
+## Related Protocols
+[[continuous-documentation]] · [[brain-recall-reliability]] · [[chat-analysis]]

@@ -82,3 +82,6 @@ system_exec(command="ssh bard@192.168.12.174 'nvidia-smi'")
 **Remember**: built-ins are fenced; the MCP servers run on the Mac. When a built-in says "can't", the answer is almost always filesystem-enhanced (files) or system_exec (commands).
 
 **Status**: Active - Critical Foundation Protocol
+
+## Related Protocols
+[[tool-auto-repair]] · [[coding-discipline]]

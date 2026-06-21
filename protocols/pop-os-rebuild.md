@@ -56,3 +56,6 @@ Bring the pop-os GPU box back to a working state (driver + Python/torch + repos 
 
 ---
 **Status**: Active — Foundation Operational
+
+## Related Protocols
+[[gpu-project-env-setup]] · [[training-run-management]]

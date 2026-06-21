@@ -134,3 +134,6 @@ To get current time, check system or use `date` command if needed.
 **Created**: 2026-01-14
 **Status**: Active - Critical Meta Protocol
 **Tool**: `mikey_prompt_process`
+
+## Related Protocols
+[[continuous-documentation]] · [[reflect]] · [[chat-analysis]]

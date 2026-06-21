@@ -53,3 +53,6 @@ New project on pop needs torch/CUDA?
 
 ---
 **Status**: Active — Foundation Operational
+
+## Related Protocols
+[[pop-os-rebuild]] · [[training-run-management]] · [[create-project]]

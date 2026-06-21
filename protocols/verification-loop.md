@@ -50,3 +50,6 @@ If the cap is hit or the same failure recurs, STOP and report exactly what block
 
 ---
 **Status**: Active — Foundation Protocol
+
+## Related Protocols
+[[coding-discipline]] · [[code-review]] · [[tool-auto-repair]]

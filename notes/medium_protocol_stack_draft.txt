@@ -1,0 +1,89 @@
+The Protocol Stack: Building an AI That Learns Between Sessions
+
+How we turned Claude Cowork into a system that corrects itself once and never again — and why we deliberately don't build it on skills.
+
+
+The starting problem
+
+Large language models don't learn between conversations. Whatever you teach Claude in one session is gone by the next, unless you write it down somewhere the next session will look. That single fact is the reason this whole project exists. Everything we describe here is an answer to one question: if the model can't remember, how do we build a system around it that can?
+
+Our answer is a protocol stack. Not a prompt, not a personality, but a small library of explicit, versioned procedures that live outside the model, get loaded when they're relevant, and get rewritten whenever the world proves them wrong. Underneath the protocols sits a memory. Around both of them, increasingly, sits a feedback loop that watches what happened and proposes changes. The whole thing runs on Claude Cowork, and the choice of environment matters more than it sounds, which we'll get to.
+
+What we want to be clear about up front is the philosophy, because it's what separates this from a folder of helpful snippets. We are not trying to write the perfect set of instructions once and freeze them. We are trying to build something that practices active inference: it predicts what should happen, notices when it's surprised, figures out why, and updates itself. The protocols are not the point. The loop that improves the protocols is the point.
+
+
+Where it started
+
+The first version was embarrassingly fragile, and that turned out to be the most important lesson. The protocols originally lived as Obsidian notes, ordinary markdown files in a vault. The trouble was access. Depending on how a given session was wired up, the files were sometimes reachable and sometimes not. A protocol you can't reliably load is worse than no protocol, because you build habits on it and then it vanishes.
+
+So the very first real engineering decision, in August of 2025, was not about intelligence at all. It was about reliability. We moved the protocols into a dedicated server, an MCP server, with the protocol data baked in so it could not be lost or become inaccessible. The first commit message literally calls it the first reliable AI protocol system. Reliability before cleverness. That ordering has held up: every fancy capability we've added since only matters because the foundation underneath it is always there.
+
+From that base it grew the way real systems grow, which is to say in response to specific pains rather than a master plan. A handler layer and a tracking file came next. Then, through the first half of 2026, the protocols that we still lean on every day. Some came from research work that went sideways and taught us something. The training-run-management protocol, for instance, was written the day a long training run on the GPU box diverged at step five thousand and was saved only because, by luck, the good checkpoint hadn't yet been overwritten. We turned that near-miss into a procedure so it would never be luck again. That is the texture of the whole stack. Almost every protocol is a scar that became a rule.
+
+
+What the stack is now
+
+Today there are eleven protocols, organized into tiers by how fundamental they are.
+
+At tier zero are the meta protocols, the ones that are always active because they govern how every other protocol gets used. Prompt processing is the front door: every incoming message is run through a router first, which reads the message, matches it against the trigger keywords of every protocol, and returns the ones that apply along with hints about which tools fit the situation. Continuous documentation is the reflex that keeps the system honest: every non-trivial action is supposed to leave a note in memory, and every reusable pattern or disproven assumption is supposed to become a new or updated protocol, written immediately rather than someday.
+
+At tier one are the critical system protocols. Auto-continuation captures a handoff note before a long conversation runs out of context, so the next session can pick up without re-explaining everything. Active inference is the feedback loop itself, which we'll describe in its own section because it's the heart of the design.
+
+At tier two are the foundation protocols, the workhorses. Reflect is the learning protocol, built around a single slogan: correct once, never again. Tool selection is the protocol that knows how to actually reach the real machine, which is more subtle than it sounds in this environment. Tool auto-repair diagnoses and fixes broken tools instead of giving up on them. Brain recall reliability encodes a hard-won humility about memory: when a search of memory comes back empty, that means the search missed, not that the knowledge is absent, and you must never build a conclusion on the apparent gap. Then there are the operational ones for the research work: training-run management, GPU environment setup, and rebuilding the disposable GPU box from scratch.
+
+At tier three sits the specialized work, including a protocol for using tarot as a structured decision frame when the facts genuinely run out and a choice has to be made anyway. It's there on purpose. Not every decision is a calculation, and a system meant to work alongside a person should have a graceful way to handle the moments that aren't.
+
+Underneath all of this is the memory, the brain. As of today it holds five hundred seventy-one notes across dozens of types, from project facts to identity to patterns to the small daily discoveries. The protocols are the procedures; the brain is everything the procedures have learned. One is useless without the other.
+
+
+How a single turn actually works
+
+Here is the loop in motion, because the abstraction only makes sense once you see the shape of it.
+
+A message arrives. Before anything else, it goes through the front door, the prompt processor, which returns the protocols that match. Those protocols are loaded and their guidance shapes the response. The work gets done, with the operational protocols handling the messy parts, reaching files, running commands, recovering from broken tools.
+
+Then comes the part that makes it a system rather than a script. After the work, the active inference loop runs. It observes what was attempted and how it turned out. It scores its own surprise on a scale of one to ten, where one means everything went exactly as predicted and ten means something genuinely unexpected happened. If the surprise is high, it classifies the failure into one of three kinds. Execution means the world didn't cooperate, a timeout or a missing file, and the fix is to retry or repair the environment. Specification means the protocol itself was unclear or incomplete, and the fix is to revise the protocol. Capability means the task was simply beyond the current approach, and the fix is to graduate the protocol to a more powerful form.
+
+When the loop decides something should change, it writes a proposal: which protocol, what kind of change, what specifically, and why, with the failure as the evidence. And then, deliberately, it stops and waits for a human. Proposals are reviewed and applied by a person, not by the agent on its own. The system is allowed to notice it was wrong and to draft the correction, but a human signs off before the correction becomes law. That boundary is not a limitation we're apologizing for. It is the thing that lets the system change itself quickly without the changes drifting somewhere we didn't intend.
+
+This is active inference in the plain sense the term carries in cognitive science. The system carries a model of how its work should go. It acts. It compares the result against the prediction. The mismatch, the surprise, is the signal. And the signal is spent updating the model. Correct once, never again is just the human-readable name for that loop.
+
+
+Why this is particular to Cowork
+
+It would be easy to assume any agent setup could host this, but the specifics of Claude Cowork shaped the stack in concrete ways, and one protocol exists almost entirely because of them.
+
+Cowork gives Claude a real seat at the user's desk. There's a working folder, a sandboxed Linux shell for running code, a memory, the ability to schedule tasks that fire later on their own, and a long roster of connected services. That breadth is exactly what makes a self-improving personal system feasible for someone who isn't living in a terminal all day. But the breadth comes with seams, and the seams are sharp.
+
+The built-in file tools only see folders the user has explicitly connected. The sandboxed shell is an isolated cloud machine with no route to the user's actual computer or local network. So a naive agent, asked to read a log on the real Mac or to reach the GPU box on the local network, hits a wall and concludes it can't be done. That conclusion is wrong, and an entire protocol, tool selection, exists to make sure we never draw it. The rule is simple: the built-ins are sandboxed, they are not the real machine, and when they can't reach something you switch to the servers that do run on the real machine. There's a filesystem server that can read anything under the user's home directory, and a system server that runs commands as the user on their own computer, including reaching out over SSH to the GPU box. The protocol encodes which tool to reach for in which situation so that the answer is never give up and ask the user to paste the file.
+
+That is what we mean by particular to Cowork. The stack isn't a generic agent framework that happens to run here. Several of its protocols are direct encodings of this environment's geography, the map of which doors are open, which are locked, and which key fits each one.
+
+
+Why we don't depend on skills
+
+Cowork has skills, and they're genuinely good. A skill is a packaged capability with a description, and when an incoming request matches that description, the skill loads and tells Claude how to do the thing. We use a handful of them, especially for producing documents and other well-understood outputs. We are not against skills.
+
+But we deliberately do not build the spine of this system on them, and the reason goes straight back to the philosophy. A skill is open-loop. It is a static recipe. It fires when its description matches, it executes its instructions, and it ends. What it does not do, by design, is watch whether it actually worked, notice when it didn't, or rewrite itself in response. That is a feature for what skills are meant to be. For stable, well-understood procedures you want exactly that kind of dependable sameness; you do not want your document formatter quietly reinventing itself.
+
+The catch is that dependable sameness is the opposite of what we're building. We want a system that treats every outcome as evidence, that is capable of being surprised, that diagnoses its own failures and edits its own guidance. The protocol stack plus the brain plus the active inference loop is a closed loop. A skill, on its own, is not. If we made skills the foundation, we would be making the foundation the one part of the system that cannot learn.
+
+There's a second reason, subtler but important to us. Our protocols have a lifecycle. A new insight can begin life as plain text in a protocol. If it proves itself and the text keeps getting reached for, it can be promoted into a chunked, more structured form. And if it earns it, it can graduate all the way into a dedicated tool, code that runs reliably every time. The promotion is driven by evidence, by the protocol actually getting used and actually working. Skills don't have that ladder. They are born at a fixed level. Our protocols are meant to climb, and the climbing is itself a form of learning about what matters.
+
+So the division of labor is honest and intentional. Skills handle the stable, finished work. Protocols carry the parts of the system that still need to be able to change their mind. We keep the former and we do not let them become the latter.
+
+
+What we're building toward
+
+The most recent piece of work is the one that closes the loop on the loop. For all the machinery described here, there is a question we currently can't answer well: is the system actually using the things we built? Which protocols fire, on what, and do they succeed? Without that, the active inference is local. Each task can learn from itself, but the system as a whole has no eyes on its own behavior over time.
+
+So we've started building a harness. The idea is that work routes through it, it reads the protocols and schedules what needs scheduling, and crucially it records what gets invoked and how it turns out. That record becomes statistics, and the statistics let the system evaluate itself: which protocols are heavily used and reliable, which were built and then never fire, which pipelines fail and where. It is active inference applied one level up, to the stack as a whole rather than to a single task. The first concrete piece, a ledger that durably records every invocation and its outcome, is already standing, with the system's own bootstrap recorded as its first entry.
+
+We're keeping it deliberately thin to start, because the failure mode of a system like this is obvious and we want to name it: it could become another elaborate apparatus that is half-built and half-used, which is exactly the disease it's meant to diagnose. The guard is to keep the first version small and to let the numbers it produces decide what gets built next. If the harness shows the stack is being used and is surfacing real built-but-unused findings, we expand. If it doesn't, it has already done its job by telling us the loop isn't closing, and that is a cheap and valuable thing to learn early.
+
+
+What we hope to achieve
+
+The honest goal is compounding. Most people's relationship with an AI assistant resets every morning. Ours is supposed to get more reliable and more particular to us every week, because corrections stick, because the environment's sharp edges are written down once and then handled forever, and because the system increasingly watches its own behavior and tells us where it's drifting.
+
+The deeper aim is a change in kind, not just degree. There is a difference between a tool you operate and a system that works alongside you and improves from the working. A tool does what you say and forgets. A system remembers what went wrong, proposes how to do better, asks before it rewrites the rules, and keeps a running account of its own performance. That second thing is what we're trying to build, on Claude Cowork, out of explicit protocols and a real memory and a feedback loop that takes its own surprises seriously. The protocols will keep changing. That's not a sign the design is unfinished. That's the design.

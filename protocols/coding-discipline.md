@@ -51,3 +51,6 @@ Run the check — build, test, lint, or for this system the test_suite or a targ
 
 ---
 **Status**: Active — Foundation Protocol
+
+## Related Protocols
+[[verification-loop]] · [[code-review]] · [[tool-selection]]

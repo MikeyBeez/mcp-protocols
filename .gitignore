@@ -1,0 +1,5 @@
+
+# obsidian volatile state
+protocols/.obsidian/workspace*.json
+protocols/.obsidian/cache
+protocols/.obsidian/graph.json

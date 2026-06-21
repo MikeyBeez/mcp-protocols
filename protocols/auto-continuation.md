@@ -208,3 +208,6 @@ When triggered after second continue:
 ---
 **Status**: Active - Critical for long sessions
 **Note**: Based on Captain's Log insight that this should be automatic
+
+## Related Protocols
+[[continuous-documentation]] · [[reflect]]

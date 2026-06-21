@@ -214,3 +214,6 @@ When a tool consistently fails or is unused, evaluate:
 ---
 **Status**: Active - Part of autonomous intelligence upgrade
 **Note**: This protocol enables self-healing capabilities for the MCP tool ecosystem
+
+## Related Protocols
+[[mcp-server-shellout-hardening]] · [[tool-selection]]

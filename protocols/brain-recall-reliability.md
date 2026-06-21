@@ -67,3 +67,6 @@ brain_recall "<query>" returned 0 (or obviously-incomplete) results?
 **Remember**: recall answers "what matches these words?", not "what exists?". Zero matches is a fact about the query. Confirm absence by multiple routes — or, for anything that must always be present, don't use recall at all: load it by key.
 
 **Status**: Active — Foundation Protocol
+
+## Related Protocols
+[[reflect]] · [[continuous-documentation]]

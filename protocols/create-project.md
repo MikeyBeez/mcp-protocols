@@ -63,3 +63,6 @@ than telling Mikey what to type.
 
 ---
 **Status**: Active - v2.0.0
+
+## Related Protocols
+[[gpu-project-env-setup]] · [[tool-selection]]

@@ -65,3 +65,6 @@ Concise per-turn verdicts and the fixes applied — no tables in prose reports.
 
 ---
 **Status**: Active — Foundation Protocol
+
+## Related Protocols
+[[code-review]] · [[reflect]] · [[prompt-processing]]

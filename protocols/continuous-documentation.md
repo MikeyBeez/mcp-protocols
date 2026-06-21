@@ -2,11 +2,12 @@
 
 ## Metadata
 - **ID**: continuous-documentation
-- **Version**: 1.0.0
+- **Version**: 1.1.0
 - **Tier**: 0 (Meta — always active)
 - **Status**: active
 - **Purpose**: Make documentation a reflex, not an afterthought. Every non-trivial action produces a brain note; every reusable pattern or disproven assumption produces a NEW or UPDATED protocol — written immediately, not deferred.
 - **Created**: 2026-06-09
+- **Updated**: 2026-06-21 — added "Where Protocols Live" guard: only the live `protocols/*.md` library is read by the lean server; the legacy `src/protocols/foundation/*.js` tree is dead and invisible (learned from the create-project port gap, 2026-06-20).
 - **Source**: Mikey directive 2026-06-09 — "When you do something, make a note of it. But you should also be writing protocols all the time and updating the ones you have."
 - **Relationship**: complements `reflect` (which fires on corrections) and `prompt-processing` (which surfaces protocols per prompt). This is the ALWAYS-ON authoring layer that runs off my own actions.
 
@@ -47,6 +48,13 @@ Write the file in the same turn. If genuinely too large, create a stub protocol 
 ## House Format (match existing protocols)
 Concrete triggers · a core principle in one bold line · numbered steps or a decision tree · real examples with real paths/commands · explicit anti-patterns · a short quality-check list. Tables allowed in protocol files (project artifacts, unlike Medium papers). Keep it tight.
 
+## Where Protocols Live (write to the LIVE library)
+The lean protocols server (`mcp-protocols-lean`) and the Brain Monitor read protocols LIVE from the markdown library ONLY:
+- ✅ LIVE — `/Users/bard/Code/mcp-protocols/protocols/*.md` — re-read on every call; a new or edited `.md` surfaces with NO restart.
+- 🚫 DEAD — `/Users/bard/Code/mcp-protocols/src/protocols/foundation/*.js` — the OLD non-lean server's source. Nothing reads it. A protocol that exists only here is INVISIBLE to `mikey_prompt_process`, `mikey_protocol_triggers`, and the dashboard.
+
+Lesson (create-project gap, 2026-06-20): `create-project` lived only as legacy `.js`, so the live system matched nothing when a repo was actually created — until it was ported to `protocols/create-project.md`. So: always author/edit in the `.md` library; if a useful protocol is stranded in the `.js` tree, PORT it (don't reference it in place). Still-stranded foundation candidates to port or retire: progress-communication, naming-linter, system-audit, architecture-update, error-recovery, information-integration, maintenance, protocol-graduation.
+
 ## Trigger Authoring Rule (every protocol must be findable)
 `mikey_prompt_process` ranks by keyword overlap against **title + `## Purpose` section + `## Trigger Conditions` section** (live-parsed). So every protocol you create or edit MUST:
 - Have a `## Trigger Conditions` (or `## Triggers`) section containing the ACTUAL WORDS a prompt will use when it should fire — end it with a plain `Trigger keywords:` comma list.
@@ -71,3 +79,6 @@ Concrete triggers · a core principle in one bold line · numbered steps or a de
 **Remember**: the deliverable of doing work is the work AND its documentation. If the protocols/brain didn't change after a substantive turn, the loop didn't run.
 
 **Status**: Active — Meta Protocol
+
+## Related Protocols
+[[reflect]] · [[prompt-processing]] · [[auto-continuation]]

@@ -60,3 +60,6 @@ Apply low-risk corrections; for anything bigger, recommend and let the user prio
 
 ---
 **Status**: Active — Foundation Protocol
+
+## Related Protocols
+[[coding-discipline]] · [[verification-loop]] · [[mcp-server-shellout-hardening]] · [[chat-analysis]]
