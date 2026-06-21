@@ -14,7 +14,7 @@ Bring the pop-os GPU box back to a working state (driver + Python/torch + repos 
 
 ## Trigger Conditions
 - **WHEN**: pop-os was reinstalled / reimaged / reset, or is broken and being rebuilt from scratch.
-- **WHEN**: `nvidia-smi` or the GPU/driver is gone, or `ssh bard@192.168.12.174` no longer works.
+- **WHEN**: `nvidia-smi` or the GPU/driver is gone, or `ssh user@192.168.x.x` no longer works.
 - **WHEN**: setting up a fresh Pop!_OS box to mirror this environment.
 - **Trigger keywords**: pop-os, pop, rebuild, reinstall, reimage, reset, restore, bootstrap, sandbox, trashed, broke, broken, fresh install, set up the box, gpu, nvidia, driver, cuda, 5070.
 
@@ -22,7 +22,7 @@ Bring the pop-os GPU box back to a working state (driver + Python/torch + repos 
 **The box is disposable; the source of truth is GitHub. Rebuild = reinstall OS → driver → python/torch → re-clone repos from GitHub → recreate venvs → verify GPU.**
 
 ## Known-good state (target to reproduce)
-- Host `pop-os`, user `bard`, reached from the Mac via `ssh bard@192.168.12.174` (run through the `system` MCP `system_exec`).
+- Host `pop-os`, user `bard`, reached from the Mac via `ssh user@192.168.x.x` (run through the `system` MCP `system_exec`).
 - OS: **Pop!_OS 24.04 LTS**, kernel ~6.18.x. GPU: **NVIDIA GeForce RTX 5070 Ti**, driver **580.126.18** (System76 ships the NVIDIA driver in the Pop ISO).
 - **Python 3.12.3** system; `pip3` present. **No `nvcc`/CUDA toolkit** — torch nightly `cu130` bundles its own CUDA runtime, which works with driver 580. `node`/`uv` are NOT installed (add only if a project needs them).
 - `~/Code` (symlinked to `/mnt/data/Code`) holds the repos; per-project `.venv`s (torch nightly cu130).
@@ -41,7 +41,7 @@ Bring the pop-os GPU box back to a working state (driver + Python/torch + repos 
 5. **Recreate venvs** (per project, or reuse one — see `gpu-project-env-setup`):
    `python3 -m venv .venv && .venv/bin/pip install --upgrade pip wheel setuptools && .venv/bin/pip install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130` then `pip install -r requirements.txt` if present.
 6. **Verify GPU + torch**: `~/Code/<proj>/.venv/bin/python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"` → expect `cu130`, `True`, `NVIDIA GeForce RTX 5070 Ti`.
-7. **Confirm remote access**: ensure `sshd` is running (`sudo systemctl enable --now ssh`) and `ssh bard@192.168.12.174` works from the Mac (this is what `system_exec` drives).
+7. **Confirm remote access**: ensure `sshd` is running (`sudo systemctl enable --now ssh`) and `ssh user@192.168.x.x` works from the Mac (this is what `system_exec` drives).
 
 ## Anti-Patterns to Avoid
 - 🚫 **Box-only data** — leaving work that exists ONLY on pop. It's disposable; push everything to GitHub. **GRAM currently has NO git remote → push it before relying on the box.**
@@ -51,7 +51,7 @@ Bring the pop-os GPU box back to a working state (driver + Python/torch + repos 
 ## Quality Checks
 - ✅ `nvidia-smi` shows the 5070 Ti; torch reports CUDA True on it.
 - ✅ All MikeyBeez repos re-cloned and have remotes.
-- ✅ `ssh bard@192.168.12.174` works from the Mac (system_exec path restored).
+- ✅ `ssh user@192.168.x.x` works from the Mac (system_exec path restored).
 - ✅ Nothing critical exists only on pop (GRAM pushed to GitHub).
 
 ---

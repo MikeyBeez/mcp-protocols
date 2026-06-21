@@ -16,7 +16,7 @@ module.exports = {
     'Updated system configuration paths'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols',
+  location: '~/Code/mcp-protocols',
   content: `# Architecture Update Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)
@@ -42,11 +42,11 @@ is worse than no documentation because it causes trust erosion and wasted time.
    - Add project with description, location, and integration points
 
 2. **System Paths Reference** (virtual doc in mcp-architecture)
-   - Location: /Users/bard/Code/mcp-architecture/src/index.js
+   - Location: ~/Code/mcp-architecture/src/index.js
    - Add to appropriate section of system-paths document
 
 3. **MCP Tools Registry** (if MCP tool)
-   - Location: /Users/bard/Code/mcp-architecture/src/index.js
+   - Location: ~/Code/mcp-architecture/src/index.js
    - Add to mcp-tools-registry virtual document
 
 ### After Moving/Relocating Systems
@@ -59,12 +59,12 @@ is worse than no documentation because it causes trust erosion and wasted time.
 
 2. Search for hardcoded paths:
    \`\`\`
-   grep -r "old/path" /Users/bard/Code/
+   grep -r "old/path" ~/Code/
    \`\`\`
 
 ### After Adding New Protocols
 1. **Protocol Registry**
-   - /Users/bard/Code/mcp-protocols/src/registry.js
+   - ~/Code/mcp-protocols/src/registry.js
 
 2. **Protocol Triggers Reference**
    - mcp-architecture virtual doc: protocol-triggers
@@ -74,10 +74,10 @@ is worse than no documentation because it causes trust erosion and wasted time.
 
 ### After Adding New MCP Tools
 1. **MCP Tools Registry**
-   - /Users/bard/Code/mcp-architecture/src/index.js (mcp-tools-registry)
+   - ~/Code/mcp-architecture/src/index.js (mcp-tools-registry)
 
 2. **Claude Settings** (if read-only tool needing auto-approval)
-   - /Users/bard/.claude/settings.local.json
+   - ~/.claude/settings.local.json
 
 ---
 
@@ -166,12 +166,12 @@ arch_get_document protocol-triggers
 
 ### Find Hardcoded Paths
 \`\`\`bash
-grep -r "/Users/bard/Code/specific-project" /Users/bard/Code/mcp-*/
+grep -r "~/Code/specific-project" ~/Code/mcp-*/
 \`\`\`
 
 ### Edit Architecture Server
 \`\`\`
-/Users/bard/Code/mcp-architecture/src/index.js
+~/Code/mcp-architecture/src/index.js
 \`\`\`
 Look for ARCHITECTURAL_DOCS object and update virtual documents.
 

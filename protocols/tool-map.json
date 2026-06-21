@@ -1,6 +1,6 @@
 [
   {
-    "situation": "Touch files under /Users/bard or /Volumes (outside the Cowork sandbox)",
+    "situation": "Touch files under ~ or /Volumes (outside the Cowork sandbox)",
     "tools": ["mcp__filesystem-enhanced__read_text_file", "mcp__filesystem-enhanced__write_file", "mcp__filesystem-enhanced__edit_file", "mcp__filesystem-enhanced__list_directory"],
     "keywords": ["file", "files", "read", "write", "edit", "folder", "directory", "path", "config", "dotfile", "outside", "sandbox"],
     "note": "Built-in Read/Write/Edit only reach connected folders. filesystem-enhanced reaches the whole Mac."
@@ -9,7 +9,7 @@
     "situation": "Run a command on Mikey's real Mac, his LAN, or pop over ssh",
     "tools": ["mcp__system__system_exec"],
     "keywords": ["run", "command", "shell", "execute", "ssh", "pop", "tmux", "gpu", "cuda", "nvidia", "git", "scp", "launchctl", "brew", "ollama", "process", "kill"],
-    "note": "The sandbox bash has no LAN route. system_exec runs as bard on the Mac; ssh bard@192.168.12.174 for pop. Use git CLI through it for all git work."
+    "note": "The sandbox bash has no LAN route. system_exec runs as bard on the Mac; ssh user@192.168.x.x for pop. Use git CLI through it for all git work."
   },
   {
     "situation": "Session start, remembering, or recalling anything from past sessions",

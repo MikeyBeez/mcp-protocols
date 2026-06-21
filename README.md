@@ -22,7 +22,7 @@
 ### Installation
 
 ```bash
-cd /Users/bard/Code/mcp-protocols
+cd ~/Code/mcp-protocols
 npm install
 npm start
 ```

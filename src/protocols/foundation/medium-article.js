@@ -13,7 +13,7 @@ module.exports = {
     'User says "write an article" or "blog post"'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/medium-article.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/medium-article.js',
   content: `# Medium Article Writing Protocol v1.3.0
 
 ## Trigger Conditions (MUST ACTIVATE)

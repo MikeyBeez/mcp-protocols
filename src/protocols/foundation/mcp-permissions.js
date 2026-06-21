@@ -13,7 +13,7 @@ module.exports = {
     'New tools added to existing server'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/mcp-permissions.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/mcp-permissions.js',
   content: `# MCP Permissions Configuration Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

@@ -100,7 +100,7 @@ if (actuallyWorks && toolStatus.status === 'unconfigured') {
 ### 2. Diagnostic Run
 ```bash
 # Run diagnostic checks
-cd /Users/bard/Code/{tool-name}
+cd ~/Code/{tool-name}
 
 # Check basics
 ls -la
@@ -153,7 +153,7 @@ When a tool consistently fails or is unused, evaluate:
 
 3. **Archive if obsolete:**
    ```bash
-   mv /Users/bard/Code/{tool} /Users/bard/Code/archived/
+   mv ~/Code/{tool} ~/Code/archived/
    ```
 
 ## Learning & Pattern Recognition
@@ -189,7 +189,7 @@ When a tool consistently fails or is unused, evaluate:
 
 ## Anti-Patterns to Avoid
 ❌ Running `rm -rf` on anything
-❌ Modifying system files outside /Users/bard/Code
+❌ Modifying system files outside ~/Code
 ❌ Installing global npm packages without permission
 ❌ Ignoring network instability warnings
 ❌ Fixing tools that aren't actually broken

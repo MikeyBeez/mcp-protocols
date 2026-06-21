@@ -20,7 +20,7 @@
 3. **Protocol Execution Engine v1.0.0** 🚧 (In Progress)
    - Started building automatic protocol triggering system
    - Designed architecture for monitoring, matching, executing, tracking, learning
-   - File saved to: `/Users/bard/Code/mcp-protocols/protocols/protocol-execution-engine.md`
+   - File saved to: `~/Code/mcp-protocols/protocols/protocol-execution-engine.md`
 
 ### System Analysis Findings:
 - **Core Problem**: Protocols exist but don't execute automatically (0/100 compliance)
@@ -101,7 +101,7 @@ Start with: "Continue building the Protocol Execution Engine and implementing au
 - Internet was down this morning, now restored
 - Suggested auto-generation of continuation notes after 2nd continue
 - Continuation notes work very well when remembered to create them
-- Captain's Logs location: `/Users/bard/Code/claude-brain/data/BrainVault/`
+- Captain's Logs location: `~/Code/claude-brain/data/BrainVault/`
 
 ### Questions to Address:
 1. Should Protocol Execution Engine be an MCP tool itself?

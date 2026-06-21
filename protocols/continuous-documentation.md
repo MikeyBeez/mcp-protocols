@@ -40,7 +40,7 @@ The specific failure mode this protocol exists to kill: *noting an opportunity t
 Ask: *Will this recur? Did an existing protocol just prove wrong? Is there a reusable procedure here?*
 - **No** → the brain note is enough. Stop.
 - **Yes, and a protocol exists** → EDIT it. Bump `Version`, add an `Updated:` line with the date + what changed. Don't let stale guidance survive (e.g. tool-selection still naming a removed tool).
-- **Yes, and none exists** → CREATE `/Users/bard/Code/mcp-protocols/protocols/<id>.md` in the house format (Metadata, Triggers, Core Principle, Steps/Decision Tree, Examples, Anti-Patterns, Quality Checks).
+- **Yes, and none exists** → CREATE `~/Code/mcp-protocols/protocols/<id>.md` in the house format (Metadata, Triggers, Core Principle, Steps/Decision Tree, Examples, Anti-Patterns, Quality Checks).
 
 ### 3. ACT — do not defer
 Write the file in the same turn. If genuinely too large, create a stub protocol with the trigger + a TODO and a brain note linking them, so it's captured, not lost.
@@ -50,8 +50,8 @@ Concrete triggers · a core principle in one bold line · numbered steps or a de
 
 ## Where Protocols Live (write to the LIVE library)
 The lean protocols server (`mcp-protocols-lean`) and the Brain Monitor read protocols LIVE from the markdown library ONLY:
-- ✅ LIVE — `/Users/bard/Code/mcp-protocols/protocols/*.md` — re-read on every call; a new or edited `.md` surfaces with NO restart.
-- 🚫 DEAD — `/Users/bard/Code/mcp-protocols/src/protocols/foundation/*.js` — the OLD non-lean server's source. Nothing reads it. A protocol that exists only here is INVISIBLE to `mikey_prompt_process`, `mikey_protocol_triggers`, and the dashboard.
+- ✅ LIVE — `~/Code/mcp-protocols/protocols/*.md` — re-read on every call; a new or edited `.md` surfaces with NO restart.
+- 🚫 DEAD — `~/Code/mcp-protocols/src/protocols/foundation/*.js` — the OLD non-lean server's source. Nothing reads it. A protocol that exists only here is INVISIBLE to `mikey_prompt_process`, `mikey_protocol_triggers`, and the dashboard.
 
 Lesson (create-project gap, 2026-06-20): `create-project` lived only as legacy `.js`, so the live system matched nothing when a repo was actually created — until it was ported to `protocols/create-project.md`. So: always author/edit in the `.md` library; if a useful protocol is stranded in the `.js` tree, PORT it (don't reference it in place). Still-stranded foundation candidates to port or retire: progress-communication, naming-linter, system-audit, architecture-update, error-recovery, information-integration, maintenance, protocol-graduation.
 

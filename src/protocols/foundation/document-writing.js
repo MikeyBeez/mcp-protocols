@@ -13,7 +13,7 @@ module.exports = {
     'User says "write", "draft", "document"'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/document-writing.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/document-writing.js',
   content: `# Document Writing Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

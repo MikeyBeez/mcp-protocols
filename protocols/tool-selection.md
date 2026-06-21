@@ -10,7 +10,7 @@
 - **Updated**: 2026-06-09 (rewrite: brain_execute removed; added Cowork enhanced-FS / system_exec fallbacks)
 
 ## Trigger Conditions (MUST ACTIVATE)
-- **WHEN**: Need to read/write a file anywhere under `/Users/bard` or `/Volumes`
+- **WHEN**: Need to read/write a file anywhere under `~` or `/Volumes`
 - **WHEN**: Need to execute a shell command in Mikey's REAL environment (his Mac, his LAN, his CLI tools, his SSH)
 - **WHEN**: A built-in tool fails with "outside connected folders", "cannot access", "No such file or directory", "command not found", or has no route to the LAN
 - **WHEN**: About to tell Mikey "I can't reach that file/host" or to ask him to paste a file — STOP and check the fallbacks below first
@@ -33,10 +33,10 @@ Two execution contexts exist; the same instinct applies to both:
 ## Decision Tree
 
 ```
-Need to touch a FILE under /Users/bard or /Volumes?
+Need to touch a FILE under ~ or /Volumes?
 │  └─ Built-in Read/Write failed ("outside connected folders")?
 │       → use filesystem-enhanced: read_text_file / write_file /
-│         edit_file / list_directory  (allowed roots: /Users/bard, /Volumes)
+│         edit_file / list_directory  (allowed roots: ~, /Volumes)
 │
 Need to RUN a command in Mikey's real environment?
 │  └─ (git auth, npm/uv, ssh, launchctl, nvidia-smi, anything on his Mac/LAN)
@@ -47,7 +47,7 @@ Pure throwaway compute, no Mac/LAN access needed?
 ```
 
 ## filesystem-enhanced (file access on the Mac)
-- **Allowed roots**: `/Users/bard`, `/Volumes` (confirm with `list_allowed_directories`)
+- **Allowed roots**: `~`, `/Volumes` (confirm with `list_allowed_directories`)
 - **Reaches things the Cowork Read tool refuses**, e.g. `~/Library/Logs/Claude/*.log`, `~/.ssh/config`, `~/Library/Application Support/Claude/claude_desktop_config.json`, anything under `~/Code`.
 - Key tools: `read_text_file` (supports `head`/`tail`), `write_file`, `edit_file`, `list_directory`, `search_files`, `get_file_info`.
 - **Lesson learned 2026-06-09**: when asked to "look at the log", the built-in Read errored ("outside connected folders") but `filesystem-enhanced.read_text_file` read it instantly. Don't ask Mikey to paste files that live under an allowed root — just read them.
@@ -59,22 +59,22 @@ Pure throwaway compute, no Mac/LAN access needed?
 
 ### SSH to the Pop!_OS / RTX 5070 Ti box
 ```
-system_exec(command="ssh bard@192.168.12.174 'nvidia-smi'")
+system_exec(command="ssh user@192.168.x.x 'nvidia-smi'")
 ```
-- **Authoritative invocation (Mikey, 2026-06-09): `ssh bard@192.168.12.174`.**
-- The `~/.ssh/config` block (`Host pop-os Pop` → 192.168.12.175, User bee) is STALE / case-sensitive (`pop` ≠ `Pop`). Prefer `bard@192.168.12.174`.
-- If it times out: check the box is online — `ping -c2 192.168.12.174`, `arp -n 192.168.12.174` (an `incomplete` ARP entry = host not on the LAN, i.e. powered off/asleep or DHCP moved it).
+- **Authoritative invocation (Mikey, 2026-06-09): `ssh user@192.168.x.x`.**
+- The `~/.ssh/config` block (`Host pop-os Pop` → 192.168.x.x, User bee) is STALE / case-sensitive (`pop` ≠ `Pop`). Prefer `user@192.168.x.x`.
+- If it times out: check the box is online — `ping -c2 192.168.x.x`, `arp -n 192.168.x.x` (an `incomplete` ARP entry = host not on the LAN, i.e. powered off/asleep or DHCP moved it).
 
 ## Anti-Patterns to Avoid
 - 🚫 **The Sandbox Surrender** — concluding a file/host is unreachable because the built-in tool was fenced, without trying filesystem-enhanced / system_exec.
-- 🚫 **The Paste Request** — asking Mikey to paste a file that sits under `/Users/bard` (just read it).
+- 🚫 **The Paste Request** — asking Mikey to paste a file that sits under `~` (just read it).
 - 🚫 **The Ghost Tool** — reaching for `brain_execute` (gone) instead of `system_exec`.
-- 🚫 **The Path Assumer** — assuming Cowork sandbox paths (`/sessions/.../mnt/...`) equal Mac paths (`/Users/bard/...`).
+- 🚫 **The Path Assumer** — assuming Cowork sandbox paths (`/sessions/.../mnt/...`) equal Mac paths (`~/...`).
 
 ## Quality Checks
 - ✅ Tried filesystem-enhanced before saying a file is unreachable
 - ✅ Used system_exec (not a sandboxed bash) for anything needing the real Mac/LAN
-- ✅ Used `ssh bard@192.168.12.174` (not the stale config alias)
+- ✅ Used `ssh user@192.168.x.x` (not the stale config alias)
 - ✅ Did NOT ask Mikey to do something a tool could do
 
 ---

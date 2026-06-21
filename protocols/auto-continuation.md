@@ -129,7 +129,7 @@ async function generateContinuationNote() {
     contextToLoad: await determineEssentialContext(),
     
     // Save location
-    path: `/Users/bard/Code/mcp-protocols/CONTINUATION_NOTE_${date}.md`
+    path: `~/Code/mcp-protocols/CONTINUATION_NOTE_${date}.md`
   };
   
   await writeContainuationNote(note);
@@ -198,7 +198,7 @@ When triggered after second continue:
 > 
 > You've continued twice - I'm creating a continuation note to preserve our context.
 > 
-> **Saved to**: `/Users/bard/Code/mcp-protocols/CONTINUATION_NOTE_2025-08-05.md`
+> **Saved to**: `~/Code/mcp-protocols/CONTINUATION_NOTE_2025-08-05.md`
 > 
 > **To resume in a new chat**, start with:
 > "Continue building the Protocol Execution Engine from the continuation note"

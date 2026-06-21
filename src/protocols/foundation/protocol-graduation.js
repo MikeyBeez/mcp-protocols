@@ -14,7 +14,7 @@ module.exports = {
     'Protocol complexity warrants automation'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/protocol-graduation.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/protocol-graduation.js',
   content: `# Protocol Graduation Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

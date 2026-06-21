@@ -13,7 +13,7 @@ module.exports = {
     'User wants to submit pop-math-agent to competition'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/kaggle-aimo3-submission.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/kaggle-aimo3-submission.js',
   content: `# AIMO3 Kaggle Submission Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)
@@ -181,12 +181,12 @@ else:
 **IMPORTANT**: Always write to permanent storage, NEVER to /tmp.
 
 \`\`\`
-/Users/bard/Code/mcp-math/kaggle-submissions/
+~/Code/mcp-math/kaggle-submissions/
 ├── kernel-metadata.json     # Kernel configuration
 ├── notebook.py              # Simple test submission
 └── notebook_deepseek.py     # DeepSeek R1 submission
 
-/Users/bard/Code/pop-math-agent/kaggle/
+~/Code/pop-math-agent/kaggle/
 ├── kaggle_evaluation/       # Competition framework
 ├── test.csv                 # Sample test problems
 ├── reference.csv            # Reference problems with answers
@@ -335,15 +335,15 @@ kaggle kernels pull <user>/<kernel> -p ./ref
 
 \`\`\`bash
 # Health check
-curl http://192.168.12.175:8765/health
+curl http://192.168.x.x:8765/health
 
 # Solve problem
-curl -X POST http://192.168.12.175:8765/solve \\
+curl -X POST http://192.168.x.x:8765/solve \\
   -H "Content-Type: application/json" \\
   -d '{"problem": "Find smallest n where n! divisible by 2024"}'
 
 # Multi-sample majority voting
-curl -X POST http://192.168.12.175:8765/multi_sample \\
+curl -X POST http://192.168.x.x:8765/multi_sample \\
   -H "Content-Type: application/json" \\
   -d '{"problem": "...", "n_samples": 5}'
 \`\`\`

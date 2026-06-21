@@ -108,10 +108,10 @@ Match learnings to protocols/skills:
 
 | Learning About | Target Location |
 |----------------|-----------------|
-| Tool usage | `/Users/bard/Code/mcp-protocols/protocols/tool-selection.md` |
-| Git/GitHub | `/Users/bard/Code/protocols/Git Repository Creation Protocol.md` |
-| General workflow | `/Users/bard/Code/protocols/` (new or existing) |
-| User preferences | `/Users/bard/Code/protocols/User Communication Protocol v1.2.0.md` |
+| Tool usage | `~/Code/mcp-protocols/protocols/tool-selection.md` |
+| Git/GitHub | `~/Code/protocols/Git Repository Creation Protocol.md` |
+| General workflow | `~/Code/protocols/` (new or existing) |
+| User preferences | `~/Code/protocols/User Communication Protocol v1.2.0.md` |
 | Project-specific | Project's `.claude/` directory |
 
 ### Step 4: Propose Changes
@@ -194,12 +194,12 @@ When writing learnings:
 Before using bash or brain_execute for filesystem operations, check if MCP filesystem tools are available:
 
 ✅ **Use mcp__filesystem-enhanced for**:
-- Reading/writing files in /Users/bard
+- Reading/writing files in ~
 - Directory listings
 - File searches
 - Any operation on user's actual files
 
-The sandbox bash cannot access /Users/bard, but MCP filesystem tools can.
+The sandbox bash cannot access ~, but MCP filesystem tools can.
 ```
 
 ## Scripts Location

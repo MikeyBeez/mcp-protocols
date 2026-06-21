@@ -14,7 +14,7 @@ module.exports = {
     'Starting work on any file in mcp-* or claude-* directories'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mikey-naming-registry/PROTOCOL.md',
+  location: '~/Code/mikey-naming-registry/PROTOCOL.md',
   content: `# Naming Linter Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)
@@ -33,7 +33,7 @@ module.exports = {
 ## Quick Commands
 
 \`\`\`bash
-cd /Users/bard/Code/mikey-naming-registry
+cd ~/Code/mikey-naming-registry
 
 # Check a specific file or directory
 node lint.js /path/to/file-or-directory
@@ -96,7 +96,7 @@ Never use these prefixes without mikey_:
 **Fix:** Add tool to registry.json
 
 ## Registry Location
-/Users/bard/Code/mikey-naming-registry/registry.json
+~/Code/mikey-naming-registry/registry.json
 
 ## Integration with Other Protocols
 - **Error Recovery Protocol**: When lint fails, follow error resolution steps

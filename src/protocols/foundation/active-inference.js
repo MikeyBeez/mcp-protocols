@@ -15,7 +15,7 @@ module.exports = {
     'After completing multiple related tasks (reflect on the batch)'
   ],
   status: 'active',
-  location: '/Users/bard/Code/claude-brain/index.js',
+  location: '~/Code/claude-brain/index.js',
   content: `# Active Inference Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

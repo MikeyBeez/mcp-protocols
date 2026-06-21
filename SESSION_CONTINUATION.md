@@ -11,7 +11,7 @@
 - ✅ **Solution**: Modular MCP server with hardcoded protocol data - **IMPLEMENTED & CONFIGURED**
 
 ### **MCP Protocols Server - FULLY OPERATIONAL**
-- **Location**: `/Users/bard/Code/mcp-protocols/src/index.js`
+- **Location**: `~/Code/mcp-protocols/src/index.js`
 - **Configuration**: ✅ Added to Claude Desktop config  
 - **Status**: Ready for restart and live testing
 - **Architecture**: Modular, reliable, extensible
@@ -105,9 +105,9 @@ Test all protocol tools:
 
 ## 📁 **Key Files & Locations**
 
-- **MCP Server**: `/Users/bard/Code/mcp-protocols/src/index.js`
-- **Registry**: `/Users/bard/Code/mcp-protocols/src/registry.js`
-- **Protocols**: `/Users/bard/Code/mcp-protocols/src/protocols/foundation/`
+- **MCP Server**: `~/Code/mcp-protocols/src/index.js`
+- **Registry**: `~/Code/mcp-protocols/src/registry.js`
+- **Protocols**: `~/Code/mcp-protocols/src/protocols/foundation/`
 - **Config**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Backup**: Config backup created with timestamp
 

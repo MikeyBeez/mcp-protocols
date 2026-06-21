@@ -14,7 +14,7 @@ module.exports = {
     'User wants to scaffold a new application'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols',
+  location: '~/Code/mcp-protocols',
   implementedBy: 'mikey_create_project',  // Points to the tool
   content: `# Create Project Protocol v1.0.0
 

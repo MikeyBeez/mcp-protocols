@@ -14,7 +14,7 @@ module.exports = {
     'When active-inference identifies a gap in protocol coverage'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/protocol-writing.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/protocol-writing.js',
   content: `# Protocol Writing Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)
@@ -113,13 +113,13 @@ How does this protocol connect to others?
 
 **Create the JS file:**
 \`\`\`
-/Users/bard/Code/mcp-protocols/src/protocols/foundation/<protocol-id>.js
+~/Code/mcp-protocols/src/protocols/foundation/<protocol-id>.js
 \`\`\`
 
 **Run the naming linter:**
 \`\`\`bash
-cd /Users/bard/Code/mikey-naming-registry
-node lint.js /Users/bard/Code/mcp-protocols/src/protocols/foundation/<protocol-id>.js
+cd ~/Code/mikey-naming-registry
+node lint.js ~/Code/mcp-protocols/src/protocols/foundation/<protocol-id>.js
 \`\`\`
 
 **Register in registry.js:**
@@ -208,7 +208,7 @@ module.exports = {
     '<Trigger condition 3>'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/<id>.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/<id>.js',
   content: \`# <Protocol Name> v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

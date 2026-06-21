@@ -13,7 +13,7 @@ module.exports = {
     'Before major refactoring or upgrades'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/system-audit.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/system-audit.js',
   content: `# System Audit Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

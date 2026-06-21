@@ -12,7 +12,7 @@ module.exports = {
     'When context changes significantly'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols',
+  location: '~/Code/mcp-protocols',
   content: `# Protocol Selection Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

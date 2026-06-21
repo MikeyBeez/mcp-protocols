@@ -13,7 +13,7 @@ module.exports = {
     'Discovered gap in existing protocol'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/protocol-error-correction.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/protocol-error-correction.js',
   content: `# Protocol Error Correction Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

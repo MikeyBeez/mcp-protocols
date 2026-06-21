@@ -12,7 +12,7 @@ module.exports = {
     'First action on receiving prompt'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols',
+  location: '~/Code/mcp-protocols',
   content: `# Prompt Processing Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

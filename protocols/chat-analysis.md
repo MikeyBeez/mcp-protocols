@@ -25,7 +25,7 @@ Give the live chat a self-check: when asked, compare what the trigger system PRE
 
 ### 1. Pull the structured record
 Run the helper:
-  `/opt/homebrew/bin/python3 /Users/bard/Code/harness/chat_analysis.py [--limit N]`
+  `/opt/homebrew/bin/python3 ~/Code/harness/chat_analysis.py [--limit N]`
 It lists recent turns that have prediction data — each prompt_process turn's prompt (task_text), `route.predicted` (predicted protocols), and the `protocol_read` spans (fired) — and flags fired-not-predicted / predicted-not-fired. (For a DIFFERENT session, use `mcp__session_info__read_transcript` with its id from `list_sessions`.)
 
 ### 2. Walk the conversation turn by turn
@@ -41,7 +41,7 @@ Classify each:
 - **FALSE-POSITIVE** — predicted but irrelevant to the turn.
 
 ### 3. Fix immediately (no restart)
-- PREDICTION-MISS / TRUE-MISS → add the missing words to that protocol's keywords in `/Users/bard/Code/mcp-protocols/protocols/triggers.json`. It is read live, so the fix is effective on the next prompt. Verify with `mikey_protocol_triggers`.
+- PREDICTION-MISS / TRUE-MISS → add the missing words to that protocol's keywords in `~/Code/mcp-protocols/protocols/triggers.json`. It is read live, so the fix is effective on the next prompt. Verify with `mikey_protocol_triggers`.
 - APPLICATION-MISS → if the protocol is still relevant now, `protocol_read` it; if it recurs, strengthen its IMMEDIATE/priority guidance.
 - FALSE-POSITIVE → narrow keywords ONLY if it recurs (favor recall over precision while the ledger is young).
 

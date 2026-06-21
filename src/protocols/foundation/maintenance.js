@@ -13,7 +13,7 @@ module.exports = {
     'Weekly check during normal work'
   ],
   status: 'active',
-  location: '/Users/bard/Code/mcp-protocols/src/protocols/foundation/maintenance.js',
+  location: '~/Code/mcp-protocols/src/protocols/foundation/maintenance.js',
   content: `# System Maintenance Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)

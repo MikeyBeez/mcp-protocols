@@ -13,7 +13,7 @@
 Stand up a working torch+CUDA environment for a NEW project on pop-os (RTX 5070 Ti) without re-downloading multi-GB torch/CUDA wheels — reuse an existing project's venv.
 
 ## Trigger Conditions
-- **WHEN**: creating/setting up a new Python or ML project on pop-os (192.168.12.174) that needs torch / CUDA / GPU.
+- **WHEN**: creating/setting up a new Python or ML project on pop-os (192.168.x.x) that needs torch / CUDA / GPU.
 - **WHEN**: about to run `pip install torch` or a fresh `python -m venv` + heavy install on the GPU box.
 - **WHEN**: a new experiment repo needs the same stack an existing project already has.
 - **Trigger keywords**: venv, virtualenv, environment, env, setup, install, torch, pytorch, cuda, gpu, pop-os, pip, requirements, new project, dependencies, conda, uv.
