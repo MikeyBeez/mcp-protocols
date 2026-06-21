@@ -403,6 +403,29 @@
         "training run"
       ],
       "source": "seed"
+    },
+    "chat-analysis": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "analyze this chat",
+        "analyze the chat",
+        "analyze this conversation",
+        "analyze the conversation",
+        "review this chat",
+        "review this conversation",
+        "analyze this session",
+        "analyze the session",
+        "how did the protocols do",
+        "how are the protocols doing",
+        "are the triggers working",
+        "did the triggers fire",
+        "were protocols failing",
+        "chat analysis",
+        "live analysis",
+        "protocol performance"
+      ],
+      "source": "authored"
     }
   }
 }
