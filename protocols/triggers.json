@@ -426,6 +426,35 @@
         "protocol performance"
       ],
       "source": "authored"
+    },
+    "code-review": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "review the code",
+        "review this code",
+        "code review",
+        "does the code make sense",
+        "makes sense",
+        "look over the code",
+        "look over the tools",
+        "review the tools",
+        "review the servers",
+        "systems review",
+        "system review",
+        "systems point of view",
+        "systems pov",
+        "overall design",
+        "architecture review",
+        "audit the code",
+        "audit the system",
+        "sanity check",
+        "is this correct",
+        "review this system",
+        "look it over",
+        "review the design"
+      ],
+      "source": "authored"
     }
   }
 }
