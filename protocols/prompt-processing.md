@@ -89,9 +89,9 @@ This prevents unnecessary latency on trivial interactions.
 The tool maps keywords to protocols:
 - Error/problem words → error-recovery
 - "create project", "new project" → create-project
-- "write article", "medium" → medium-article, document-writing
+- "write article", "medium" → medium-article
 - "mcp", "tool" → naming-linter, mcp-permissions
-- "protocol" → protocol-writing, protocol-lifecycle
+- "protocol" → continuous-documentation
 
 ## Benefits
 

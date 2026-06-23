@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-21",
+  "updated": "2026-06-23",
   "note": "Machine authority for protocol trigger matching + active-inference updates. Seeded from each protocol's .md Trigger keywords line. The matcher reads this; the trigger-eval loop updates it.",
   "protocols": {
     "auto-continuation": {
@@ -22,7 +22,7 @@
         "almost full",
         "pick up where"
       ],
-      "source": "seed"
+      "source": "md"
     },
     "brain-recall-reliability": {
       "tier": 2,
@@ -57,7 +57,83 @@
         "false absence",
         "query mismatch"
       ],
-      "source": "seed"
+      "source": "md"
+    },
+    "chat-analysis": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "analyze this chat",
+        "analyze the chat",
+        "analyze this conversation",
+        "analyze the conversation",
+        "review this chat",
+        "review this conversation",
+        "analyze this session",
+        "analyze the session",
+        "how did the protocols do",
+        "how are the protocols doing",
+        "are the triggers working",
+        "did the triggers fire",
+        "were protocols failing",
+        "chat analysis",
+        "live analysis",
+        "protocol performance"
+      ],
+      "source": "md"
+    },
+    "code-review": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "review the code",
+        "review this code",
+        "code review",
+        "does the code make sense",
+        "makes sense",
+        "look over the code",
+        "look over the tools",
+        "review the tools",
+        "review the servers",
+        "systems review",
+        "system review",
+        "systems point of view",
+        "systems pov",
+        "overall design",
+        "architecture review",
+        "audit the code",
+        "audit the system",
+        "sanity check",
+        "is this correct",
+        "review this system",
+        "look it over",
+        "review the design"
+      ],
+      "source": "md"
+    },
+    "coding-discipline": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "write code",
+        "implement",
+        "build a",
+        "create a function",
+        "create a script",
+        "code this",
+        "coding",
+        "refactor",
+        "edit the",
+        "change the code",
+        "add a feature",
+        "fix the bug",
+        "function",
+        "module",
+        "class",
+        "script",
+        "new feature"
+      ],
+      "source": "md"
     },
     "continuous-documentation": {
       "tier": 0,
@@ -105,7 +181,7 @@
         "procedure",
         "reusable"
       ],
-      "source": "seed"
+      "source": "md"
     },
     "create-project": {
       "tier": 3,
@@ -121,9 +197,46 @@
         "git",
         "github",
         "push",
-        "gh"
+        "gh",
+        "experiment",
+        "phase",
+        "spec",
+        "ablation",
+        "sweep",
+        "set up",
+        "set up a project",
+        "set up an experiment",
+        "set up a new",
+        "new experiment",
+        "new phase"
       ],
-      "source": "seed"
+      "source": "md"
+    },
+    "error-recovery": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "error",
+        "failed",
+        "failure",
+        "broke",
+        "broken",
+        "exception",
+        "traceback",
+        "unexpected",
+        "went wrong",
+        "mistake",
+        "wrong",
+        "doesn't work",
+        "not working",
+        "stuck",
+        "unable",
+        "recover",
+        "undo",
+        "revert",
+        "rollback"
+      ],
+      "source": "md"
     },
     "get-current-time": {
       "tier": 2,
@@ -151,7 +264,27 @@
         "elapsed",
         "how long"
       ],
-      "source": "seed"
+      "source": "md"
+    },
+    "github-anonymization": {
+      "tier": 1,
+      "always_active": false,
+      "keywords": [
+        "push",
+        "git push",
+        "github",
+        "commit and push",
+        "publish",
+        "make public",
+        "gh repo create",
+        "backup to github",
+        "back up repo",
+        "remote",
+        "origin",
+        "share the repo",
+        "push to a repo"
+      ],
+      "source": "md"
     },
     "gpu-project-env-setup": {
       "tier": 2,
@@ -175,7 +308,30 @@
         "conda",
         "uv"
       ],
-      "source": "seed"
+      "source": "md"
+    },
+    "mcp-permissions": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "permission",
+        "permissions",
+        "auto-approve",
+        "approve",
+        "allow list",
+        "allowlist",
+        "settings.local.json",
+        "settings file",
+        "prompt",
+        "prompts",
+        "read-only",
+        "write tool",
+        "mcp permissions",
+        "trust tool",
+        "whitelist",
+        "mcp__"
+      ],
+      "source": "md"
     },
     "mcp-server-shellout-hardening": {
       "tier": 2,
@@ -224,7 +380,58 @@
         "wrapper",
         "tap"
       ],
-      "source": "seed"
+      "source": "md"
+    },
+    "medium-article": {
+      "tier": 3,
+      "always_active": false,
+      "keywords": [
+        "medium",
+        "article",
+        "blog",
+        "blog post",
+        "paper",
+        "essay",
+        "post",
+        "publish",
+        "publication",
+        "write up",
+        "write-up",
+        "story",
+        "draft for medium",
+        "medium.com",
+        "plain text",
+        "no markdown"
+      ],
+      "source": "md"
+    },
+    "naming-linter": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "naming",
+        "namespace",
+        "prefix",
+        "mikey_",
+        "mikey-",
+        "mcp tool",
+        "mcp server",
+        "tool name",
+        "rename",
+        "collision",
+        "collide",
+        "reserved",
+        "registry",
+        "lint",
+        "linter",
+        "naming-registry",
+        "register tool",
+        "new server",
+        "new tool",
+        "add tool",
+        "mcp__"
+      ],
+      "source": "md"
     },
     "pop-os-rebuild": {
       "tier": 2,
@@ -250,13 +457,13 @@
         "cuda",
         "5070"
       ],
-      "source": "seed"
+      "source": "md"
     },
     "prompt-processing": {
       "tier": 0,
       "always_active": true,
       "keywords": [],
-      "source": "seed"
+      "source": "md"
     },
     "reflect": {
       "tier": 2,
@@ -277,7 +484,45 @@
         "lesson",
         "capture"
       ],
-      "source": "seed"
+      "source": "md"
+    },
+    "stale-note-correction": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "stale note",
+        "stale memory",
+        "outdated note",
+        "false note",
+        "note is wrong",
+        "wrong note",
+        "correct a note",
+        "correction",
+        "supersede",
+        "superseded",
+        "neutralize",
+        "banner",
+        "stale_corrected",
+        "note audit",
+        "note_audit",
+        "contradiction",
+        "git-repo claim",
+        "false prior",
+        "drift",
+        "verify your own notes",
+        "assert vs quote",
+        "use-mention",
+        "quote",
+        "discussion",
+        "self-referential",
+        "false positive",
+        "detector",
+        "auditor",
+        "linter",
+        "flag",
+        "proposal-stalenote"
+      ],
+      "source": "md"
     },
     "tarot-decision": {
       "tier": 3,
@@ -300,7 +545,7 @@
         "intuition",
         "perspective"
       ],
-      "source": "seed"
+      "source": "md"
     },
     "tool-auto-repair": {
       "tier": 2,
@@ -327,7 +572,7 @@
         "log",
         "logs"
       ],
-      "source": "seed"
+      "source": "md"
     },
     "tool-selection": {
       "tier": 2,
@@ -363,10 +608,11 @@
         "access",
         "reach",
         "paste",
+        "brain_execute",
         "system_exec",
         "enhanced"
       ],
-      "source": "seed"
+      "source": "md"
     },
     "training-run-management": {
       "tier": 2,
@@ -374,116 +620,72 @@
       "keywords": [
         "train",
         "training",
+        "run",
+        "launch",
         "distill",
-        "distillation",
-        "finetune",
         "fine-tune",
+        "finetune",
+        "steps",
         "checkpoint",
-        "wandb",
-        "loss",
+        "ckpt",
+        "resume",
+        "restart",
+        "warm-start",
         "diverge",
         "divergence",
-        "steps",
-        "eta",
-        "launch",
-        "sweep",
-        "monitor",
-        "monitoring",
-        "pop",
+        "spike",
+        "nan",
+        "loss",
+        "kl",
+        "oom",
+        "memory",
         "gpu",
         "cuda",
-        "rtx",
-        "hyperpeer",
-        "hyperexpert",
+        "lr",
+        "learning rate",
         "tmux",
+        "send-keys",
         "nohup",
+        "wandb",
+        "monitor",
+        "monitoring",
+        "scheduled",
+        "sweep",
+        "segfault",
+        "stall",
+        "stalled",
+        "queued",
+        "hung",
+        "eta",
+        "pop",
+        "register",
+        "registry",
+        "deregister",
+        "pop-active-jobs",
+        "registry entry",
+        "job launch",
+        "launch protocol",
+        "start a run",
+        "started",
+        "finished",
+        "done",
+        "ledger",
+        "trace",
+        "harness",
+        "pipeline",
+        "distillation",
+        "hyperexpert",
+        "hyperpeer",
         "job",
         "jobs",
-        "run",
+        "rtx",
         "training run"
       ],
-      "source": "seed"
-    },
-    "chat-analysis": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "analyze this chat",
-        "analyze the chat",
-        "analyze this conversation",
-        "analyze the conversation",
-        "review this chat",
-        "review this conversation",
-        "analyze this session",
-        "analyze the session",
-        "how did the protocols do",
-        "how are the protocols doing",
-        "are the triggers working",
-        "did the triggers fire",
-        "were protocols failing",
-        "chat analysis",
-        "live analysis",
-        "protocol performance"
-      ],
-      "source": "authored"
-    },
-    "code-review": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "review the code",
-        "review this code",
-        "code review",
-        "does the code make sense",
-        "makes sense",
-        "look over the code",
-        "look over the tools",
-        "review the tools",
-        "review the servers",
-        "systems review",
-        "system review",
-        "systems point of view",
-        "systems pov",
-        "overall design",
-        "architecture review",
-        "audit the code",
-        "audit the system",
-        "sanity check",
-        "is this correct",
-        "review this system",
-        "look it over",
-        "review the design"
-      ],
-      "source": "authored"
-    },
-    "coding-discipline": {
-      "tier": 2,
-      "always_active": false,
-      "source": "authored",
-      "keywords": [
-        "write code",
-        "implement",
-        "build a",
-        "create a function",
-        "create a script",
-        "code this",
-        "coding",
-        "refactor",
-        "edit the",
-        "change the code",
-        "add a feature",
-        "fix the bug",
-        "function",
-        "module",
-        "class",
-        "script",
-        "new feature"
-      ]
+      "source": "md"
     },
     "verification-loop": {
       "tier": 2,
       "always_active": false,
-      "source": "authored",
       "keywords": [
         "loop",
         "autonomous",
@@ -499,38 +701,12 @@
         "autonomous loop",
         "retry until",
         "self-correct"
-      ]
-    },
-    "error-recovery": {
-      "tier": 2,
-      "always_active": false,
-      "source": "authored",
-      "keywords": [
-        "error",
-        "failed",
-        "failure",
-        "broke",
-        "broken",
-        "exception",
-        "traceback",
-        "unexpected",
-        "went wrong",
-        "mistake",
-        "wrong",
-        "doesn't work",
-        "not working",
-        "stuck",
-        "unable",
-        "recover",
-        "undo",
-        "revert",
-        "rollback"
-      ]
+      ],
+      "source": "md"
     },
     "web-search-decision": {
       "tier": 2,
       "always_active": false,
-      "source": "authored",
       "keywords": [
         "search",
         "web search",
@@ -554,27 +730,8 @@
         "up to date",
         "as of",
         "unknown"
-      ]
-    },
-    "github-anonymization": {
-      "tier": 1,
-      "always_active": false,
-      "source": "authored",
-      "keywords": [
-        "push",
-        "git push",
-        "github",
-        "commit and push",
-        "publish",
-        "make public",
-        "gh repo create",
-        "backup to github",
-        "back up repo",
-        "remote",
-        "origin",
-        "share the repo",
-        "push to a repo"
-      ]
+      ],
+      "source": "md"
     }
   }
 }

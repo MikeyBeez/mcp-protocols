@@ -2,12 +2,13 @@
 
 ## Metadata
 - **ID**: continuous-documentation
-- **Version**: 1.1.0
+- **Version**: 1.3.0
 - **Tier**: 0 (Meta — always active)
 - **Status**: active
 - **Purpose**: Make documentation a reflex, not an afterthought. Every non-trivial action produces a brain note; every reusable pattern or disproven assumption produces a NEW or UPDATED protocol — written immediately, not deferred.
 - **Created**: 2026-06-09
 - **Updated**: 2026-06-21 — added "Where Protocols Live" guard: only the live `protocols/*.md` library is read by the lean server; the legacy `src/protocols/foundation/*.js` tree is dead and invisible (learned from the create-project port gap, 2026-06-20).
+- **Updated**: 2026-06-23 — the stranded-foundation backlog is RESOLVED: the whole `.js` tree was triaged (6 ported, 15 retired) and marked dead via `_DEPRECATED.md`. Also folded the still-valid graduation decision (text → tool) from the retired protocol-graduation/protocol-lifecycle into the PROTOCOL CHECK step, so that idea survives their retirement.
 - **Source**: Mikey directive 2026-06-09 — "When you do something, make a note of it. But you should also be writing protocols all the time and updating the ones you have."
 - **Relationship**: complements `reflect` (which fires on corrections) and `prompt-processing` (which surfaces protocols per prompt). This is the ALWAYS-ON authoring layer that runs off my own actions.
 
@@ -41,6 +42,7 @@ Ask: *Will this recur? Did an existing protocol just prove wrong? Is there a reu
 - **No** → the brain note is enough. Stop.
 - **Yes, and a protocol exists** → EDIT it. Bump `Version`, add an `Updated:` line with the date + what changed. Don't let stale guidance survive (e.g. tool-selection still naming a removed tool).
 - **Yes, and none exists** → CREATE `~/Code/mcp-protocols/protocols/<id>.md` in the house format (Metadata, Triggers, Core Principle, Steps/Decision Tree, Examples, Anti-Patterns, Quality Checks).
+- **Graduation check (text → tool)** → if a procedure recurs often, runs the SAME way nearly every time, and is fully automatable (no human/judgment call mid-procedure), consider GRADUATING it from a text protocol into a real MCP tool — deterministic execution beats re-reading steps, and the tool either runs or it doesn't. Build it via the `mcp-builder` skill (name it per `naming-linter`); keep the protocol as the why/when doc. Do NOT graduate rare, variable, or judgment-heavy procedures — those stay as text.
 
 ### 3. ACT — do not defer
 Write the file in the same turn. If genuinely too large, create a stub protocol with the trigger + a TODO and a brain note linking them, so it's captured, not lost.
@@ -53,7 +55,7 @@ The lean protocols server (`mcp-protocols-lean`) and the Brain Monitor read prot
 - ✅ LIVE — `~/Code/mcp-protocols/protocols/*.md` — re-read on every call; a new or edited `.md` surfaces with NO restart.
 - 🚫 DEAD — `~/Code/mcp-protocols/src/protocols/foundation/*.js` — the OLD non-lean server's source. Nothing reads it. A protocol that exists only here is INVISIBLE to `mikey_prompt_process`, `mikey_protocol_triggers`, and the dashboard.
 
-Lesson (create-project gap, 2026-06-20): `create-project` lived only as legacy `.js`, so the live system matched nothing when a repo was actually created — until it was ported to `protocols/create-project.md`. So: always author/edit in the `.md` library; if a useful protocol is stranded in the `.js` tree, PORT it (don't reference it in place). Still-stranded foundation candidates to port or retire: progress-communication, naming-linter, system-audit, architecture-update, error-recovery, information-integration, maintenance, protocol-graduation.
+Lesson (create-project gap, 2026-06-20): `create-project` lived only as legacy `.js`, so the live system matched nothing when a repo was actually created — until it was ported to `protocols/create-project.md`. So: always author/edit in the `.md` library; if a useful protocol is stranded in the `.js` tree, PORT it (don't reference it in place). RESOLVED 2026-06-23: the full `src/protocols/foundation/*.js` tree was triaged and dispositioned (see `src/protocols/foundation/_DEPRECATED.md`) — 6 ported to the live library (create-project, error-recovery, prompt-processing, naming-linter, mcp-permissions, medium-article), 15 retired as dead/superseded. Do NOT re-flag this backlog; the `.js` tree is kept for history only.
 
 ## Trigger Authoring Rule (every protocol must be findable)
 `mikey_prompt_process` ranks by keyword overlap against **title + `## Purpose` section + `## Trigger Conditions` section** (live-parsed). So every protocol you create or edit MUST:
