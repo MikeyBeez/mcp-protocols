@@ -212,6 +212,30 @@
       ],
       "source": "md"
     },
+    "decision-box": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "decide",
+        "decision",
+        "choose",
+        "choice",
+        "pick",
+        "prefer",
+        "approve",
+        "approval",
+        "confirm",
+        "sign off",
+        "go/no-go",
+        "which one",
+        "should i",
+        "do you want",
+        "want me to",
+        "option",
+        "options"
+      ],
+      "source": "md"
+    },
     "error-recovery": {
       "tier": 2,
       "always_active": false,
