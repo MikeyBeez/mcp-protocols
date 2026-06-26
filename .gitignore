@@ -3,3 +3,9 @@
 protocols/.obsidian/workspace*.json
 protocols/.obsidian/cache
 protocols/.obsidian/graph.json
+
+# python caches and editor/runtime backups — not source
+__pycache__/
+*.pyc
+*.bak-*
+*.bak

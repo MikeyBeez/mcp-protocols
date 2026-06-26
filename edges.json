@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "updated": "2026-06-25",
+  "note": "Typed relationships between protocols. NOT a hierarchy — tiers already handle priority. These edges are data + queryable via edges.py; they are NOT wired into the live matcher (prompt_process/triggers.json left untouched on purpose). Wiring them into activation is a later, human-reviewed step. v2 (2026-06-25): connected the 15 graph-orphans with true typed edges so the whole library is one coherent graph; extended the failure-handling spine (stop-trigger -> struggle-protocol -> error-recovery -> reflect); added intentional_leaves for genuinely standalone protocols so `edges.py orphans` only flags UNEXPECTED disconnection.",
+  "types": {
+    "governs": "A is a meta-protocol that decides when/whether to use B (the only hierarchical type; mostly mirrors tiers)",
+    "escalates_to": "directed workflow: when A's condition recurs or fails, move to B",
+    "pairs_with": "lateral: consult B alongside A (no up/down)",
+    "indexes": "A is a catalog/reference that points at B",
+    "uses": "A relies on tool/file B"
+  },
+  "intentional_leaves": ["medium-article"],
+  "intentional_leaves_note": "Protocols deliberately left unconnected because they have no true relationship to the runtime-discipline graph. medium-article is a specialized output/formatting protocol (Medium-ready prose); forcing an edge would be noise. `edges.py orphans` treats these as expected, not as coherence gaps.",
+  "edges": [
+    {"from": "form-first", "type": "governs", "to": ["intent-gate", "struggle-protocol", "stop-trigger", "verification-loop", "reflect"]},
+    {"from": "intent-gate", "type": "escalates_to", "to": ["verification-loop"]},
+    {"from": "verification-loop", "type": "escalates_to", "to": ["reflect"]},
+    {"from": "stop-trigger", "type": "escalates_to", "to": ["struggle-protocol"]},
+    {"from": "struggle-protocol", "type": "escalates_to", "to": ["error-recovery"]},
+    {"from": "error-recovery", "type": "escalates_to", "to": ["reflect"]},
+    {"from": "tool-selection", "type": "escalates_to", "to": ["tool-auto-repair"]},
+    {"from": "intent-gate", "type": "pairs_with", "to": ["verification-loop", "decision-box"]},
+    {"from": "anti-sycophancy", "type": "pairs_with", "to": ["pattern-match-check", "bullshit-detector"]},
+    {"from": "struggle-protocol", "type": "pairs_with", "to": ["stop-trigger"]},
+    {"from": "stop-trigger", "type": "pairs_with", "to": ["tool-auto-repair"]},
+    {"from": "prompt-processing", "type": "pairs_with", "to": ["get-current-time", "continuous-documentation"]},
+    {"from": "continuous-documentation", "type": "pairs_with", "to": ["reflect", "stale-note-correction", "auto-continuation"]},
+    {"from": "chat-analysis", "type": "pairs_with", "to": ["reflect"]},
+    {"from": "create-project", "type": "pairs_with", "to": ["gpu-project-env-setup", "naming-linter"]},
+    {"from": "gpu-project-env-setup", "type": "pairs_with", "to": ["pop-os-rebuild", "training-run-management"]},
+    {"from": "tool-selection", "type": "pairs_with", "to": ["web-search-decision"]},
+    {"from": "web-search-decision", "type": "pairs_with", "to": ["brain-recall-reliability"]},
+    {"from": "naming-linter", "type": "pairs_with", "to": ["mcp-permissions", "mcp-server-shellout-hardening"]},
+    {"from": "github-anonymization", "type": "pairs_with", "to": ["code-review", "naming-linter"]},
+    {"from": "tarot-decision", "type": "pairs_with", "to": ["decision-box"]},
+    {"from": "agent-failure-modes", "type": "indexes", "to": ["anti-sycophancy", "struggle-protocol", "stop-trigger", "intent-gate", "verification-loop", "reflect", "stale-note-correction", "brain-recall-reliability", "decision-box", "tool-auto-repair", "error-recovery", "coding-discipline", "code-review", "chat-analysis", "mcp-server-shellout-hardening", "mcp-permissions", "pattern-match-check", "bullshit-detector"]},
+    {"from": "form-first", "type": "uses", "to": ["forms.json", "form_validate.py"]},
+    {"from": "intent-gate", "type": "uses", "to": ["forms.json", "form_validate.py"]},
+    {"from": "reflect", "type": "uses", "to": ["forms.json", "form_validate.py"]},
+    {"from": "prompt-processing", "type": "uses", "to": ["triggers.json"]}
+  ]
+}

@@ -1,0 +1,23 @@
+# .claudeignore (code-repo flavor) — keep noise out of the agent's context (gitignore syntax)
+*.bak
+*.bak-*
+*.backup
+*~
+*.db
+*.sqlite
+*.sqlite3
+node_modules/
+dist/
+build/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.ipynb_checkpoints/
+logs/
+*.log
+.DS_Store
+*.lock
+package-lock.json

@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "updated": "2026-06-24",
+  "note": "Required-field schemas for gate protocols. A filled form must have every 'required' field present and non-empty. This is a COMPLETENESS check only — it does NOT verify the fields are TRUE. Pair with verification-loop. Validate with form_validate.py.",
+  "forms": {
+    "intent-gate": {
+      "tier": 1,
+      "required": ["intent", "scope", "validation", "reversible"],
+      "fields": {
+        "intent": "what will be done and why",
+        "scope": "exact files / targets touched",
+        "validation": "the check that exercises the CHANGED behavior",
+        "reversible": "true | false  (if false, surface for approval before acting)"
+      }
+    },
+    "struggle-protocol": {
+      "tier": 1,
+      "required": ["tried", "result", "hypothesis", "need"],
+      "fields": {
+        "tried": "approaches attempted",
+        "result": "the actual output / error observed (verbatim, not paraphrased)",
+        "hypothesis": "current best guess at the cause",
+        "need": "what is needed to proceed / the ask"
+      }
+    },
+    "stop-trigger": {
+      "tier": 1,
+      "required": ["repeated_action", "assumption_to_recheck", "new_approach"],
+      "fields": {
+        "repeated_action": "the fix being attempted again (the repeat that tripped the stop)",
+        "assumption_to_recheck": "which assumption behind the approach may be false",
+        "new_approach": "a materially different approach, or 'escalate'"
+      }
+    },
+    "verification-loop": {
+      "tier": 2,
+      "required": ["claim", "check", "evidence", "result"],
+      "fields": {
+        "claim": "what is being asserted (e.g. 'task done', 'X is true')",
+        "check": "the verification actually performed",
+        "evidence": "the observed output that proves it (NOT 'looks right')",
+        "result": "pass | fail"
+      }
+    },
+    "reflect": {
+      "tier": 2,
+      "required": ["task", "outcome"],
+      "conditional_required": {"failure_class": "outcome != success"},
+      "fields": {
+        "task": "what was attempted",
+        "outcome": "success | failure | partial",
+        "surprise": "1-10 surprise score",
+        "failure_class": "EXECUTION | SPECIFICATION | CAPABILITY  (required when outcome != success)",
+        "lesson": "what to change / protocol update"
+      }
+    },
+    "form-first": {
+      "tier": 1,
+      "required": ["task", "existing_form", "decision"],
+      "fields": {
+        "task": "the task / protocol about to run",
+        "existing_form": "id of an existing form in forms.json, or 'none'",
+        "decision": "use | build | skip",
+        "fields_if_built": "the required fields of the new form (when decision = build)"
+      }
+    }
+  }
+}

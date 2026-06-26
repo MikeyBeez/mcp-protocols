@@ -218,3 +218,6 @@ Helper scripts installed at `~/.claude/skills/reflect/scripts/`:
 
 ## Related Protocols
 [[continuous-documentation]] · [[brain-recall-reliability]] · [[chat-analysis]]
+
+## Form (required fields)
+Machine-checkable schema in `forms.json` (id `reflect`). Required: task, outcome. Validate a filled form with `python3 form_validate.py reflect form.json` (use `-` for stdin; add `--log` to record to harness/forms_log.jsonl). Completeness only — pair with verification-loop for truth.

@@ -53,3 +53,6 @@ If the cap is hit or the same failure recurs, STOP and report exactly what block
 
 ## Related Protocols
 [[coding-discipline]] · [[code-review]] · [[tool-auto-repair]]
+
+## Form (required fields)
+Machine-checkable schema in `forms.json` (id `verification-loop`). Required: claim, check, evidence, result. Validate a filled form with `python3 form_validate.py verification-loop form.json` (use `-` for stdin; add `--log` to record to harness/forms_log.jsonl). Completeness only — pair with verification-loop for truth.

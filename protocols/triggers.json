@@ -1,8 +1,46 @@
 {
   "version": 1,
-  "updated": "2026-06-23",
+  "updated": "2026-06-26",
   "note": "Machine authority for protocol trigger matching + active-inference updates. Seeded from each protocol's .md Trigger keywords line. The matcher reads this; the trigger-eval loop updates it.",
   "protocols": {
+    "agent-failure-modes": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "failure mode",
+        "verify",
+        "double-check",
+        "sycophancy",
+        "hallucination",
+        "confabulate",
+        "fake progress",
+        "claimed success",
+        "root cause",
+        "stuck",
+        "drift",
+        "scope creep"
+      ],
+      "source": "md"
+    },
+    "anti-sycophancy": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "is this right",
+        "what do you think",
+        "good idea",
+        "agree",
+        "review",
+        "feedback",
+        "am i wrong",
+        "thoughts?",
+        "thoughts",
+        "cheerleading",
+        "sycophancy",
+        "you're right"
+      ],
+      "source": "md"
+    },
     "auto-continuation": {
       "tier": 1,
       "always_active": false,
@@ -262,6 +300,23 @@
       ],
       "source": "md"
     },
+    "form-first": {
+      "tier": 1,
+      "always_active": false,
+      "keywords": [
+        "form",
+        "forms",
+        "schema",
+        "required fields",
+        "before running",
+        "build a form",
+        "template",
+        "populate",
+        "fields",
+        "checklist"
+      ],
+      "source": "md"
+    },
     "get-current-time": {
       "tier": 2,
       "always_active": false,
@@ -331,6 +386,26 @@
         "dependencies",
         "conda",
         "uv"
+      ],
+      "source": "md"
+    },
+    "intent-gate": {
+      "tier": 1,
+      "always_active": false,
+      "keywords": [
+        "implement",
+        "refactor",
+        "migrate",
+        "delete",
+        "deploy",
+        "edit",
+        "rewrite",
+        "drop",
+        "reset",
+        "before acting",
+        "drop table",
+        "irreversible",
+        "side effect"
       ],
       "source": "md"
     },
@@ -545,6 +620,37 @@
         "linter",
         "flag",
         "proposal-stalenote"
+      ],
+      "source": "md"
+    },
+    "stop-trigger": {
+      "tier": 1,
+      "always_active": false,
+      "keywords": [
+        "try again",
+        "still failing",
+        "that didn't work either",
+        "that didn't work",
+        "one more time",
+        "let me adjust",
+        "circular",
+        "keeps breaking",
+        "same fix"
+      ],
+      "source": "md"
+    },
+    "struggle-protocol": {
+      "tier": 1,
+      "always_active": false,
+      "keywords": [
+        "stuck",
+        "can't figure out",
+        "not sure why",
+        "let me try",
+        "maybe if i",
+        "keeps failing",
+        "blocked",
+        "spiraling"
       ],
       "source": "md"
     },
