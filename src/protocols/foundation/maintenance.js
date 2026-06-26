@@ -17,7 +17,7 @@ module.exports = {
   content: `# System Maintenance Protocol v1.0.0
 
 ## Trigger Conditions (MUST ACTIVATE)
-- **WHEN**: Session starts (passive check via mikey_init)
+- **WHEN**: Session starts (passive check via brain_init)
 - **WHEN**: User asks about system health or maintenance
 - **WHEN**: After making significant system changes (new MCP servers, protocols, architecture changes)
 - **WHEN**: 7+ days since last audit
