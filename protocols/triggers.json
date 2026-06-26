@@ -862,6 +862,28 @@
         "unknown"
       ],
       "source": "md"
+    },
+    "named-process-wrappers": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "login item",
+        "login items",
+        "launchd",
+        "launchagent",
+        "launchdaemon",
+        "app background activity",
+        "background item",
+        "named wrapper",
+        "loginlaunchers",
+        "exec -a",
+        "programarguments",
+        "unidentified developer",
+        "startup item",
+        "runs at login",
+        "plist"
+      ],
+      "source": "md"
     }
   }
 }
