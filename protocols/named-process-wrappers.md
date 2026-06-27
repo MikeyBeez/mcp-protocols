@@ -93,5 +93,16 @@ except Exception:
 - Call it as early as the entry runs; it can be toggled at runtime, so even an already-shown icon disappears (possible brief flash at launch). Apply with `launchctl kickstart -k gui/$uid/<label>`.
 - Verified 2026-06-27 on reachi: it imports tkinter (help / music windows) -> framework Python showed a generic "Python" Dock icon despite the `Reachi.app` LSUIElement wrapper; accessory policy in `main()` removed it (reachi commit fb4a54c).
 
+
+**Identify the culprit first with `lsappinfo` — don't guess, and you don't need a screenshot.** `lsappinfo list | grep -iE '"Python"' -A4` shows each registered app's `pid` and `type`. The process owning a Dock icon reads `type="Foreground"`; a menu-bar/background one reads `type="UIElement"`. Map the pid to its script with `ps -o command= -p <pid>`. (2026-06-27: this is how the reachi Dock icon was traced — it was NOT the main daemon but a *separate* helper service, `reachi_stop.py`/`com.reachi.stop`, a `rumps` menu-bar "Stop" button. I wasted time editing the main daemon before checking `lsappinfo`.)
+
+**rumps (menu-bar) apps:** a `rumps.App` run via the framework Python registers as Foreground and shows a Dock icon. Fix = set accessory policy before `.run()`:
+```python
+from AppKit import NSApplication
+NSApplication.sharedApplication().setActivationPolicy_(1)  # Accessory -> menu-bar only, no Dock icon
+ReachiStop().run()
+```
+Verify factually: after restart, `lsappinfo` should report the pid as `type="UIElement"`, not `"Foreground"` (reachi commit 6389ac5).
+
 ## Related Protocols
 [[naming-linter]] · [[mcp-permissions]] · [[mcp-server-shellout-hardening]] · [[tool-auto-repair]]
