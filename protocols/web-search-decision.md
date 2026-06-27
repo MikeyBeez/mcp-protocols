@@ -2,11 +2,12 @@
 
 ## Metadata
 - **ID**: web-search-decision
-- **Version**: 1.0.0
+- **Version**: 1.1.0
 - **Tier**: 2 (Foundation)
 - **Status**: active
 - **Purpose**: Decide when to reach for web search vs. internal tools vs. your own knowledge, so you neither hallucinate stale facts nor waste a search on something you already know or can check locally.
 - **Created**: 2026-06-21
+- **Updated**: 2026-06-27 — tightened Trigger keywords (precision-review proposal, approved by Mikey): dropped over-broad single words (search, current, latest, recent, today, news, price, cost, release, version, paper, verify, citation, unknown) that drove 10x over-prediction with 0 fires; kept web-search-decision-specific phrases.
 - **Source**: modernized from the 2025 Web Search Decision + Information Retrieval Decision protocols (old Obsidian vault).
 
 ## Purpose
@@ -19,7 +20,7 @@ Route every information need to the right source: the world to the web, the user
 - **WHEN** asked about current events, prices, versions, who currently holds a role, or any post-cutoff fact.
 - **WHEN** asked to verify, fact-check, or cite something.
 - **WHEN** an unknown term, product, or entity comes up.
-- **Trigger keywords**: search, web search, look up, current, latest, news, today, recent, who is, price, cost, release, version, when did, verify, fact-check, citation, paper, arxiv, up to date, as of, unknown.
+- **Trigger keywords**: web search, search the web, look it up, look up, google it, current events, latest news, who is the, what is the latest, when did, fact-check, up to date, as of my cutoff, post-cutoff, arxiv.
 
 ## Execution Steps
 

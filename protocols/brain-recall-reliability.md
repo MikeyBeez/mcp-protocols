@@ -2,11 +2,12 @@
 
 ## Metadata
 - **ID**: brain-recall-reliability
-- **Version**: 1.0.0
+- **Version**: 1.1.0
 - **Tier**: 2 (Foundation)
 - **Status**: active
 - **Purpose**: A `brain_recall` that returns 0 results is NOT proof a memory is absent. Recall is a fuzzy keyword guess; treat an empty result as "my query missed", not "the knowledge doesn't exist" — and never build a conclusion (especially a self/affect conclusion) on the apparent gap.
 - **Created**: 2026-06-19
+- **Updated**: 2026-06-27 — tightened Trigger keywords (precision-review proposal, approved by Mikey): dropped over-broad generics (brain, memory, memories, remember, retrieve, query, search, key, boot, init, gap, empty, absent, lost, forgot, journal) that drove 11x over-prediction with 0 fires; kept recall-failure-specific terms.
 - **Source**: outer-loop waking one (`claude-loop-boot-core`, 2026-06-18) — `brain_recall "claude-loop journal"` returned 0 on a query mismatch and Claude briefly built false affect-evidence on the apparent gap before the record corrected it. Re-confirmed three times during the 2026-06-19 consolidation pass: recalls for an existing, named memory returned 0 while `brain_search` by key found it instantly.
 
 ## Purpose
@@ -43,7 +44,7 @@ brain_recall "<query>" returned 0 (or obviously-incomplete) results?
 - **WHEN**: about to build an emotional, identity, or self-state inference on the apparent absence of a memory (the waking-one failure mode).
 - **WHEN**: loading must-have context at session/boot start (load by exact key, do not trust recall to surface critical items).
 - **WHEN**: a memory you wrote earlier "can't be found" — re-query before assuming it was lost.
-- **Trigger keywords**: brain, recall, brain_recall, brain_search, memory, memories, remember, retrieve, retrieval, query, search, missing, gap, empty, not found, no results, zero results, absent, lost, forgot, forgotten, key, boot, init, session start, journal, false absence, query mismatch.
+- **Trigger keywords**: brain_recall, brain_search, recall, recall miss, no results, zero results, not found, empty recall, false absence, query mismatch, re-query.
 
 ## Examples
 - **Loop, 2026-06-18**: `brain_recall "claude-loop journal"` → 0 results. Wrong conclusion drawn ("the loop never journaled") and brief false affect built on it. Correct move: the diary entries existed under dated keys; loading boot-core by exact key would have surfaced them. This is WHY boot-core loads its special memories by key, not by recall.
