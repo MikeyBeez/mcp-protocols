@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-26",
+  "updated": "2026-06-27",
   "note": "Machine authority for protocol trigger matching + active-inference updates. Seeded from each protocol's .md Trigger keywords line. The matcher reads this; the trigger-eval loop updates it.",
   "protocols": {
     "agent-failure-modes": {
@@ -504,6 +504,28 @@
       ],
       "source": "md"
     },
+    "named-process-wrappers": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "login item",
+        "login items",
+        "launchd",
+        "launchagent",
+        "launchdaemon",
+        "app background activity",
+        "background item",
+        "named wrapper",
+        "loginlaunchers",
+        "exec -a",
+        "programarguments",
+        "unidentified developer",
+        "startup item",
+        "runs at login",
+        "plist"
+      ],
+      "source": "md"
+    },
     "naming-linter": {
       "tier": 2,
       "always_active": false,
@@ -860,28 +882,6 @@
         "up to date",
         "as of",
         "unknown"
-      ],
-      "source": "md"
-    },
-    "named-process-wrappers": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "login item",
-        "login items",
-        "launchd",
-        "launchagent",
-        "launchdaemon",
-        "app background activity",
-        "background item",
-        "named wrapper",
-        "loginlaunchers",
-        "exec -a",
-        "programarguments",
-        "unidentified developer",
-        "startup item",
-        "runs at login",
-        "plist"
       ],
       "source": "md"
     }
