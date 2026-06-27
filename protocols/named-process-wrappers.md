@@ -6,6 +6,7 @@
 - **Tier**: 2 (Foundation Operational)
 - **Status**: active
 - **Purpose**: Any LaunchAgent/LaunchDaemon that runs a bare interpreter or generic binary (`bash`, `python`, `python3`, `node`, `ssh`, ...) shows up in macOS **Login Items -> App Background Activity** and Activity Monitor under the interpreter's name — or, for a signed bare binary, under the code-signer's company name. Neither tells you what the item actually is. Wrap each such agent in a tiny named `.app` bundle so the login item is attributed to a recognizable bundle name (`BrainMonitor`, `GemmaTunnel`, ...).
+- **Updated**: 2026-06-27 — added the Dock-icon case: framework Python + a GUI import (tkinter/AppKit) draws a Dock icon the wrapper's LSUIElement cannot suppress; fix = NSApplicationActivationPolicyAccessory in the daemon.
 - **Created**: 2026-06-26 (from the login-items cleanup: wrapped BrainMonitor, GemmaTunnel, Reachi, Subconscious, ConfigBackup, ContextMonitor, ClaudeBrainLegacy; verified on-screen that bare agents showed as `bash`/`python3`/`node`/`ssh` while `.app` bundles showed clean names).
 - **Source**: empirical — macOS Background Task Management attributes login items by bundle, not by plist Label; confirmed in System Settings on 2026-06-26.
 
@@ -75,6 +76,22 @@ Wrappers live in `~/Library/LoginLaunchers/<Name>.app`. For an agent whose `Prog
 **Remember**: the Label is invisible; the bundle is what you see. Wrap the interpreter, name the bundle, and a login item you can't identify becomes one you can turn off with confidence.
 
 **Status**: Active — Foundation Operational Protocol
+
+## Dock Icon (separate from Login Items): framework Python + GUI
+
+The wrapper fixes the **Login Items** name; it does NOT remove a **Dock** icon. A LaunchAgent whose chain ends in Homebrew's framework Python re-execs into `Python.framework/.../Resources/Python.app/Contents/MacOS/Python`. That `Python.app` is its own bundle with **regular** activation policy and no `LSUIElement`, so it claims a Dock icon — the re-exec discards the wrapper's `LSUIElement` the same way it discards `exec -a`. The icon only appears for processes that actually touch the GUI (import `tkinter` / `AppKit`, show notifications); pure background loops (web server, poll loop) stay invisible even under framework Python.
+
+Fix (no shared-file edits) — set the activation policy to **accessory** at startup, in the daemon's own entry point:
+```python
+try:
+    from AppKit import NSApplication
+    NSApplication.sharedApplication().setActivationPolicy_(1)  # 1 = Accessory: no Dock icon, GUI still allowed
+except Exception:
+    pass
+```
+- `0` Regular (Dock icon) · `1` Accessory (no Dock icon, windows/menus still open) · `2` Prohibited (no GUI — breaks tkinter). Use **1** for a daemon that still pops the occasional window.
+- Call it as early as the entry runs; it can be toggled at runtime, so even an already-shown icon disappears (possible brief flash at launch). Apply with `launchctl kickstart -k gui/$uid/<label>`.
+- Verified 2026-06-27 on reachi: it imports tkinter (help / music windows) -> framework Python showed a generic "Python" Dock icon despite the `Reachi.app` LSUIElement wrapper; accessory policy in `main()` removed it (reachi commit fb4a54c).
 
 ## Related Protocols
 [[naming-linter]] · [[mcp-permissions]] · [[mcp-server-shellout-hardening]] · [[tool-auto-repair]]

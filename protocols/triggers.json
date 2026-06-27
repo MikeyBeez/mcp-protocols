@@ -505,7 +505,18 @@
         "unidentified developer",
         "startup item",
         "runs at login",
-        "plist"
+        "plist",
+        "dock",
+        "dock icon",
+        "in the dock",
+        "activation policy",
+        "accessory",
+        "lsuielement",
+        "tkinter",
+        "pyobjc",
+        "python.app",
+        "framework python",
+        "generic python"
       ],
       "source": "md"
     },
