@@ -59,4 +59,4 @@ The `monitor-pop` scheduled task is OFF by default and must NOT run while the po
 The monitor should exist only when there is something to monitor. (Mikey, 2026-06-21.)
 
 ## Related Protocols
-[[gpu-project-env-setup]] · [[pop-os-rebuild]]
+[[gpu-preflight-ollama]] · [[gpu-project-env-setup]] · [[pop-os-rebuild]]

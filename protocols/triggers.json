@@ -860,6 +860,32 @@
         "arxiv"
       ],
       "source": "md"
+    },
+    "gpu-preflight-ollama": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "ollama",
+        "reachi",
+        "gemma",
+        "vram",
+        "oom",
+        "out of memory",
+        "cuda out of memory",
+        "free gpu",
+        "unload ollama",
+        "stop ollama",
+        "llama-server",
+        "gpu memory",
+        "peakvram",
+        "preflight",
+        "pre-flight",
+        "pop gpu",
+        "free vram",
+        "nvidia-smi",
+        "keep_alive"
+      ],
+      "source": "md"
     }
   }
 }
