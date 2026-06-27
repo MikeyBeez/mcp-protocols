@@ -6,6 +6,7 @@
 - **Tier**: 2 (Foundation Operational)
 - **Status**: active
 - **Purpose**: Before launching any GPU experiment on pop, reliably free VRAM by STOPPING the ollama systemd service (not merely unloading the model), verify the GPU is clear, run the experiment, then RESTART ollama afterward so reachi comes back. Prevents the mid-run OOM where ollama reloads a model while a run is starting.
+- **Updated**: 2026-06-27 — scoped to POP ONLY (never the Mac's ollama); added reachi keep-alive via the Mac's ollama, per Mikey.
 - **Created**: 2026-06-27
 - **Source**: HyperPEER perceiver-size sweep, 2026-06-27 — the StarCoder2-3b run OOM'd twice because `ollama stop` only unloaded gemma4 and reachi immediately re-triggered a reload (~12.5GB) during the corpus-buffer build; stopping the ollama *service* fixed it. Mikey: "You need a protocol for running experiments that unloads ollama and stops the ollama service."
 
@@ -31,6 +32,17 @@ pop has a 16GB RTX 5070 Ti. A loaded ollama model (e.g. gemma4:26b, ~13GB on the
 - **Left-ollama-down**: experiment finished but ollama was never restarted -> reachi silently dead for hours. Mitigated by step 6 + baking the restart into the finalizer.
 - **Coexistence attempt**: assuming a ~13GB ollama model and a ~10GB run fit together in 16GB — they do not. One must be fully down.
 - **No passwordless sudo**: if `sudo -n systemctl stop ollama` needs a password, fall back to stopping the client (reachi) instead, or ask Mikey to free the GPU.
+
+## Scope: stop ollama on POP only — never on the Mac
+
+The experiment runs on pop, so only **pop's** GPU must be freed. Do NOT stop the **Mac's** ollama (`127.0.0.1:11434`) — it serves other things and is unrelated to the pop run. (Mikey, 2026-06-27.)
+
+reachi / Mycroft runs on the Mac, but its `GEMMA_HOST` defaults to `http://127.0.0.1:11435` — an SSH tunnel to **pop's** ollama — so stopping pop's ollama for an experiment also kills Mycroft's brain. Keep Mycroft alive during pop experiments by pointing reachi at the **Mac's** ollama (which has `gemma4:latest`): in `~/Code/reachi/.env` set
+
+    GEMMA_HOST=http://127.0.0.1:11434
+    GEMMA_MODEL=gemma4:latest
+
+then `launchctl kickstart -k gui/$uid/com.reachi.assistant`. Verified 2026-06-27: reachi warmed `gemma4:latest @ 11434` and kept working while the perceiver-size sweep ran on pop.
 
 ## Related Protocols
 [[training-run-management]] · [[gpu-project-env-setup]] · [[pop-os-rebuild]]
