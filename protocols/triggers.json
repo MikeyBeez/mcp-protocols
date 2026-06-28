@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-27",
+  "updated": "2026-06-28",
   "note": "Machine authority for protocol trigger matching + active-inference updates. Seeded from each protocol's .md Trigger keywords line. The matcher reads this; the trigger-eval loop updates it.",
   "protocols": {
     "agent-failure-modes": {
@@ -348,6 +348,37 @@
       ],
       "source": "md"
     },
+    "gpu-preflight-ollama": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "ollama",
+        "reachi",
+        "gemma",
+        "vram",
+        "vram",
+        "oom",
+        "out of memory",
+        "cuda out of memory",
+        "free gpu",
+        "unload",
+        "unload ollama",
+        "stop ollama",
+        "llama-server",
+        "gpu memory",
+        "peakvram",
+        "preflight",
+        "pre-flight",
+        "pop gpu",
+        "free vram",
+        "nvidia-smi",
+        "keep_alive",
+        "sweep",
+        "training run",
+        "experiment"
+      ],
+      "source": "md"
+    },
     "gpu-project-env-setup": {
       "tier": 2,
       "always_active": false,
@@ -509,14 +540,14 @@
         "dock",
         "dock icon",
         "in the dock",
+        "lsuielement",
         "activation policy",
         "accessory",
-        "lsuielement",
-        "tkinter",
-        "pyobjc",
-        "python.app",
         "framework python",
-        "generic python"
+        "generic python",
+        "python.app",
+        "pyobjc",
+        "tkinter"
       ],
       "source": "md"
     },
@@ -869,32 +900,6 @@
         "as of my cutoff",
         "post-cutoff",
         "arxiv"
-      ],
-      "source": "md"
-    },
-    "gpu-preflight-ollama": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "ollama",
-        "reachi",
-        "gemma",
-        "vram",
-        "oom",
-        "out of memory",
-        "cuda out of memory",
-        "free gpu",
-        "unload ollama",
-        "stop ollama",
-        "llama-server",
-        "gpu memory",
-        "peakvram",
-        "preflight",
-        "pre-flight",
-        "pop gpu",
-        "free vram",
-        "nvidia-smi",
-        "keep_alive"
       ],
       "source": "md"
     }

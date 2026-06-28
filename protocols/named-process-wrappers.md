@@ -7,6 +7,7 @@
 - **Status**: active
 - **Purpose**: Any LaunchAgent/LaunchDaemon that runs a bare interpreter or generic binary (`bash`, `python`, `python3`, `node`, `ssh`, ...) shows up in macOS **Login Items -> App Background Activity** and Activity Monitor under the interpreter's name — or, for a signed bare binary, under the code-signer's company name. Neither tells you what the item actually is. Wrap each such agent in a tiny named `.app` bundle so the login item is attributed to a recognizable bundle name (`BrainMonitor`, `GemmaTunnel`, ...).
 - **Updated**: 2026-06-27 — added the Dock-icon case: framework Python + a GUI import (tkinter/AppKit) draws a Dock icon the wrapper's LSUIElement cannot suppress; fix = NSApplicationActivationPolicyAccessory in the daemon.
+- **Updated**: 2026-06-28 — reconciled the Trigger keywords line with triggers.json (unioned the dock-icon keywords already live there: dock, dock icon, in the dock, lsuielement, activation policy, accessory, framework python, generic python, python.app, pyobjc, tkinter) so the .md is again the complete source of truth. Behavior-preserving — those triggers already fire.
 - **Created**: 2026-06-26 (from the login-items cleanup: wrapped BrainMonitor, GemmaTunnel, Reachi, Subconscious, ConfigBackup, ContextMonitor, ClaudeBrainLegacy; verified on-screen that bare agents showed as `bash`/`python3`/`node`/`ssh` while `.app` bundles showed clean names).
 - **Source**: empirical — macOS Background Task Management attributes login items by bundle, not by plist Label; confirmed in System Settings on 2026-06-26.
 
@@ -24,7 +25,7 @@ The macOS Login Items pane attributes a background item to the **bundle** that o
 - **WHEN**: auditing or cleaning up Login Items / "App Background Activity".
 - **WHEN**: a login item shows as `bash`, `python`, `python3`, `node`, `ssh`, `diskutil`, a bare binary name, or a signer's company name ("... Inc — unidentified developer").
 - **WHEN**: Mikey asks "what is this login item?" — name it so the question doesn't recur.
-- **Trigger keywords**: login item, login items, launchd, launchagent, launchdaemon, app background activity, background item, named wrapper, loginlaunchers, exec -a, programarguments, unidentified developer, startup item, runs at login, plist.
+- **Trigger keywords**: login item, login items, launchd, launchagent, launchdaemon, app background activity, background item, named wrapper, loginlaunchers, exec -a, programarguments, unidentified developer, startup item, runs at login, plist, dock, dock icon, in the dock, lsuielement, activation policy, accessory, framework python, generic python, python.app, pyobjc, tkinter.
 
 ## The Wrapper Recipe
 Wrappers live in `~/Library/LoginLaunchers/<Name>.app`. For an agent whose `ProgramArguments` are `[prog, arg1, ...]`:
