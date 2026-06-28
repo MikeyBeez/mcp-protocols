@@ -6,6 +6,7 @@
 - **Tier**: 2 (Foundation Operational)
 - **Status**: active
 - **Purpose**: Before launching any GPU experiment on pop, reliably free VRAM by STOPPING the ollama systemd service (not merely unloading the model), verify the GPU is clear, run the experiment, then RESTART ollama afterward so reachi comes back. Prevents the mid-run OOM where ollama reloads a model while a run is starting.
+- **Updated**: 2026-06-28 — added the bidirectional reachi rule (revert Jarvis to pop's gemma4:26b when the experiment ends; wire into the finalizer).
 - **Updated**: 2026-06-27 — scoped to POP ONLY (never the Mac's ollama); added reachi keep-alive via the Mac's ollama, per Mikey.
 - **Created**: 2026-06-27
 - **Source**: HyperPEER perceiver-size sweep, 2026-06-27 — the StarCoder2-3b run OOM'd twice because `ollama stop` only unloaded gemma4 and reachi immediately re-triggered a reload (~12.5GB) during the corpus-buffer build; stopping the ollama *service* fixed it. Mikey: "You need a protocol for running experiments that unloads ollama and stops the ollama service."
@@ -43,6 +44,11 @@ reachi / Mycroft runs on the Mac, but its `GEMMA_HOST` defaults to `http://127.0
     GEMMA_MODEL=gemma4:latest
 
 then `launchctl kickstart -k gui/$uid/com.reachi.assistant`. Verified 2026-06-27: reachi warmed `gemma4:latest @ 11434` and kept working while the perceiver-size sweep ran on pop.
+
+**Bidirectional rule (Mikey, 2026-06-28): reachi follows the experiment state — default resting state is Jarvis on pop's gemma4:26b.**
+- Experiment STARTING on pop: stop pop ollama, and point reachi's brain at the Mac's local model so Jarvis stays alive — in `~/Code/reachi/.env` set `GEMMA_HOST=http://127.0.0.1:11434` and `GEMMA_MODEL=phi3:mini` (or `gemma4:latest`), then restart reachi.
+- Experiment FINISHED: restart pop ollama, AND switch reachi back — REMOVE those two `GEMMA_` override lines from `~/Code/reachi/.env` (so it reverts to the config default `gemma4:26b @ 127.0.0.1:11435`, the pop SSH tunnel) and restart reachi (`launchctl kickstart -k gui/$uid/com.reachi.assistant`, or `launchctl bootstrap gui/$uid ~/Library/LaunchAgents/com.reachi.assistant.plist` if the agent was booted out / paused).
+- WIRE BOTH HALVES into the experiment's monitor/finalizer so the switch is automatic — the finalizer that restarts pop ollama must also revert the reachi `.env` and restart reachi. The Mac-local model is only the experiment-window fallback; pop's gemma4:26b is the resting default.
 
 ## Related Protocols
 [[training-run-management]] · [[gpu-project-env-setup]] · [[pop-os-rebuild]]
