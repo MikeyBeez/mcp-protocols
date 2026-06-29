@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-28",
+  "updated": "2026-06-29",
   "note": "Machine authority for protocol trigger matching + active-inference updates. Seeded from each protocol's .md Trigger keywords line. The matcher reads this; the trigger-eval loop updates it.",
   "protocols": {
     "agent-failure-modes": {
