@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-30",
+  "updated": "2026-07-01",
   "note": "Machine authority for protocol trigger matching + active-inference updates. Seeded from each protocol's .md Trigger keywords line. The matcher reads this; the trigger-eval loop updates it.",
   "protocols": {
     "agent-failure-modes": {
@@ -59,6 +59,33 @@
         "compact",
         "almost full",
         "pick up where"
+      ],
+      "source": "md"
+    },
+    "benchmark-and-report": {
+      "tier": 2,
+      "always_active": false,
+      "keywords": [
+        "benchmark",
+        "bench",
+        "tok/s",
+        "tokens per second",
+        "throughput",
+        "latency",
+        "step time",
+        "vram split",
+        "gpu/cpu split",
+        "ollama ps",
+        "predicted_per_second",
+        "eval_count",
+        "quant comparison",
+        "baseline",
+        "measure speed",
+        "how fast",
+        "re-bench",
+        "rebench",
+        "present results",
+        "save results"
       ],
       "source": "md"
     },
