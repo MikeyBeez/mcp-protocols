@@ -2,11 +2,12 @@
 
 ## Metadata
 - **ID**: coding-discipline
-- **Version**: 1.0.0
+- **Version**: 1.1.0
 - **Tier**: 2 (Foundation)
 - **Status**: active
 - **Purpose**: Before and while writing code, apply the discipline a careful senior engineer applies without thinking, so the agent does not fluently write confident, wrong code from a guessed interpretation.
 - **Created**: 2026-06-21
+- **Updated**: 2026-07-10 (added step 6: match-the-shape / never-pay-twice structure & compute discipline)
 - **Source**: adapted from Karpathy's four CLAUDE.md rules and the gstack setup (via Sumit Pandey's write-up, "I Built a Monster CLAUDE.md"), mapped onto this system's harness (test_suite, ledger, ground-truth queries).
 
 ## Purpose
@@ -17,7 +18,7 @@ Stop the most expensive coding failure before it starts: picking one reading of 
 
 ## Trigger Conditions
 - **WHEN** asked to write, implement, build, create, refactor, or edit code.
-- **Trigger keywords**: write code, implement, build a, create a function, create a script, code this, coding, refactor, edit the, change the code, add a feature, fix the bug, function, module, class, script, new feature.
+- **Trigger keywords**: write code, implement, build a, create a function, create a script, code this, coding, refactor, edit the, change the code, add a feature, fix the bug, function, module, class, script, new feature, optimize, compute, batch, benchmark, run the, rerun, loop, cache, thrash, repeat, duplicate, budget.
 
 ## Execution Steps
 
@@ -36,11 +37,23 @@ Touch only what the task requires. Do not "improve" the code next door, do not r
 ### 5. Verify
 Run the check — build, test, lint, or for this system the test_suite or a targeted query against ground truth — and confirm the end state before declaring done.
 
+### 6. Match the shape; never pay twice (structure & compute)
+Two questions a careful engineer asks that the fluent agent skips:
+
+**Does the solution's shape match the problem's shape?** Real problem-solving is a STACK of nested subproblems, not a line: install X reveals you need Y, fix reveals a missing dep, verify fails and you back up. A tool that flattens a nested problem into atomic calls will thrash — give it an explicit stack (push/pop subgoal), make the function recursive. And one behavior belongs in exactly ONE place; the moment it lives in two, they drift into two subtly-different behaviors (the "fixed in the scorer but not in run_tests" class of bug). When a tool thrashes, ask: is it flattening a nested problem (needs a stack), or is this logic duplicated (needs consolidation)?
+
+**Am I paying for the same thing twice?** In program-land — finite turn budgets, expensive model calls, code that runs in loops — repetition is not a style nit, it is the failure mode: wasted compute is subtracted from the budget that decides pass/fail. Before an expensive or repeated operation ask: has this been done already (cache it), did someone already solve this (web-search it, if you can describe the problem precisely), can I batch these independent calls into one? Notice repetition WITHIN your own response and tool use, not just in the code you write.
+
+The strongest form of this discipline is not a reminder but STRUCTURE: prefer encoding the principle in a tool so the wrong thing becomes impossible (a clone() that caches the mirror, a gate that verifies itself) over trusting yourself to remember.
+
 ## Anti-Patterns
 - Two hundred lines from a guessed interpretation of a vague ask.
 - A class hierarchy with a plugin system when asked for a script.
 - A three-line fix that becomes a six-hundred-line drive-by diff nobody can review.
 - Declaring "done" with no check actually run.
+- Flattening a nested problem into atomic calls that lose their place, then thrashing.
+- The same test/install/parse logic copied into N handlers, drifting apart.
+- Re-deriving or re-downloading what was already computed once; re-guessing what a web search would answer.
 
 ## Quality Checks
 - Assumptions stated and ambiguities surfaced?
@@ -48,6 +61,8 @@ Run the check — build, test, lint, or for this system the test_suite or a targ
 - Is it the minimum that solves the problem?
 - Is the diff surgical?
 - Did you actually run the check?
+- Does the solution's shape match the problem's (recursion/stack where nested; one behavior in one place)?
+- Am I paying twice — a cache, a batch, an existing solution, or a web search I skipped? Any repetition in my own output/tool use?
 
 ---
 **Status**: Active — Foundation Protocol
