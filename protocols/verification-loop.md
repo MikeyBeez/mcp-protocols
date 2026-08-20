@@ -33,7 +33,25 @@ Work on a dedicated git branch, set an iteration cap, and back up before destruc
 ### 4. Loop
 Build, run the check, read the failure, fix, re-run — until the check passes or the cap is hit.
 
-### 5. Stop and report when stuck
+### 5. Verify the RESULT, not the wrapper (added 2026-08-19)
+**Ask the running system what it looks like now. Do not trust the report of the thing that changed it.**
+
+A script printing success, a linter passing, an edit command exiting 0 — all of these are evidence that the WRAPPER ran. None is evidence that the system changed. The distinction is not pedantic; it is the difference between a fix and the appearance of one.
+
+Ask the thing itself:
+- changed a server's tools? speak JSON-RPC to it and read `tools/list`
+- changed a matcher? call it with a prompt and read the ranking
+- changed a config? re-read the file, and check whether the process has restarted since
+- changed a protocol? run the checker that reads the running system, not the source
+
+Three failures of exactly this shape in one session, 2026-08-19:
+1. A bare `catch {}` swallowed a ReferenceError to an undefined variable. The graph silently never loaded and the matcher looked perfectly healthy for an hour. **Never write a silent catch — degrade loudly.**
+2. An import guard tested for a symbol in code it had just inserted, so the import was skipped. `node --check` passed, because an undefined symbol is still valid JavaScript. **A syntax check is not a correctness check.**
+3. A `str.replace` matched nothing and returned its input unchanged, while the script printed "4 tools wired" from an unconditional log line. `tools/list` stayed at 5. **Assert that the edit happened; never print success unconditionally.**
+
+Each was caught only by interrogating the running system. None would have been caught by re-reading the code, and all three had a green check sitting on top of them.
+
+### 6. Stop and report when stuck
 If the cap is hit or the same failure recurs, STOP and report exactly what blocked you. Do not flail.
 
 ## Anti-Patterns
