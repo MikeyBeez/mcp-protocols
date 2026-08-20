@@ -10,13 +10,17 @@
 - **Source**: the `mikey-naming-registry` linter (`~/Code/mikey-naming-registry/lint.js` + `registry.json` + `PROTOCOL.md`), Mikey's canonical naming authority.
 
 ## Purpose
-Ensure consistent `mikey_` naming across all MCP tools and `mikey-` across all servers, so custom tools never collide with built-in Anthropic tools or each other. Run the registry linter before committing any MCP server change, and namespace every new tool/server at creation time. This is operational: the failure it prevents (collision) shows up at runtime as the wrong tool firing or a server failing to register, not as a lint warning you can ignore.
+Prevent MCP tool-name collisions. **CORRECTED 2026-08-19 — the rule this protocol used to enforce is dead.** It required a `mikey_` prefix on every custom tool. The system abandoned that in June 2026 when the brain server was rewritten as mcp-brain-lean and its tools became `brain_*` deliberately; `tool-contract.json` records the rename. The old rule would now flag the system's own correct names as violations. The PURPOSE survives — collisions are real — but the prescribed fix does not. Run the registry linter before committing any MCP server change, and namespace every new tool/server at creation time. This is operational: the failure it prevents (collision) shows up at runtime as the wrong tool firing or a server failing to register, not as a lint warning you can ignore.
 
 ## Core Principle
 
-**Namespace everything. A custom tool that isn't `mikey_`-prefixed is a collision waiting to happen.**
+**Namespace by SERVER DOMAIN, and never ship a bare generic name.**
 
-Generic names (`search`, `analyze`, `execute`, `help`, `init`, `state_*`, `brain_*`) overlap with built-ins or other servers. The `mikey_` prefix is what makes a tool unambiguously yours.
+The live convention is a domain prefix matching the server: `brain_*`, `git_*`, `db_*`, `safe_*`, `arch_*`, `continuation_*`, `task_*`, `mikey_protocol_*`. Not a personal prefix — a functional one. A tool called `search` or `execute` is the hazard; `brain_search` is fine.
+
+**Live violation to fix:** `help` is exposed by NINE servers (advanced-math-tools, database, decomposer, filesystem-enhanced, git, mcp-architecture, mcp-github-research, random, reasoning-tools, smalledit, system). It only works today because the client prefixes by server name. It breaks the moment anything fronts these servers behind one gateway. Rename to `<domain>_help`.
+
+Generic names (`search`, `analyze`, `execute`, `help`, `init`, `run`, `get`, `list`) overlap with built-ins or with each other. A domain prefix is what makes a tool unambiguous. (`brain_*` was listed here as a name to AVOID — that was written before it became the system's own convention. Fixed 2026-08-19.)
 
 ## Trigger Conditions (MUST ACTIVATE)
 - **WHEN**: creating a new MCP server, or adding/renaming a tool on an existing one.
