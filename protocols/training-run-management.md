@@ -54,7 +54,7 @@
 
 ## Monitor Lifecycle (monitor-pop is experiment-scoped)
 The `monitor-pop` scheduled task is OFF by default and must NOT run while the pop box is idle — a standing hourly monitor on an idle machine is noise. Treat it as part of the experiment lifecycle, hooked to the same register/deregister points as the pop-active-jobs registry:
-- **At launch** of a pop experiment (training run / sweep): ENABLE it — `mcp__scheduled-tasks__update_scheduled_task` taskId `monitor-pop`, `enabled: true` — so the hourly reconcile watches the run.
+- **At launch** of a pop experiment (training run / sweep): ENABLE it — `mcp__claude-code-remote__update_trigger` for `monitor-pop`, `enabled: true` (was `mcp__scheduled-tasks__update_scheduled_task`) — so the hourly reconcile watches the run.
 - **At exit**, or when the pop-active-jobs registry has no jobs left: DISABLE it — `enabled: false`.
 The monitor should exist only when there is something to monitor. (Mikey, 2026-06-21.)
 

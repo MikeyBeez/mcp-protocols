@@ -25,7 +25,7 @@ Two execution contexts exist; the same instinct applies to both:
 
 | Context | Built-ins (fenced/sandboxed) | Reach the real Mac via |
 |---|---|---|
-| **Cowork desktop** | `Read`/`Write`/`Edit` (only connected folders), `mcp__workspace__bash` (isolated cloud VM, no LAN route) | `filesystem-enhanced` (files), `system` → `system_exec` (commands) |
+| **Cowork desktop** | `Read`/`Write`/`Edit` (only connected folders), `Bash` (built-in; isolated cloud VM, no LAN route — was `mcp__workspace__bash`) | `filesystem-enhanced` (files), `system` → `system_exec` (commands) |
 | **Classic Claude Code** | container bash | `system_exec` / filesystem MCP |
 
 > **DEPRECATED:** `brain_execute` no longer exists. `brain-unified` was removed and replaced by `mcp-brain-lean` (memory-only: init/remember/recall/search/recent/forget/reflect/stats). Do not look for `brain_execute` — use `system_exec` instead.
@@ -43,7 +43,7 @@ Need to RUN a command in Mikey's real environment?
 │       → use system server: system_exec   (runs as user `bard` on Schmooey.local)
 │
 Pure throwaway compute, no Mac/LAN access needed?
-     → mcp__workspace__bash (Cowork sandbox) is fine
+     → `Bash` (Cowork sandbox, built-in) is fine
 ```
 
 ## filesystem-enhanced (file access on the Mac)

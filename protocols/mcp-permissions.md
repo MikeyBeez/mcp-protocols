@@ -28,7 +28,7 @@ The cost of a wrong auto-approve is asymmetric: an extra click on a read tool is
 ## Decision Rubric (by tool suffix)
 **Auto-approve (read-only):** `*_status`, `*_list`, `*_get`, `*_search`, `*_help`, `*_info`, `*_stats`, `*_check`, `*_read`, `*_recall`, `*_recent`.
 
-**Require approval (mutating):** `*_create`, `*_delete`, `*_update`, `*_write`, `*_execute`, `*_push`, `*_set` (exception: a trusted state-setter like `mikey_state_set` may be approved deliberately).
+**Require approval (mutating):** `*_create`, `*_delete`, `*_update`, `*_write`, `*_execute`, `*_push`, `*_set` (exception: a trusted state-setter like `brain_remember` may be approved deliberately).
 
 When a tool's suffix doesn't make its read/write nature obvious, read what it does before deciding — default to require-approval.
 
@@ -44,7 +44,7 @@ File: `~/.claude/settings.local.json`. Structure:
   }
 }
 ```
-Tool name pattern in the allow-list: `mcp__<server-name>__<tool-name>` (double underscores), e.g. `mcp__mikey-brain__mikey_recall`, `mcp__mikey-protocols__mikey_protocol_read`.
+Tool name pattern in the allow-list: `mcp__<server-name>__<tool-name>` (double underscores), e.g. `mcp__brain__brain_recall`, `mcp__protocols__mikey_protocol_read`.
 
 ## Steps
 1. **List the new server's tools** and split them read-only vs. mutating by the rubric above.

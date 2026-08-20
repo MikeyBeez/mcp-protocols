@@ -88,7 +88,10 @@ Autonomously diagnose and repair MCP tool/server failures — errors, broken bui
 ### 1. Initial Assessment
 ```javascript
 // Check tool status
-const toolStatus = await registry_info(toolName);
+// tools-registry unwired 2026-08-19. Use the contract checks instead:
+//   system_exec: ~/Code/harness/check-contracts.sh
+// It probes every wired server's tools/list, diffs against tool-contract.json,
+// verifies handlers read what their schemas declare, and validates doc claims.
 const actuallyWorks = await testToolFunction(toolName);
 
 if (actuallyWorks && toolStatus.status === 'unconfigured') {
