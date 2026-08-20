@@ -277,30 +277,6 @@
       "source": "md",
       "note": "precision pass 2026-08-19: bare common-English keywords removed, replaced by phrases; measured against 40 real past prompts."
     },
-    "decision-box": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "decide",
-        "decision",
-        "choose",
-        "choice",
-        "pick",
-        "prefer",
-        "approve",
-        "approval",
-        "confirm",
-        "sign off",
-        "go/no-go",
-        "which one",
-        "should i",
-        "do you want",
-        "want me to",
-        "option",
-        "options"
-      ],
-      "source": "md"
-    },
     "error-recovery": {
       "tier": 2,
       "always_active": false,
@@ -343,34 +319,6 @@
         "checklist"
       ],
       "source": "md"
-    },
-    "get-current-time": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "date",
-        "clock",
-        "what time",
-        "today",
-        "hours",
-        "minutes",
-        "timezone",
-        "late",
-        "early",
-        "morning",
-        "night",
-        "evening",
-        "sleep",
-        "bed",
-        "elapsed",
-        "how long",
-        "time is it",
-        "current time",
-        "what day",
-        "time of day"
-      ],
-      "source": "md",
-      "note": "precision pass 2026-08-19: bare common-English keywords removed, replaced by phrases; measured against 40 real past prompts."
     },
     "github-anonymization": {
       "tier": 1,
@@ -654,31 +602,6 @@
       "always_active": true,
       "keywords": [],
       "source": "md"
-    },
-    "reflect": {
-      "tier": 2,
-      "always_active": false,
-      "keywords": [
-        "reflect",
-        "learn",
-        "learning",
-        "correction",
-        "mistake",
-        "wrong",
-        "preference",
-        "next time",
-        "don't forget",
-        "improve",
-        "lesson",
-        "capture",
-        "correct me",
-        "remember this",
-        "remember that",
-        "you were wrong",
-        "got that wrong"
-      ],
-      "source": "md",
-      "note": "precision pass 2026-08-19: bare common-English keywords removed, replaced by phrases; measured against 40 real past prompts."
     },
     "stale-note-correction": {
       "tier": 2,

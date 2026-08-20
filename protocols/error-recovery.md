@@ -28,19 +28,27 @@ Do not immediately retry the same thing. The reflex to re-run a failing action i
 ### 2. Read the actual error / observe the actual result
 Get the real message and the real state (filesystem, ledger, ground truth) — not what you expected to happen.
 
-### 3. Classify the failure
+### 3. SEARCH before you theorise
+Your training data is stale and most real problems are already documented. Search the
+actual error string, plus versions: "<software> <version> <error>". Check bug trackers,
+GitHub issues, forums. A documented one-line fix beats an hour of plausible guesses.
+Only fall back to reasoning from first principles when the search genuinely turns up
+nothing. (Absorbed from the tech-troubleshooting skill, 2026-08-19 — the two are one
+chain, not rivals: this is the general frame, that is this step.)
+
+### 4. Classify the failure
 - **EXECUTION** — external: permissions, network, missing dependency, wrong environment.
 - **SPECIFICATION** — you did the wrong thing or held a wrong assumption.
 - **CAPABILITY** — the task is beyond the current approach.
 The class dictates the fix.
 
-### 4. Fix the cause, not the symptom
+### 5. Fix the cause, not the symptom
 If a write failed, find why (path? permission? the file?). Do not just retry and hope.
 
-### 5. Verify against ground truth
+### 6. Verify against ground truth
 Confirm the fix actually worked by checking reality, before moving on.
 
-### 6. Bound it, then stop and report
+### 7. Bound it, then stop and report
 After a bounded attempt, if still stuck, STOP and report exactly what blocked you — do not flail through variations. Capture the lesson (brain note / protocol update) so the error is corrected once, not repeated forever.
 
 ## Anti-Patterns
@@ -57,7 +65,7 @@ After a bounded attempt, if still stuck, STOP and report exactly what blocked yo
 - If stuck, did you stop and report rather than flail?
 
 ## Related Protocols
-[[tool-auto-repair]] · [[mcp-server-shellout-hardening]] · [[verification-loop]] · [[reflect]]
+[[tool-auto-repair]] · [[mcp-server-shellout-hardening]] · skill: tech-troubleshooting · [[verification-loop]] · [[reflect]]
 
 ---
 **Status**: Active — Foundation Protocol
