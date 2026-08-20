@@ -212,5 +212,32 @@
       "precise"
     ],
     "note": "Compute, don't assert. Run numbers through code; skills: pattern-match-check."
+  },
+  {
+    "situation": "Is anyone already working on this? Prior art, upstream issues, has it been reported",
+    "tools": [
+      "mcp__mcp-github-research__github_search_issues",
+      "mcp__mcp-github-research__github_list_repository_issues",
+      "mcp__mcp-github-research__github_get_issue_timeline",
+      "mcp__mcp-github-research__github_analyze_label_history"
+    ],
+    "keywords": [
+      "prior art",
+      "already working",
+      "anyone working",
+      "has this been done",
+      "been reported",
+      "known issue",
+      "existing issue",
+      "upstream",
+      "github issue",
+      "issue tracker",
+      "has anyone",
+      "already solved",
+      "open issue",
+      "been fixed upstream",
+      "regression report"
+    ],
+    "note": "Mikey, 2026-08-19: \"When I ask if somebody is working on something already, some idea, you should be using MCP GitHub research.\" The server WORKS \u2014 verified against the live GitHub API, returning issues through 2026-07. It had zero recorded calls purely because nothing routed here. Search before assuming a problem is novel; an upstream issue usually carries the answer and the workaround."
   }
 ]
