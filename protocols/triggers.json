@@ -576,7 +576,16 @@
         "new server",
         "new tool",
         "add tool",
-        "mcp__"
+        "mcp__",
+        "collisions",
+        "name collision",
+        "namespacing",
+        "gateway",
+        "rename tool",
+        "consolidate servers",
+        "merge servers",
+        "naming convention",
+        "tool collision"
       ],
       "source": "md"
     },
