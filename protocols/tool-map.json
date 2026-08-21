@@ -1,243 +1,274 @@
 [
-  {
-    "situation": "Touch files under ~ or /Volumes (outside the Cowork sandbox)",
-    "tools": [
-      "mcp__filesystem-enhanced__read_text_file",
-      "mcp__filesystem-enhanced__write_file",
-      "mcp__filesystem-enhanced__edit_file",
-      "mcp__filesystem-enhanced__list_directory",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "file",
-      "files",
-      "read",
-      "write",
-      "edit",
-      "folder",
-      "directory",
-      "path",
-      "config",
-      "dotfile",
-      "outside",
-      "sandbox"
-    ],
-    "note": "Built-in Read/Write/Edit only reach connected folders. filesystem-enhanced reaches the whole Mac."
-  },
-  {
-    "situation": "Run a command on Mikey's real Mac, his LAN, or pop over ssh",
-    "tools": [
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "run",
-      "command",
-      "shell",
-      "execute",
-      "ssh",
-      "pop",
-      "tmux",
-      "gpu",
-      "cuda",
-      "nvidia",
-      "git",
-      "scp",
-      "launchctl",
-      "brew",
-      "ollama",
-      "process",
-      "kill"
-    ],
-    "note": "The sandbox bash has no LAN route. system_exec runs as bard on the Mac; ssh user@192.168.x.x for pop. Use git CLI through it for all git work."
-  },
-  {
-    "situation": "Session start, remembering, or recalling anything from past sessions",
-    "tools": [
-      "mcp__brain__brain_init",
-      "mcp__brain__brain_recall",
-      "mcp__brain__brain_remember",
-      "mcp__brain__brain_reflect",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "remember",
-      "recall",
-      "memory",
-      "session",
-      "context",
-      "before",
-      "last",
-      "time",
-      "previous",
-      "discussed",
-      "told",
-      "smarts"
-    ],
-    "note": "brain_init at session start. Write memories DURING work, not at the end. After tasks: brain_reflect."
-  },
-  {
-    "situation": "Launching or monitoring a training / distillation / fine-tuning run",
-    "tools": [
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "train",
-      "training",
-      "distill",
-      "finetune",
-      "checkpoint",
-      "wandb",
-      "diverge",
-      "loss",
-      "steps",
-      "eta",
-      "launch"
-    ],
-    "note": "Read protocol training-run-management first. tmux pane for visibility, native W&B, step-stamped checkpoints, verify liftoff after 30s."
-  },
-  {
-    "situation": "Current-world facts, papers, citations, anything post-cutoff",
-    "tools": [
-      "WebSearch",
-      "WebFetch",
-      "mcp__tracked-search__tracked_search",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "search",
-      "paper",
-      "arxiv",
-      "current",
-      "latest",
-      "news",
-      "today",
-      "cite",
-      "citation",
-      "published",
-      "release"
-    ],
-    "note": "Search before claiming. For HF models/datasets/papers there are also hf paper_search / hub_repo_search tools."
-  },
-  {
-    "situation": "MCP server or tool failures, errors, broken tools",
-    "tools": [
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "mcp",
-      "server",
-      "broken",
-      "error",
-      "failed",
-      "tool",
-      "failure",
-      "disconnect",
-      "malfunction"
-    ],
-    "note": "Run ~/Code/harness/check-contracts.sh \u2014 it probes every wired server's tools/list, diffs against tool-contract.json, checks handlers against their schemas and validates documented claims. Logs at ~/Library/Logs/Claude/. Protocol: tool-auto-repair. (tools-registry was unwired 2026-08-19; the contract checks replace and exceed registry_summary.)"
-  },
-  {
-    "situation": "What time is it / elapsed time / any time-of-day assumption",
-    "tools": [
-      "Skill:get-current-time",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "time",
-      "clock",
-      "late",
-      "early",
-      "morning",
-      "tonight",
-      "elapsed",
-      "timer",
-      "hour"
-    ],
-    "note": "Never guess the time; response timestamps come from this."
-  },
-  {
-    "situation": "Locating a project or code on the Mac",
-    "tools": [
-      "mcp__project-finder__find_project",
-      "mcp__project-finder__recent_projects",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "project",
-      "where",
-      "locate",
-      "find",
-      "repo",
-      "code",
-      "directory"
-    ],
-    "note": "Check the filesystem before claiming something does or does not exist."
-  },
-  {
-    "situation": "Context running long / handoff to a future session",
-    "tools": [
-      "mcp__mcp-continuation-notes__continuation_write",
-      "mcp__brain__brain_remember",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "continue",
-      "continuation",
-      "handoff",
-      "context",
-      "limit",
-      "running",
-      "out",
-      "next",
-      "session"
-    ],
-    "note": "Write the continuation note BEFORE context is lost. Protocol: auto-continuation."
-  },
-  {
-    "situation": "Verifying claims, math, or suspicious confident reasoning",
-    "tools": [
-      "mcp__reasoning-tools__systematic_verify",
-      "mcp__bullshit-detector__detect_bullshit",
-      "mcp__system__system_exec"
-    ],
-    "keywords": [
-      "verify",
-      "check",
-      "confirm",
-      "math",
-      "calculate",
-      "claim",
-      "actually",
-      "prove",
-      "precise"
-    ],
-    "note": "Compute, don't assert. Run numbers through code; skills: pattern-match-check."
-  },
-  {
-    "situation": "Is anyone already working on this? Prior art, upstream issues, has it been reported",
-    "tools": [
-      "mcp__mcp-github-research__github_search_issues",
-      "mcp__mcp-github-research__github_list_repository_issues",
-      "mcp__mcp-github-research__github_get_issue_timeline",
-      "mcp__mcp-github-research__github_analyze_label_history"
-    ],
-    "keywords": [
-      "prior art",
-      "already working",
-      "anyone working",
-      "has this been done",
-      "been reported",
-      "known issue",
-      "existing issue",
-      "upstream",
-      "github issue",
-      "issue tracker",
-      "has anyone",
-      "already solved",
-      "open issue",
-      "been fixed upstream",
-      "regression report"
-    ],
-    "note": "Mikey, 2026-08-19: \"When I ask if somebody is working on something already, some idea, you should be using MCP GitHub research.\" The server WORKS \u2014 verified against the live GitHub API, returning issues through 2026-07. It had zero recorded calls purely because nothing routed here. Search before assuming a problem is novel; an upstream issue usually carries the answer and the workaround."
-  }
+ {
+  "situation": "Touch files under ~ or /Volumes (outside the Cowork sandbox)",
+  "tools": [
+   "mcp__filesystem-enhanced__read_text_file",
+   "mcp__filesystem-enhanced__write_file",
+   "mcp__filesystem-enhanced__edit_file",
+   "mcp__filesystem-enhanced__list_directory",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "file",
+   "files",
+   "read",
+   "write",
+   "edit",
+   "folder",
+   "directory",
+   "path",
+   "config",
+   "dotfile",
+   "outside",
+   "sandbox"
+  ],
+  "note": "Built-in Read/Write/Edit only reach connected folders. filesystem-enhanced reaches the whole Mac."
+ },
+ {
+  "situation": "Run a command on Mikey's real Mac, his LAN, or pop over ssh",
+  "tools": [
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "run",
+   "command",
+   "shell",
+   "execute",
+   "ssh",
+   "pop",
+   "tmux",
+   "gpu",
+   "cuda",
+   "nvidia",
+   "git",
+   "scp",
+   "launchctl",
+   "brew",
+   "ollama",
+   "process",
+   "kill"
+  ],
+  "note": "The sandbox bash has no LAN route. system_exec runs as bard on the Mac; ssh user@192.168.x.x for pop. Use git CLI through it for all git work."
+ },
+ {
+  "situation": "Session start, remembering, or recalling anything from past sessions",
+  "tools": [
+   "mcp__brain__brain_init",
+   "mcp__brain__brain_recall",
+   "mcp__brain__brain_remember",
+   "mcp__brain__brain_reflect",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "remember",
+   "recall",
+   "memory",
+   "session",
+   "context",
+   "before",
+   "last",
+   "time",
+   "previous",
+   "discussed",
+   "told",
+   "smarts"
+  ],
+  "note": "brain_init at session start. Write memories DURING work, not at the end. After tasks: brain_reflect."
+ },
+ {
+  "situation": "Launching or monitoring a training / distillation / fine-tuning run",
+  "tools": [
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "train",
+   "training",
+   "distill",
+   "finetune",
+   "checkpoint",
+   "wandb",
+   "diverge",
+   "loss",
+   "steps",
+   "eta",
+   "launch"
+  ],
+  "note": "Read protocol training-run-management first. tmux pane for visibility, native W&B, step-stamped checkpoints, verify liftoff after 30s."
+ },
+ {
+  "situation": "Current-world facts, papers, citations, anything post-cutoff",
+  "tools": [
+   "WebSearch",
+   "WebFetch",
+   "mcp__tracked-search__tracked_search",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "search",
+   "paper",
+   "arxiv",
+   "current",
+   "latest",
+   "news",
+   "today",
+   "cite",
+   "citation",
+   "published",
+   "release"
+  ],
+  "note": "Search before claiming. For HF models/datasets/papers there are also hf paper_search / hub_repo_search tools."
+ },
+ {
+  "situation": "MCP server or tool failures, errors, broken tools",
+  "tools": [
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "mcp",
+   "server",
+   "broken",
+   "error",
+   "failed",
+   "tool",
+   "failure",
+   "disconnect",
+   "malfunction"
+  ],
+  "note": "Run ~/Code/harness/check-contracts.sh \u2014 it probes every wired server's tools/list, diffs against tool-contract.json, checks handlers against their schemas and validates documented claims. Logs at ~/Library/Logs/Claude/. Protocol: tool-auto-repair. (tools-registry was unwired 2026-08-19; the contract checks replace and exceed registry_summary.)"
+ },
+ {
+  "situation": "What time is it / elapsed time / any time-of-day assumption",
+  "tools": [
+   "Skill:get-current-time",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "time",
+   "clock",
+   "late",
+   "early",
+   "morning",
+   "tonight",
+   "elapsed",
+   "timer",
+   "hour"
+  ],
+  "note": "Never guess the time; response timestamps come from this."
+ },
+ {
+  "situation": "Locating a project or code on the Mac",
+  "tools": [
+   "mcp__project-finder__find_project",
+   "mcp__project-finder__recent_projects",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "project",
+   "where",
+   "locate",
+   "find",
+   "repo",
+   "code",
+   "directory"
+  ],
+  "note": "Check the filesystem before claiming something does or does not exist."
+ },
+ {
+  "situation": "Context running long / handoff to a future session",
+  "tools": [
+   "mcp__mcp-continuation-notes__continuation_write",
+   "mcp__brain__brain_remember",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "continue",
+   "continuation",
+   "handoff",
+   "context",
+   "limit",
+   "running",
+   "out",
+   "next",
+   "session"
+  ],
+  "note": "Write the continuation note BEFORE context is lost. Protocol: auto-continuation."
+ },
+ {
+  "situation": "Verifying claims, math, or suspicious confident reasoning",
+  "tools": [
+   "mcp__reasoning-tools__systematic_verify",
+   "mcp__bullshit-detector__detect_bullshit",
+   "mcp__system__system_exec"
+  ],
+  "keywords": [
+   "verify",
+   "check",
+   "confirm",
+   "math",
+   "calculate",
+   "claim",
+   "actually",
+   "prove",
+   "precise"
+  ],
+  "note": "Compute, don't assert. Run numbers through code; skills: pattern-match-check."
+ },
+ {
+  "situation": "Is anyone already working on this? Prior art, upstream issues, has it been reported",
+  "tools": [
+   "mcp__mcp-github-research__github_search_issues",
+   "mcp__mcp-github-research__github_list_repository_issues",
+   "mcp__mcp-github-research__github_get_issue_timeline",
+   "mcp__mcp-github-research__github_analyze_label_history"
+  ],
+  "keywords": [
+   "prior art",
+   "already working",
+   "anyone working",
+   "has this been done",
+   "been reported",
+   "known issue",
+   "existing issue",
+   "upstream",
+   "github issue",
+   "issue tracker",
+   "has anyone",
+   "already solved",
+   "open issue",
+   "been fixed upstream",
+   "regression report"
+  ],
+  "note": "Mikey, 2026-08-19: \"When I ask if somebody is working on something already, some idea, you should be using MCP GitHub research.\" The server WORKS \u2014 verified against the live GitHub API, returning issues through 2026-07. It had zero recorded calls purely because nothing routed here. Search before assuming a problem is novel; an upstream issue usually carries the answer and the workaround."
+ },
+ {
+  "situation": "Bulk reading, summarising, or fetching material that is NOT already in context",
+  "tools": [
+   "mcp__simple-job__summarize",
+   "mcp__simple-job__search_and_summarize",
+   "mcp__simple-job__download",
+   "mcp__simple-job__simple_job"
+  ],
+  "keywords": [
+   "delegate",
+   "delegation",
+   "offload",
+   "summarise",
+   "summarize",
+   "summary",
+   "ornith",
+   "digest",
+   "condense",
+   "skim",
+   "bulk",
+   "download",
+   "fetch",
+   "pages",
+   "article",
+   "transcribe",
+   "grunt",
+   "cheap",
+   "free"
+  ],
+  "note": "A 35B model sits idle on pop. Measured 2026-08-21: ~2.7x faster than doing it in context, and 6.1x less context spent, because the raw pages never enter it. Every job must carry a check -- the server refuses work it cannot verify, deliberately. search_and_summarize is the ONLY search tool here and is rate-limited, one at a time. DO IT YOURSELF instead when the text is already in context, when the job needs interpretation rather than transcription, or when being right matters more than being checkable: ornith transcribes faithfully, it does not interpret."
+ }
 ]
