@@ -22,7 +22,35 @@
       "outside",
       "sandbox"
     ],
-    "note": "Built-in Read/Write/Edit only reach connected folders. filesystem-enhanced reaches the whole Mac."
+    "note": "Built-in Read/Write/Edit only reach connected folders. filesystem-enhanced reaches the whole Mac. For CHANGING code that already exists, use safe-edit (next entry) -- write_file rewrites the whole file."
+  },
+  {
+    "situation": "Changing code or text in a file that already exists \u2014 one file, or the same change across many",
+    "tools": [
+      "mcp__safe-edit__safe_preview",
+      "mcp__safe-edit__safe_edit",
+      "mcp__safe-edit__safe_edit_many",
+      "mcp__safe-edit__safe_read",
+      "mcp__safe-edit__safe_restore"
+    ],
+    "keywords": [
+      "refactor",
+      "rename",
+      "replace",
+      "patch",
+      "modify",
+      "change",
+      "sweep",
+      "across",
+      "every",
+      "rewrite",
+      "substitute",
+      "occurrences",
+      "sed",
+      "multifile",
+      "many"
+    ],
+    "note": "safe_edit replaces the matched text only -- it cannot add or drop anything outside the edit radius, and it refuses an ambiguous match instead of guessing. safe_edit_many does the same change across a list of files ALL-OR-NOTHING: nothing is written until every file has been planned and passed its structural gate, and a file with no match is reported as SKIPPED by name, never silently. This replaced smalledit (retired 2026-08-22). Use safe_preview first when unsure. filesystem-enhanced write_file rewrites the WHOLE file -- do not use it to change existing code."
   },
   {
     "situation": "Run a command on Mikey's real Mac, his LAN, or pop over ssh",
