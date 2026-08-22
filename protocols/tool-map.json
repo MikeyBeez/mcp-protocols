@@ -324,5 +324,48 @@
       "unwieldy"
     ],
     "note": "Mikey's rule, given 2026-08-21: ASK whether the task should be broken up. If yes, call decomposer. The asking is the step -- do not skip it and do not silently decide either way. decompose() splits a prompt into sub-tasks; classify() judges the shape of the problem first; rlm_execute() runs the recursive form, treating the input as an external environment rather than as context to be read whole. Backed by Ollama at localhost:11434 -- endpoint verified HTTP 200 on 2026-08-19 and again 2026-08-21. DO IT YOURSELF instead when the task is already one step, when breaking it up would cost more than doing it, or when the pieces would need each other's results to be written -- that is a plan, not a decomposition. The failure mode of routing this tool is OVER-decomposition: turning a two-minute job into six coordinated ones.  PHRASES RESTORED 2026-08-22: matchTools now uses the same word-boundary test as the protocol matcher, so multi-word keywords fire. They were stripped for one day while it still used a token set."
+  },
+  {
+    "situation": "Exact integer arithmetic \u2014 primality, factorisation, modular and p-adic questions, polynomials",
+    "tools": [
+      "mcp__advanced-math-tools__is_prime",
+      "mcp__advanced-math-tools__factor_integer",
+      "mcp__advanced-math-tools__multiplicative_order",
+      "mcp__advanced-math-tools__padic_valuation",
+      "mcp__advanced-math-tools__discriminant",
+      "mcp__advanced-math-tools__resultant",
+      "mcp__advanced-math-tools__polynomial_construct",
+      "mcp__advanced-math-tools__prime_density_analysis",
+      "mcp__advanced-math-tools__group_orbit_count",
+      "mcp__advanced-math-tools__braid_group_analysis",
+      "mcp__advanced-math-tools__variety_decomposition",
+      "mcp__advanced-math-tools__padic_continuity_check"
+    ],
+    "keywords": [
+      "braid",
+      "congruence",
+      "discriminant",
+      "divisor",
+      "exact arithmetic",
+      "factor",
+      "factorisation",
+      "factorise",
+      "factorization",
+      "factorize",
+      "gcd",
+      "is it prime",
+      "modular",
+      "multiplicative order",
+      "number theory",
+      "p-adic",
+      "padic",
+      "polynomial",
+      "prime",
+      "prime factors",
+      "primes",
+      "resultant",
+      "valuation"
+    ],
+    "note": "13 tools, ZERO recorded calls before 2026-08-22 -- not because it fails but because nothing routed here, the same gap as mcp-github-research. Its own stated contract is 'proofs or honest refusals, never estimates', which is exactly the property a language model lacks on arithmetic: I produce a confident plausible number and cannot tell that it is wrong. USE IT rather than computing in prose whenever an integer answer has to be RIGHT -- primality, factorisation, modular order, p-adic valuation, discriminants and resultants, orbit counts. Relevant to the Sidon and MPAR work. DO IT YOURSELF for ordinary small arithmetic, and for anything approximate or floating-point -- this server is exact-integer only and will refuse rather than estimate, which is the point. Verify the result matters more than the speed here: verification-loop pairs with this.  CALLING CAVEAT, learned by getting it wrong 2026-08-22: pass any value beyond 2^53 as a DECIMAL STRING. A bare number is already a lossy JavaScript float by the time the server sees it, and it REFUSES rather than answering -- 'n exceeds 2^53 and has already lost precision; pass it as a decimal string instead'. That refusal is the contract working: it caught a real precision error of mine instead of returning a confident wrong answer. VERIFIED the same day against known facts, not just for a non-empty response: is_prime('2305843009213693951') returns true for 2^61-1 with a proof certificate, and factor_integer('18446744073709551617') returns Euler's factorisation of 2^64+1, 274177 * 67280421310721."
   }
 ]
