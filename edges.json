@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated": "2026-08-19",
+  "updated": "2026-08-22",
   "note": "Typed relationships between protocols. NOT a hierarchy \u2014 tiers already handle priority. These edges are data + queryable via edges.py; they are NOT wired into the live matcher (prompt_process/triggers.json left untouched on purpose). Wiring them into activation is a later, human-reviewed step. v2 (2026-06-25): connected the 15 graph-orphans with true typed edges so the whole library is one coherent graph; extended the failure-handling spine (stop-trigger -> struggle-protocol -> error-recovery -> reflect); added intentional_leaves for genuinely standalone protocols so `edges.py orphans` only flags UNEXPECTED disconnection. | 2026-08-19: remapped for the protocol merges (form-first->intent-gate, stop-trigger+struggle-protocol->error-recovery) and dropped endpoints that became SKILLS (reflect, get-current-time) or were retired (decision-box). WIRED into the matcher this date: escalates_to and pairs_with neighbours of the top keyword match are pulled in at reduced weight.",
   "types": {
     "governs": "A is a meta-protocol that decides when/whether to use B (the only hierarchical type; mostly mirrors tiers)",
@@ -78,7 +78,8 @@
       "type": "pairs_with",
       "to": [
         "gpu-project-env-setup",
-        "naming-linter"
+        "naming-linter",
+        "github-anonymization"
       ]
     },
     {
@@ -108,7 +109,8 @@
       "type": "pairs_with",
       "to": [
         "mcp-permissions",
-        "mcp-server-shellout-hardening"
+        "mcp-server-shellout-hardening",
+        "github-anonymization"
       ]
     },
     {
@@ -153,6 +155,14 @@
       "to": [
         "triggers.json"
       ]
+    },
+    {
+      "from": "mcp-server-shellout-hardening",
+      "type": "pairs_with",
+      "to": [
+        "named-process-wrappers"
+      ],
+      "note": "both govern launchd/Desktop-spawned processes; added 2026-08-22 because named-process-wrappers had NO routing edge and 0 live keywords, so nothing could ever reach it"
     }
   ]
 }

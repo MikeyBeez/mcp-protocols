@@ -23,7 +23,7 @@
       "source": "md"
     },
     "anti-sycophancy": {
-      "tier": 2,
+      "tier": 1,
       "always_active": false,
       "keywords": [
         "is this right",
@@ -37,7 +37,26 @@
         "thoughts",
         "cheerleading",
         "sycophancy",
-        "you're right"
+        "you're right",
+        "am i right",
+        "is that right",
+        "does that make sense",
+        "sound right",
+        "disagree",
+        "push back",
+        "honest",
+        "be honest",
+        "tell me the truth",
+        "sugarcoat",
+        "make me feel",
+        "reassure",
+        "validate",
+        "too complex for me",
+        "my fault",
+        "i'm probably wrong",
+        "maybe i'm wrong",
+        "or am i",
+        "correct me"
       ],
       "source": "md"
     },
@@ -548,7 +567,15 @@
         "generic python",
         "python.app",
         "pyobjc",
-        "tkinter"
+        "tkinter",
+        "background activity",
+        "launch agent",
+        "launch daemon",
+        "wrapper script",
+        "what is this process",
+        "unnamed process",
+        "shows up as bash",
+        "shows up as python"
       ],
       "source": "md"
     },
