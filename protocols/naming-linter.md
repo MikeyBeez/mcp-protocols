@@ -18,7 +18,19 @@ Prevent MCP tool-name collisions. **CORRECTED 2026-08-19 — the rule this proto
 
 The live convention is a domain prefix matching the server: `brain_*`, `git_*`, `db_*`, `safe_*`, `arch_*`, `continuation_*`, `task_*`, `mikey_protocol_*`. Not a personal prefix — a functional one. A tool called `search` or `execute` is the hazard; `brain_search` is fine.
 
-**Live violation to fix:** `help` is exposed by NINE servers (advanced-math-tools, database, decomposer, filesystem-enhanced, git, mcp-architecture, mcp-github-research, random, reasoning-tools, smalledit, system). It only works today because the client prefixes by server name. It breaks the moment anything fronts these servers behind one gateway. Rename to `<domain>_help`.
+**RESOLVED 2026-08-22.** `help` was exposed by TWELVE wired servers at once — not the nine
+this protocol claimed, and the list it gave was also wrong. The live inventory had the right
+number the whole time and nobody read it. All twelve renamed: math_help, db_help,
+decompose_help, git_help, arch_help, github_help, system_help, fs_help, random_help,
+reasoning_help, smalledit_help, search_help. Recorded in tool-contract.json with a per_server
+map, because this was not one tool renamed but twelve tools sharing a name.
+
+**The rule this leaves behind:** a tool name must be unique across ALL wired servers, not
+merely within its own. It works today only because the client namespaces by server; the
+moment anything fronts them behind one gateway, the duplicates become unreachable and which
+one answers is an accident of load order. Check a new tool name against the generated
+inventory at ~/Code/docs/tool-inventory.md before adding it — that file is derived, so it
+cannot be out of date the way this paragraph was.
 
 Generic names (`search`, `analyze`, `execute`, `help`, `init`, `run`, `get`, `list`) overlap with built-ins or with each other. A domain prefix is what makes a tool unambiguous. (`brain_*` was listed here as a name to AVOID — that was written before it became the system's own convention. Fixed 2026-08-19.)
 
