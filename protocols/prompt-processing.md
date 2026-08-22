@@ -36,6 +36,35 @@ When a user message arrives, before doing anything else:
 mikey_prompt_process(prompt: "the user's message")
 ```
 
+### Step 1b: Is this one task, or several? (added 2026-08-22)
+
+Mikey, 2026-08-21: "One of the first things done for a prompt should be decomposition.
+Then do protocols."
+
+A prompt is not always one task. Step 1 routed the WHOLE message as a single thing, so a
+message holding three requests gets one muddled ranking where it needed three sharp ones,
+and the parts that matter least drag down the score of the parts that matter most.
+
+- **GATE FIRST, and cheaply.** Most turns are one task. Go straight to Step 2 when the
+  prompt is short, conversational, a single question, or a direct follow-up. This step must
+  cost nothing on an ordinary turn.
+- **WHEN THE GATE OPENS**, name the pieces in one line, then re-run `mikey_prompt_process`
+  per piece and union the results. Say which protocol came from which piece, so the routing
+  stays auditable — that is the whole reason protocols are matched rather than self-loading.
+- **SAY WHICH ANSWER YOU REACHED.** "One task" is a real answer and costs a line.
+- `decompose` (`mcp__decomposer__decompose`) is there when the split itself is hard, and
+  `classify` when the shape of the problem is unclear. Do not reach for either when naming
+  the pieces yourself is quicker.
+- **The failure mode is OVER-decomposition** — turning a two-minute job into six coordinated
+  ones. If the pieces would need each other's results in order to be written, that is a
+  PLAN, not a decomposition: write the plan and do not split.
+
+WHY THIS IS PROSE AND NOT YET CODE: the real fix is for the matcher to decompose before
+routing, inside `mcp-protocols-lean`. That puts a model call on the critical path of every
+turn unless the gate is cheap, and whether it can be made cheap is a measurement nobody has
+taken. Run it by hand first, notice what the gate should have been, and graduate it to code
+on the evidence rather than shipping a guessed heuristic into the hot path.
+
 ### Step 2: Evaluate Response
 The tool returns:
 - `skip_processing: true` → Quick response, proceed directly

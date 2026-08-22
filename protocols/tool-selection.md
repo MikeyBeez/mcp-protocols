@@ -46,6 +46,40 @@ Pure throwaway compute, no Mac/LAN access needed?
      → `Bash` (Cowork sandbox, built-in) is fine
 ```
 
+## Dispatching the pieces (added 2026-08-22)
+
+Splitting a task and running the pieces are two decisions. Once you have pieces, send each
+one to the cheapest place that can do it correctly. Mikey's standing preference, 2026-08-21:
+**prefer ornith — he wants the speedup, and it is free.**
+
+Take them in this order:
+
+1. **ORNITH, via `simple_job` / `summarize` / `search_and_summarize` / `download`.**
+   FIRST CHOICE whenever the piece can state its own check. Measured 2026-08-21: ~2.7x
+   faster than doing it in context and 6.1x less context spent, because the raw material
+   never enters the conversation. Works in BOTH Cowork and desktop chat — it is an MCP
+   server, so it is the portable option. The server refuses work it cannot verify,
+   deliberately.
+   GOOD FOR: bulk reading, summarising, fetching, transcribing, extraction.
+   NOT FOR: judgment calls, code that must be correct, file edits, or anything where being
+   right matters more than being checkable. Measured limitation: ornith transcribes
+   faithfully but does not interpret — it reproduced an ambiguous phrase verbatim instead
+   of resolving it, and read a repo's star count as part of a bug report.
+
+2. **A SUBAGENT (the Agent tool), when the piece needs judgment** rather than transcription,
+   and its raw material should stay out of this context. Full Claude quality, costs tokens.
+   AVAILABLE IN COWORK ONLY — there is no Agent tool in a desktop chat session, so never
+   write a step that DEPENDS on it. Check, then fall back to ornith or to doing it here.
+
+3. **DO IT YOURSELF** when the material is already in context (dispatching means shipping
+   it back out for a round trip), when it is two steps, or when correctness beats
+   checkability.
+
+**Portability decides ties.** Ornith and every other MCP server work on both surfaces;
+subagents do not. When a piece could go either way, ornith keeps the behaviour identical
+wherever the session runs — which is why it is first here rather than second, independent
+of cost.
+
 ## filesystem-enhanced (file access on the Mac)
 - **Allowed roots**: `~`, `/Volumes` (confirm with `list_allowed_directories`)
 - **Reaches things the Cowork Read tool refuses**, e.g. `~/Library/Logs/Claude/*.log`, `~/.ssh/config`, `~/Library/Application Support/Claude/claude_desktop_config.json`, anything under `~/Code`.
