@@ -65,6 +65,37 @@ turn unless the gate is cheap, and whether it can be made cheap is a measurement
 taken. Run it by hand first, notice what the gate should have been, and graduate it to code
 on the evidence rather than shipping a guessed heuristic into the hot path.
 
+### Step 1c: A protocol matched by MEANING is still a match (added 2026-08-22)
+
+When keyword matching comes back weak, the matcher asks the engrams — 261 embedded past
+prompts — whether they can see something the words missed. That rescue now reaches
+`relevant_protocols` like any other hit, and a rescue on a TIER 0 or 1 protocol at
+similarity 0.70 or above is moved to the front and named in the directive.
+
+**Treat a promoted engram hit as recommended, not incidental.** Its `why` will say
+`engram rescue <score> — TIER n, keywords missed it entirely`. That phrasing is the
+signal: the protocol's own trigger words are absent from the prompt, which is exactly
+when a session is most likely to skip it.
+
+WHY THE THRESHOLD IS 0.70 AND THE SCOPE IS TIERS 0-1: higher than the 0.65 rescue floor
+so only strong hits promote, and narrow enough that tier-2 guesses cannot flood the list.
+Tiers 0 and 1 are the always-on meta rules and the safety rules; those are the ones where
+a miss costs something that cannot be taken back.
+
+WHAT THIS FIXED, worth keeping because the failure was invisible: on 2026-08-21 the prompt
+"it should be a repo if it's anonymized" scored `github-anonymization` at ZERO on keywords
+— the message contains none of push, github, publish, remote or origin — while the engram
+saw it at 0.759, the highest of that session. It is a tier 1 protocol governing what gets
+published to the internet, and it never appeared in the response. The cause was a plain
+bug: the rescue pushed onto a filtered COPY of the hit list, so it was computed and
+discarded. The next action on the table was creating a public repository from a directory
+holding an ssh config block.
+
+DO NOT FIX A MISS LIKE THIS BY ADDING KEYWORDS. "repo" belongs to create-project, and the
+2026-08-19 addendum measured that harvesting words from missed prompts re-introduced a bug
+deliberately deleted in June — 9 of 15 candidates were either already-removed words or
+ordinary English. The hybrid exists so the fix lives on the engram side.
+
 ### Step 2: Evaluate Response
 The tool returns:
 - `skip_processing: true` → Quick response, proceed directly
