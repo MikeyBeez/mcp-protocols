@@ -92,11 +92,21 @@ of cost.
 - Per Mikey's standing preference: *don't tell me what to run — just run it.*
 
 ### SSH to the Pop!_OS / RTX 5070 Ti box
+
+> The local model on pop is **llama-server on 127.0.0.1:8080**, not 11434. Nothing listens
+> on pop:11434. (The Mac's own ollama IS on 11434 — that part is unchanged and true.)
+> See [[pop-access-canonical-2026-08-23]].
 ```
-system_exec(command="ssh user@192.168.x.x 'nvidia-smi'")
+system_exec(command="ssh bard@192.168.x.x 'nvidia-smi'")
 ```
-- **Authoritative invocation (Mikey, 2026-06-09): `ssh user@192.168.x.x`.**
-- The `~/.ssh/config` block (`Host pop-os Pop` → 192.168.x.x, User bee) is STALE / case-sensitive (`pop` ≠ `Pop`). Prefer `user@192.168.x.x`.
+- **Authoritative invocation: `ssh bard@192.168.x.x`** (or the config alias `ssh pop-os`).
+- ⚠️ STALE-CORRECTED 2026-08-23. This protocol previously asserted that the authoritative
+  form was `user@192.168.x.x` and that the `~/.ssh/config` block was stale with `User bee`.
+  BOTH halves were wrong, and the correction runs the opposite way to what was written:
+  ground truth on 2026-08-23 is that `ssh user@...` FAILS with "Permission denied
+  (publickey)", while the config block is CORRECT and current — `Host pop-os Pop` →
+  HostName 192.168.x.x, **User bard**, IdentityFile ~/.ssh/id_rsa. The protocol was the
+  stale thing, not the config. Canonical: [[pop-access-canonical-2026-08-23]].
 - If it times out: check the box is online — `ping -c2 192.168.x.x`, `arp -n 192.168.x.x` (an `incomplete` ARP entry = host not on the LAN, i.e. powered off/asleep or DHCP moved it).
 
 ## Anti-Patterns to Avoid
@@ -108,7 +118,7 @@ system_exec(command="ssh user@192.168.x.x 'nvidia-smi'")
 ## Quality Checks
 - ✅ Tried filesystem-enhanced before saying a file is unreachable
 - ✅ Used system_exec (not a sandboxed bash) for anything needing the real Mac/LAN
-- ✅ Used `ssh user@192.168.x.x` (not the stale config alias)
+- ✅ Used `ssh bard@192.168.x.x` (or `ssh pop-os`; the config alias is CURRENT, not stale)
 - ✅ Did NOT ask Mikey to do something a tool could do
 
 ---
