@@ -52,7 +52,7 @@ and the parts that matter least drag down the score of the parts that matter mos
   per piece and union the results. Say which protocol came from which piece, so the routing
   stays auditable — that is the whole reason protocols are matched rather than self-loading.
 - **SAY WHICH ANSWER YOU REACHED.** "One task" is a real answer and costs a line.
-- `decompose` (`mcp__decomposer__decompose`) is there when the split itself is hard, and
+- `decompose` (`aux_run name="decomposer.decompose"`) is there when the split itself is hard, and
   `classify` when the shape of the problem is unclear. Do not reach for either when naming
   the pieces yourself is quicker.
 - **The failure mode is OVER-decomposition** — turning a two-minute job into six coordinated

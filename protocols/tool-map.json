@@ -128,7 +128,7 @@
     "tools": [
       "WebSearch",
       "WebFetch",
-      "mcp__tracked-search__tracked_search",
+      "(retired: use the host's own web search)",
       "mcp__system__system_exec"
     ],
     "keywords": [
@@ -241,10 +241,10 @@
   {
     "situation": "Bulk reading, summarising, or fetching material that is NOT already in context",
     "tools": [
-      "mcp__simple-job__summarize",
-      "mcp__simple-job__search_and_summarize",
-      "mcp__simple-job__download",
-      "mcp__simple-job__simple_job"
+      "aux_run name=\"simplejob.summarize\"",
+      "aux_run name=\"simplejob.search_and_summarize\"",
+      "aux_run name=\"simplejob.download\"",
+      "aux_run name=\"simplejob.simple_job\""
     ],
     "keywords": [
       "delegate",
@@ -272,11 +272,11 @@
   {
     "situation": "A task may be too big to do in one pass \u2014 ask whether it should be broken up first",
     "tools": [
-      "mcp__decomposer__decompose",
-      "mcp__decomposer__classify",
-      "mcp__decomposer__rlm_execute",
-      "mcp__decomposer__get_framework",
-      "mcp__decomposer__check_misreads"
+      "aux_run name=\"decomposer.decompose\"",
+      "aux_run name=\"decomposer.classify\"",
+      "aux_run name=\"decomposer.rlm_execute\"",
+      "aux_run name=\"decomposer.get_framework\"",
+      "aux_run name=\"decomposer.check_misreads\""
     ],
     "keywords": [
       "break down",
