@@ -241,10 +241,10 @@
   {
     "situation": "Bulk reading, summarising, or fetching material that is NOT already in context",
     "tools": [
-      "aux_run name=\"simplejob.summarize\"",
-      "aux_run name=\"simplejob.search_and_summarize\"",
-      "aux_run name=\"simplejob.download\"",
-      "aux_run name=\"simplejob.simple_job\""
+      "(archived — see ~/Code/docs/ARCHIVE.md)",
+      "(archived — see ~/Code/docs/ARCHIVE.md)",
+      "(archived — see ~/Code/docs/ARCHIVE.md)",
+      "(archived — see ~/Code/docs/ARCHIVE.md)"
     ],
     "keywords": [
       "delegate",
